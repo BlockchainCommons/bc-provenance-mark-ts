@@ -7,7 +7,14 @@
 // Ported from provenance-mark-rust/src/mark.rs
 
 import { toBase64, fromBase64, bytesToHex } from "./utils.js";
-import { type Cbor, cbor, cborData, expectArray, expectBytes, decodeCbor } from "@blockchaincommons/dcbor-compat";
+import {
+  type Cbor,
+  cbor,
+  cborData,
+  expectArray,
+  expectBytes,
+  decodeCbor,
+} from "@blockchaincommons/dcbor-compat";
 import { PROVENANCE_MARK } from "@blockchaincommons/tags";
 import {
   BytewordsStyle,
