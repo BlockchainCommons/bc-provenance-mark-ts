@@ -1,0 +1,951 @@
+/**
+ * Copyright © 2023-2026 Blockchain Commons, LLC
+ * Copyright © 2025-2026 Parity Technologies
+ *
+ */
+
+// Ported from provenance-mark-rust/src/mark.rs
+
+import { toBase64, fromBase64, bytesToHex } from "./utils.js";
+import { type Cbor, cbor, cborData, expectArray, expectBytes, decodeCbor } from "@blockchaincommons/dcbor-compat";
+import { PROVENANCE_MARK } from "@blockchaincommons/tags";
+import {
+  BytewordsStyle,
+  encodeBytewords,
+  decodeBytewords,
+  encodeToWords,
+  encodeToBytemojis,
+  encodeToMinimalBytewords,
+  UR,
+} from "@blockchaincommons/uniform-resources";
+import { Envelope } from "@blockchaincommons/envelope";
+
+import { ProvenanceMarkError, ProvenanceMarkErrorType } from "./error.js";
+import { validate as validateMarks } from "./validate.js";
+import type { ValidationIssue, ValidationReport } from "./validate.js";
+import {
+  type ProvenanceMarkResolution,
+  linkLength,
+  keyRange,
+  chainIdRange,
+  hashRange,
+  seqBytesRange,
+  dateBytesRange,
+  infoRangeStart,
+  fixedLength,
+  serializeDate,
+  deserializeDate,
+  serializeSeq,
+  deserializeSeq,
+  resolutionFromCbor,
+  resolutionToCbor,
+} from "./resolution.js";
+import { sha256, sha256Prefix, obfuscate } from "./crypto-utils.js";
+import { dateToDisplay } from "./date.js";
+
+/**
+ * A cryptographically-secured provenance mark.
+ */
+export class ProvenanceMark {
+  private readonly _res: ProvenanceMarkResolution;
+  private readonly _key: Uint8Array;
+  private readonly _hash: Uint8Array;
+  private readonly _chainId: Uint8Array;
+  private readonly _seqBytes: Uint8Array;
+  private readonly _dateBytes: Uint8Array;
+  private readonly _infoBytes: Uint8Array;
+  private readonly _seq: number;
+  private readonly _date: Date;
+
+  private constructor(
+    res: ProvenanceMarkResolution,
+    key: Uint8Array,
+    hash: Uint8Array,
+    chainId: Uint8Array,
+    seqBytes: Uint8Array,
+    dateBytes: Uint8Array,
+    infoBytes: Uint8Array,
+    seq: number,
+    date: Date,
+  ) {
+    this._res = res;
+    this._key = key;
+    this._hash = hash;
+    this._chainId = chainId;
+    this._seqBytes = seqBytes;
+    this._dateBytes = dateBytes;
+    this._infoBytes = infoBytes;
+    this._seq = seq;
+    this._date = date;
+  }
+
+  res(): ProvenanceMarkResolution {
+    return this._res;
+  }
+
+  key(): Uint8Array {
+    return new Uint8Array(this._key);
+  }
+
+  hash(): Uint8Array {
+    return new Uint8Array(this._hash);
+  }
+
+  chainId(): Uint8Array {
+    return new Uint8Array(this._chainId);
+  }
+
+  seqBytes(): Uint8Array {
+    return new Uint8Array(this._seqBytes);
+  }
+
+  dateBytes(): Uint8Array {
+    return new Uint8Array(this._dateBytes);
+  }
+
+  seq(): number {
+    return this._seq;
+  }
+
+  date(): Date {
+    return this._date;
+  }
+
+  /**
+   * Get the message (serialized bytes) of this mark.
+   */
+  message(): Uint8Array {
+    const payload = new Uint8Array([
+      ...this._chainId,
+      ...this._hash,
+      ...this._seqBytes,
+      ...this._dateBytes,
+      ...this._infoBytes,
+    ]);
+    const obfuscated = obfuscate(this._key, payload);
+    return new Uint8Array([...this._key, ...obfuscated]);
+  }
+
+  /**
+   * Get the info field as CBOR, if present.
+   */
+  info(): Cbor | undefined {
+    if (this._infoBytes.length === 0) {
+      return undefined;
+    }
+    return decodeCbor(this._infoBytes);
+  }
+
+  /**
+   * Create a new provenance mark.
+   */
+  static new(
+    res: ProvenanceMarkResolution,
+    key: Uint8Array,
+    nextKey: Uint8Array,
+    chainId: Uint8Array,
+    seq: number,
+    date: Date,
+    info?: Cbor,
+  ): ProvenanceMark {
+    const linkLen = linkLength(res);
+
+    if (key.length !== linkLen) {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.InvalidKeyLength, undefined, {
+        expected: linkLen,
+        actual: key.length,
+      });
+    }
+    if (nextKey.length !== linkLen) {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.InvalidNextKeyLength, undefined, {
+        expected: linkLen,
+        actual: nextKey.length,
+      });
+    }
+    if (chainId.length !== linkLen) {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.InvalidChainIdLength, undefined, {
+        expected: linkLen,
+        actual: chainId.length,
+      });
+    }
+
+    const dateBytes = serializeDate(res, date);
+    const seqBytes = serializeSeq(res, seq);
+
+    // Re-deserialize to get normalized date
+    const normalizedDate = deserializeDate(res, dateBytes);
+
+    const infoBytes = info !== undefined ? cborData(info) : new Uint8Array(0);
+
+    const hash = ProvenanceMark.makeHash(
+      res,
+      key,
+      nextKey,
+      chainId,
+      seqBytes,
+      dateBytes,
+      infoBytes,
+    );
+
+    return new ProvenanceMark(
+      res,
+      new Uint8Array(key),
+      hash,
+      new Uint8Array(chainId),
+      seqBytes,
+      dateBytes,
+      infoBytes,
+      seq,
+      normalizedDate,
+    );
+  }
+
+  /**
+   * Create a provenance mark from a serialized message.
+   */
+  static fromMessage(res: ProvenanceMarkResolution, message: Uint8Array): ProvenanceMark {
+    const minLen = fixedLength(res);
+    if (message.length < minLen) {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.InvalidMessageLength, undefined, {
+        expected: minLen,
+        actual: message.length,
+      });
+    }
+
+    const linkLen = linkLength(res);
+    const keyRng = keyRange(res);
+    const key = message.slice(keyRng.start, keyRng.end);
+
+    const payload = obfuscate(key, message.slice(linkLen));
+
+    // All ranges are for the payload, not the message
+    const chainIdRng = chainIdRange(res);
+    const chainId = payload.slice(chainIdRng.start, chainIdRng.end);
+
+    const hashRng = hashRange(res);
+    const hash = payload.slice(hashRng.start, hashRng.end);
+
+    const seqRng = seqBytesRange(res);
+    const seqBytes = payload.slice(seqRng.start, seqRng.end);
+    const seq = deserializeSeq(res, seqBytes);
+
+    const dateRng = dateBytesRange(res);
+    const dateBytes = payload.slice(dateRng.start, dateRng.end);
+    const date = deserializeDate(res, dateBytes);
+
+    const infoStart = infoRangeStart(res);
+    const infoBytes = payload.slice(infoStart);
+
+    // Validate info CBOR if present
+    if (infoBytes.length > 0) {
+      try {
+        decodeCbor(infoBytes);
+      } catch {
+        throw new ProvenanceMarkError(ProvenanceMarkErrorType.InvalidInfoCbor);
+      }
+    }
+
+    return new ProvenanceMark(
+      res,
+      new Uint8Array(key),
+      new Uint8Array(hash),
+      new Uint8Array(chainId),
+      new Uint8Array(seqBytes),
+      new Uint8Array(dateBytes),
+      new Uint8Array(infoBytes),
+      seq,
+      date,
+    );
+  }
+
+  private static makeHash(
+    res: ProvenanceMarkResolution,
+    key: Uint8Array,
+    nextKey: Uint8Array,
+    chainId: Uint8Array,
+    seqBytes: Uint8Array,
+    dateBytes: Uint8Array,
+    infoBytes: Uint8Array,
+  ): Uint8Array {
+    const buf = new Uint8Array([
+      ...key,
+      ...nextKey,
+      ...chainId,
+      ...seqBytes,
+      ...dateBytes,
+      ...infoBytes,
+    ]);
+    return sha256Prefix(buf, linkLength(res));
+  }
+
+  /**
+   * The 32-byte Mark ID.
+   *
+   * The first `linkLength` bytes are the mark's stored hash. The remaining
+   * bytes come from the mark's fingerprint (SHA-256 of CBOR encoding),
+   * ensuring a full 32-byte value is always available regardless of
+   * resolution.
+   */
+  id(): Uint8Array {
+    const result = new Uint8Array(32);
+    const n = this._hash.length;
+    result.set(this._hash, 0);
+    if (n < 32) {
+      const fp = this.fingerprint();
+      result.set(fp.subarray(0, 32 - n), n);
+    }
+    return result;
+  }
+
+  /**
+   * The full 32-byte Mark ID as a 64-character hex string.
+   */
+  idHex(): string {
+    return bytesToHex(this.id());
+  }
+
+  /**
+   * The first `wordCount` bytes of the Mark ID as upper-case ByteWords.
+   *
+   * @param wordCount Number of bytes to encode, must be in `4..=32`.
+   * @param prefix If `true`, prepends the provenance-mark prefix character.
+   * @throws if `wordCount` is not in the range `4..=32`.
+   */
+  idBytewords(wordCount: number, prefix: boolean): string {
+    if (!Number.isInteger(wordCount) || wordCount < 4 || wordCount > 32) {
+      throw new Error(`word_count must be 4..=32, got ${wordCount}`);
+    }
+    const s = encodeToWords(this.id().subarray(0, wordCount)).toUpperCase();
+    return prefix ? `\u{1F15F} ${s}` : s;
+  }
+
+  /**
+   * The first `wordCount` bytes of the Mark ID as Bytemoji.
+   *
+   * @param wordCount Number of bytes to encode, must be in `4..=32`.
+   * @param prefix If `true`, prepends the provenance-mark prefix character.
+   * @throws if `wordCount` is not in the range `4..=32`.
+   */
+  idBytemoji(wordCount: number, prefix: boolean): string {
+    if (!Number.isInteger(wordCount) || wordCount < 4 || wordCount > 32) {
+      throw new Error(`word_count must be 4..=32, got ${wordCount}`);
+    }
+    const s = encodeToBytemojis(this.id().subarray(0, wordCount)).toUpperCase();
+    return prefix ? `\u{1F15F} ${s}` : s;
+  }
+
+  /**
+   * The first `wordCount` bytes of the Mark ID as upper-case minimal
+   * ByteWords (2 letters per byte, concatenated without separator).
+   *
+   * @param wordCount Number of bytes to encode, must be in `4..=32`.
+   * @param prefix If `true`, prepends the provenance-mark prefix character.
+   * @throws if `wordCount` is not in the range `4..=32`.
+   */
+  idBytewordsMinimal(wordCount: number, prefix: boolean): string {
+    if (!Number.isInteger(wordCount) || wordCount < 4 || wordCount > 32) {
+      throw new Error(`word_count must be 4..=32, got ${wordCount}`);
+    }
+    const s = encodeToMinimalBytewords(this.id().subarray(0, wordCount)).toUpperCase();
+    return prefix ? `\u{1F15F} ${s}` : s;
+  }
+
+  /**
+   * Legacy 8-character hex identifier — the first 4 bytes of the Mark ID.
+   *
+   * @deprecated Use {@link idHex} for the full 64-char hex, or
+   *   `idHex().slice(0, 8)` for this legacy short form. Retained for
+   *   backwards compatibility; will be removed in a future alpha.
+   */
+  identifier(): string {
+    return this.idHex().slice(0, 8);
+  }
+
+  /**
+   * Legacy 4-byte upper-case ByteWords identifier.
+   *
+   * @deprecated Equivalent to `idBytewords(4, prefix)`. Retained for
+   *   backwards compatibility; will be removed in a future alpha.
+   */
+  bytewordsIdentifier(prefix: boolean): string {
+    return this.idBytewords(4, prefix);
+  }
+
+  /**
+   * Legacy 8-letter minimal ByteWords identifier (first+last letter of each
+   * of the 4 ByteWords). Example: "ABLE ACID ALSO APEX" -> "AEADAOAX".
+   *
+   * @deprecated Equivalent to `idBytewordsMinimal(4, prefix)`. Retained
+   *   for backwards compatibility; will be removed in a future alpha.
+   */
+  bytewordsMinimalIdentifier(prefix: boolean): string {
+    return this.idBytewordsMinimal(4, prefix);
+  }
+
+  /**
+   * Legacy 4-byte upper-case Bytemoji identifier.
+   *
+   * @deprecated Equivalent to `idBytemoji(4, prefix)`. Retained for
+   *   backwards compatibility; will be removed in a future alpha.
+   */
+  bytemojiIdentifier(prefix: boolean): string {
+    return this.idBytemoji(4, prefix);
+  }
+
+  /**
+   * Computes the minimum prefix length (in bytes, `4..=32`) each mark needs
+   * so that every mark in the set has a unique Mark ID prefix.
+   *
+   * Non-colliding marks get the minimum of 4. Only marks whose 4-byte
+   * prefixes collide are extended.
+   */
+  private static minimalNoncollidingPrefixLengths(ids: Uint8Array[]): number[] {
+    const n = ids.length;
+    const lengths: number[] = new Array<number>(n).fill(4);
+
+    // Group by 4-byte prefix (fast path)
+    const groups = new Map<string, number[]>();
+    for (let i = 0; i < n; i++) {
+      const key = bytesToHex(ids[i].subarray(0, 4));
+      const g = groups.get(key);
+      if (g !== undefined) g.push(i);
+      else groups.set(key, [i]);
+    }
+
+    // Resolve each collision group
+    for (const indices of groups.values()) {
+      if (indices.length <= 1) continue;
+      ProvenanceMark.resolveCollisionGroup(ids, indices, lengths);
+    }
+
+    return lengths;
+  }
+
+  private static resolveCollisionGroup(
+    ids: Uint8Array[],
+    initialIndices: number[],
+    lengths: number[],
+  ): void {
+    let unresolved: number[] = [...initialIndices];
+
+    for (let prefixLen = 5; prefixLen <= 32; prefixLen++) {
+      const subGroups = new Map<string, number[]>();
+      for (const i of unresolved) {
+        const key = bytesToHex(ids[i].subarray(0, prefixLen));
+        const g = subGroups.get(key);
+        if (g !== undefined) g.push(i);
+        else subGroups.set(key, [i]);
+      }
+
+      const nextUnresolved: number[] = [];
+      for (const subIndices of subGroups.values()) {
+        if (subIndices.length === 1) {
+          lengths[subIndices[0]] = prefixLen;
+        } else {
+          nextUnresolved.push(...subIndices);
+        }
+      }
+
+      if (nextUnresolved.length === 0) return;
+      unresolved = nextUnresolved;
+    }
+
+    // At 32 bytes, truly identical IDs remain — assign 32
+    for (const i of unresolved) {
+      lengths[i] = 32;
+    }
+  }
+
+  /**
+   * Returns disambiguated upper-case ByteWords Mark IDs for a set of marks.
+   *
+   * Non-colliding marks get 4-word identifiers. Only marks whose 4-byte
+   * prefixes collide are extended with additional words (up to 32 bytes
+   * per identifier).
+   */
+  static disambiguatedIdBytewords(marks: ProvenanceMark[], prefix: boolean): string[] {
+    const ids = marks.map((m) => m.id());
+    const lengths = ProvenanceMark.minimalNoncollidingPrefixLengths(ids);
+    return ids.map((id, i) => {
+      const s = encodeToWords(id.subarray(0, lengths[i])).toUpperCase();
+      return prefix ? `\u{1F15F} ${s}` : s;
+    });
+  }
+
+  /**
+   * Returns disambiguated Bytemoji Mark IDs for a set of marks.
+   *
+   * Non-colliding marks get 4-emoji identifiers. Only marks whose 4-byte
+   * prefixes collide are extended with additional emojis (up to 32 bytes
+   * per identifier).
+   */
+  static disambiguatedIdBytemoji(marks: ProvenanceMark[], prefix: boolean): string[] {
+    const ids = marks.map((m) => m.id());
+    const lengths = ProvenanceMark.minimalNoncollidingPrefixLengths(ids);
+    return ids.map((id, i) => {
+      const s = encodeToBytemojis(id.subarray(0, lengths[i])).toUpperCase();
+      return prefix ? `\u{1F15F} ${s}` : s;
+    });
+  }
+
+  /**
+   * Check if this mark precedes another mark in the chain.
+   */
+  precedes(next: ProvenanceMark): boolean {
+    try {
+      this.precedesOpt(next);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Check if this mark precedes another mark, throwing on validation errors.
+   * Errors carry a structured `validationIssue` in their details, matching Rust's
+   * `Error::Validation(ValidationIssue)` pattern.
+   */
+  precedesOpt(next: ProvenanceMark): void {
+    // `next` can't be a genesis
+    if (next._seq === 0) {
+      const issue: ValidationIssue = { type: "NonGenesisAtZero" };
+      throw new ProvenanceMarkError(
+        ProvenanceMarkErrorType.ValidationError,
+        "non-genesis mark at sequence 0",
+        { validationIssue: issue },
+      );
+    }
+    if (arraysEqual(next._key, next._chainId)) {
+      const issue: ValidationIssue = { type: "InvalidGenesisKey" };
+      throw new ProvenanceMarkError(
+        ProvenanceMarkErrorType.ValidationError,
+        "genesis mark must have key equal to chain_id",
+        { validationIssue: issue },
+      );
+    }
+    // `next` must have the next highest sequence number
+    if (this._seq !== next._seq - 1) {
+      const issue: ValidationIssue = {
+        type: "SequenceGap",
+        expected: this._seq + 1,
+        actual: next._seq,
+      };
+      throw new ProvenanceMarkError(
+        ProvenanceMarkErrorType.ValidationError,
+        `sequence gap: expected ${this._seq + 1}, got ${next._seq}`,
+        { validationIssue: issue },
+      );
+    }
+    // `next` must have an equal or later date.
+    //
+    // Date strings use `dateToDisplay` so the `DateOrdering` issue
+    // payload matches Rust's `Date::Display` exactly: midnight UTC
+    // dates render as `YYYY-MM-DD` (no time suffix), times render
+    // RFC 3339 with second precision. Earlier this port emitted
+    // `2023-06-20T00:00:00Z` for date-only marks, breaking parity with
+    // Rust's `2023-06-20`.
+    if (this._date > next._date) {
+      const dateStr = dateToDisplay(this._date);
+      const nextDateStr = dateToDisplay(next._date);
+      const issue: ValidationIssue = {
+        type: "DateOrdering",
+        previous: dateStr,
+        next: nextDateStr,
+      };
+      throw new ProvenanceMarkError(
+        ProvenanceMarkErrorType.ValidationError,
+        `date ordering: ${dateStr} > ${nextDateStr}`,
+        { validationIssue: issue },
+      );
+    }
+    // `next` must reveal the key that was used to generate this mark's hash
+    const expectedHash = ProvenanceMark.makeHash(
+      this._res,
+      this._key,
+      next._key,
+      this._chainId,
+      this._seqBytes,
+      this._dateBytes,
+      this._infoBytes,
+    );
+    if (!arraysEqual(this._hash, expectedHash)) {
+      const issue: ValidationIssue = {
+        type: "HashMismatch",
+        expected: bytesToHex(expectedHash),
+        actual: bytesToHex(this._hash),
+      };
+      throw new ProvenanceMarkError(
+        ProvenanceMarkErrorType.ValidationError,
+        `hash mismatch: expected ${bytesToHex(expectedHash)}, got ${bytesToHex(this._hash)}`,
+        { validationIssue: issue },
+      );
+    }
+  }
+
+  /**
+   * Check if a sequence of marks is valid.
+   */
+  static isSequenceValid(marks: ProvenanceMark[]): boolean {
+    if (marks.length < 2) {
+      return false;
+    }
+    if (marks[0]._seq === 0 && !marks[0].isGenesis()) {
+      return false;
+    }
+    for (let i = 0; i < marks.length - 1; i++) {
+      if (!marks[i].precedes(marks[i + 1])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Check if this is a genesis mark (seq 0 and key equals chain_id).
+   */
+  isGenesis(): boolean {
+    return this._seq === 0 && arraysEqual(this._key, this._chainId);
+  }
+
+  /**
+   * Encode as bytewords with the given style.
+   */
+  toBytewordsWithStyle(style: BytewordsStyle): string {
+    return encodeBytewords(this.message(), style);
+  }
+
+  /**
+   * Encode as standard bytewords.
+   */
+  toBytewords(): string {
+    return this.toBytewordsWithStyle(BytewordsStyle.Standard);
+  }
+
+  /**
+   * Decode from bytewords.
+   */
+  static fromBytewords(res: ProvenanceMarkResolution, bytewords: string): ProvenanceMark {
+    const message = decodeBytewords(bytewords, BytewordsStyle.Standard);
+    return ProvenanceMark.fromMessage(res, message);
+  }
+
+  /**
+   * Encode for URL (minimal bytewords of tagged CBOR).
+   */
+  toUrlEncoding(): string {
+    return encodeBytewords(this.toCborData(), BytewordsStyle.Minimal);
+  }
+
+  /**
+   * Decode from URL encoding.
+   */
+  static fromUrlEncoding(urlEncoding: string): ProvenanceMark {
+    const cborData = decodeBytewords(urlEncoding, BytewordsStyle.Minimal);
+    const cborValue = decodeCbor(cborData);
+    return ProvenanceMark.fromTaggedCbor(cborValue);
+  }
+
+  /**
+   * Returns the {@link UR} representation of this mark (untagged CBOR
+   * with type `"provenance"`).
+   *
+   * Mirrors Rust `UREncodable::ur()` for `ProvenanceMark` — the
+   * blanket impl on `CBORTaggedEncodable` produces a UR whose
+   * payload is the *untagged* CBOR (the type name itself stands in
+   * for the tag). See `bc-ur-rust/src/ur_encodable.rs:8-18`.
+   */
+  ur(): UR {
+    return UR.new("provenance", this.untaggedCbor());
+  }
+
+  /**
+   * Get the UR string representation (e.g., "ur:provenance/...").
+   */
+  urString(): string {
+    return this.ur().string();
+  }
+
+  /**
+   * Create from a UR string.
+   */
+  static fromURString(urString: string): ProvenanceMark {
+    const ur = UR.fromURString(urString);
+    if (ur.urTypeStr() !== "provenance") {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.CborError, undefined, {
+        message: `Expected UR type 'provenance', got '${ur.urTypeStr()}'`,
+      });
+    }
+    return ProvenanceMark.fromUntaggedCbor(ur.cbor());
+  }
+
+  /**
+   * Build a URL with this mark as a query parameter.
+   */
+  toUrl(base: string): URL {
+    const url = new URL(base);
+    url.searchParams.set("provenance", this.toUrlEncoding());
+    return url;
+  }
+
+  /**
+   * Parse a provenance mark from a URL.
+   */
+  static fromUrl(url: URL): ProvenanceMark {
+    const param = url.searchParams.get("provenance");
+    if (param === null || param === "") {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.MissingUrlParameter, undefined, {
+        parameter: "provenance",
+      });
+    }
+    return ProvenanceMark.fromUrlEncoding(param);
+  }
+
+  /**
+   * Get the untagged CBOR representation.
+   */
+  untaggedCbor(): Cbor {
+    return cbor([resolutionToCbor(this._res), cbor(this.message())]);
+  }
+
+  /**
+   * Get the tagged CBOR representation.
+   */
+  taggedCbor(): Cbor {
+    return cbor({ tag: PROVENANCE_MARK.value, value: this.untaggedCbor() });
+  }
+
+  /**
+   * Serialize to CBOR bytes (tagged).
+   */
+  toCborData(): Uint8Array {
+    return cborData(this.taggedCbor());
+  }
+
+  /**
+   * Create from untagged CBOR.
+   */
+  static fromUntaggedCbor(cborValue: Cbor): ProvenanceMark {
+    const arr = expectArray(cborValue);
+    if (arr.length !== 2) {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.CborError, undefined, {
+        message: "Invalid provenance mark length",
+      });
+    }
+    const res = resolutionFromCbor(arr[0]);
+    const message = expectBytes(arr[1]);
+    return ProvenanceMark.fromMessage(res, message);
+  }
+
+  /**
+   * Create from tagged CBOR.
+   */
+  static fromTaggedCbor(cborValue: Cbor): ProvenanceMark {
+    const cborObj = cborValue as { tag?: number; value?: Cbor };
+    if (cborObj.tag !== PROVENANCE_MARK.value) {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.CborError, undefined, {
+        message: `Expected tag ${PROVENANCE_MARK.value}, got ${String(cborObj.tag)}`,
+      });
+    }
+    if (cborObj.value === undefined) {
+      throw new ProvenanceMarkError(ProvenanceMarkErrorType.CborError, undefined, {
+        message: "Tagged CBOR value is missing",
+      });
+    }
+    return ProvenanceMark.fromUntaggedCbor(cborObj.value);
+  }
+
+  /**
+   * Create from CBOR bytes.
+   */
+  static fromCborData(data: Uint8Array): ProvenanceMark {
+    const cborValue = decodeCbor(data);
+    return ProvenanceMark.fromTaggedCbor(cborValue);
+  }
+
+  /**
+   * Get the fingerprint (SHA-256 of CBOR data).
+   */
+  fingerprint(): Uint8Array {
+    return sha256(this.toCborData());
+  }
+
+  /**
+   * Debug string representation.
+   *
+   * As of provenance-mark v0.24, this includes the full 64-character Mark ID
+   * hex (matching rust's `Display` impl). Pre-v0.24 callers that depended on
+   * the 8-character prefix should use `idHex().slice(0, 8)` directly.
+   */
+  toString(): string {
+    return `ProvenanceMark(${this.idHex()})`;
+  }
+
+  /**
+   * Detailed debug representation.
+   *
+   * Mirrors Rust `Mark::Debug` exactly: every field is rendered
+   * Rust-style (hex bytes for keys/hashes/IDs, plain integer for
+   * `seq`, `Date::Display` for the date). The Low-resolution test
+   * vector in Rust `tests/mark.rs::test_low_resolution` ends with
+   * `date: 2023-06-20` — i.e. midnight-UTC dates are rendered without
+   * a time suffix. We use {@link dateToDisplay} to mirror that
+   * exactly; earlier revisions of this port stripped just the
+   * `.000Z` fractional component, which left `2023-06-20T00:00:00Z`
+   * and broke the Low-resolution debug-string parity.
+   */
+  toDebugString(): string {
+    const dateStr = dateToDisplay(this._date);
+    const components = [
+      `key: ${bytesToHex(this._key)}`,
+      `hash: ${bytesToHex(this._hash)}`,
+      `chainID: ${bytesToHex(this._chainId)}`,
+      `seq: ${this._seq}`,
+      `date: ${dateStr}`,
+    ];
+
+    const info = this.info();
+    if (info !== undefined) {
+      // Format info as the underlying string value, matching Rust Debug format
+      const textValue = info.asText();
+      if (textValue !== undefined) {
+        components.push(`info: "${textValue}"`);
+      } else {
+        // For non-text values, use diagnostic format
+        components.push(`info: ${info.toDiagnostic()}`);
+      }
+    }
+
+    return `ProvenanceMark(${components.join(", ")})`;
+  }
+
+  /**
+   * Check equality with another mark.
+   */
+  equals(other: ProvenanceMark): boolean {
+    return this._res === other._res && arraysEqual(this.message(), other.message());
+  }
+
+  /**
+   * JSON serialization. Field order, names, and date format mirror Rust's
+   * `#[derive(Serialize)]` on `ProvenanceMark` (provenance-mark-rust/src/mark.rs):
+   * `seq, date, res, chain_id, key, hash[, info_bytes]`. The date uses
+   * `dateToDisplay()` (date-only when midnight, RFC3339-seconds with `Z`
+   * otherwise), matching Rust's `serialize_iso8601` / `Date::to_string()`.
+   */
+  toJSON(): Record<string, unknown> {
+    const result: Record<string, unknown> = {
+      seq: this._seq,
+      date: dateToDisplay(this._date),
+      res: this._res,
+      chain_id: toBase64(this._chainId),
+      key: toBase64(this._key),
+      hash: toBase64(this._hash),
+    };
+    if (this._infoBytes.length > 0) {
+      result["info_bytes"] = toBase64(this._infoBytes);
+    }
+    return result;
+  }
+
+  /**
+   * Create from JSON object.
+   */
+  static fromJSON(json: Record<string, unknown>): ProvenanceMark {
+    const res = json["res"] as ProvenanceMarkResolution;
+    const key = fromBase64(json["key"] as string);
+    const hash = fromBase64(json["hash"] as string);
+    const chainIdRaw = json["chain_id"] ?? json["chainID"]; // accept legacy `chainID` for back-compat
+    const chainId = fromBase64(chainIdRaw as string);
+    const seq = json["seq"] as number;
+    const dateStr = json["date"] as string;
+    const date = new Date(dateStr);
+
+    const seqBytes = serializeSeq(res, seq);
+    const dateBytes = serializeDate(res, date);
+
+    let infoBytes: Uint8Array = new Uint8Array(0);
+    if (typeof json["info_bytes"] === "string") {
+      infoBytes = fromBase64(json["info_bytes"]);
+      // Mirrors Rust `util::deserialize_cbor` — base64-decoded bytes
+      // must parse as well-formed CBOR before we accept them. Earlier
+      // revisions of this port accepted any base64 payload, deferring
+      // the failure to a later `info()` call. Surface bad CBOR here
+      // so the JSON deserializer reports it eagerly.
+      if (infoBytes.length > 0) {
+        try {
+          decodeCbor(infoBytes);
+        } catch (e) {
+          throw new ProvenanceMarkError(
+            ProvenanceMarkErrorType.CborError,
+            "info_bytes is not valid CBOR",
+            {
+              details: e instanceof Error ? e.message : String(e),
+            },
+          );
+        }
+      }
+    }
+
+    return new ProvenanceMark(res, key, hash, chainId, seqBytes, dateBytes, infoBytes, seq, date);
+  }
+
+  // ============================================================================
+  // Validation (delegate to ValidationReport)
+  // ============================================================================
+
+  /**
+   * Validate a collection of provenance marks.
+   *
+   * Matches Rust: `ProvenanceMark::validate()` which delegates to
+   * `ValidationReport::validate()`.
+   */
+  static validate(marks: ProvenanceMark[]): ValidationReport {
+    return validateMarks(marks);
+  }
+
+  // ============================================================================
+  // Envelope Support (EnvelopeEncodable)
+  // ============================================================================
+
+  /**
+   * Convert this provenance mark to a Gordian Envelope.
+   *
+   * Creates a leaf envelope containing the tagged CBOR representation.
+   * Matches Rust: `Envelope::new(mark.to_cbor())` which creates a CBOR leaf.
+   */
+  intoEnvelope(): Envelope {
+    return Envelope.newLeaf(this.taggedCbor());
+  }
+
+  /**
+   * Extract a ProvenanceMark from a Gordian Envelope.
+   *
+   * Matches Rust: `envelope.subject().try_leaf()?.try_into()`
+   *
+   * @param envelope - The envelope to extract from
+   * @returns The extracted provenance mark
+   * @throws ProvenanceMarkError if extraction fails
+   */
+  static fromEnvelope(envelope: Envelope): ProvenanceMark {
+    // Extract the CBOR leaf from the envelope subject, matching Rust's try_leaf()
+    const leaf = envelope.subject().asLeaf();
+    if (leaf !== undefined) {
+      return ProvenanceMark.fromTaggedCbor(leaf);
+    }
+
+    throw new ProvenanceMarkError(ProvenanceMarkErrorType.CborError, undefined, {
+      message: "Could not extract ProvenanceMark from envelope",
+    });
+  }
+}
+
+/**
+ * Helper function to compare two Uint8Arrays.
+ */
+function arraysEqual(a: Uint8Array, b: Uint8Array): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
