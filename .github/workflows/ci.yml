@@ -90,8 +90,7 @@ jobs:
       - name: Check the golden vectors against the working tree
         run: bun run test:golden
 
-      # The pinned toolchain (tests/rust-validation/rust-toolchain.toml); the
-      # runner ships rustup without a default toolchain.
+      # The pinned toolchain (tests/rust-validation/rust-toolchain.toml)
       - name: Install the Rust toolchain
         run: rustup toolchain install 1.98.1 --profile minimal --no-self-update && rustup default 1.98.1
 

@@ -1,6 +1,6 @@
 {
   "name": "@blockchaincommons/provenance-mark",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "type": "module",
   "sideEffects": false,
   "description": "Blockchain Commons Provenance Mark for TypeScript - A cryptographically-secured system for establishing and verifying the authenticity of works",
