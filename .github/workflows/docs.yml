@@ -38,7 +38,7 @@ jobs:
         run: bun run docs
 
       - name: Verify Pages entry point
-        run: test -s docs/api/index.html
+        run: test -s docs/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
