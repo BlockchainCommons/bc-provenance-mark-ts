@@ -2,7 +2,7 @@
 
 ### _by Leonardo Custodio_
 
-**`provenance-mark-ts`** is a cryptographically-secured system of chained marks for establishing and verifying the authenticity and sequence of a body of work.
+**`bc-provenance-mark-ts`** is a cryptographically-secured system of chained marks for establishing and verifying the authenticity and sequence of a body of work.
 
 [Provenance Marks](https://provemark.com) provide a cryptographically-secured system for establishing and verifying the authenticity of works in an age of rampant AI-powered manipulation and plagiarism. By combining cryptography, pseudorandom number generation, and linguistic representation, this system generates unique, sequential marks that commit to the content of preceding and subsequent works. These marks ensure public and easy verification of provenance, offering robust security and intuitive usability. Provenance Marks are particularly valuable for securing artistic, intellectual, and commercial works against fraud and deep fakes, protecting creators' reputations and the integrity of their creations.
 
@@ -41,14 +41,6 @@ genesis.precedes(second); // true
 formatReport(validate([genesis, second]), { format: "jsonCompact" });
 ```
 
-Every failure is a `ProvenanceMarkError` whose `code` is the reference's
-error name and whose `details` are typed by it (`error.is("Bytewords")`
-narrows them); a sibling package's error is wrapped as its `cause`.
-Resolutions are `"low" | "medium" | "quartile" | "high"`; marks and
-generators round-trip through CBOR, UR, URL, bytewords, JSON and Gordian
-Envelope, and read those forms exactly as the reference does.
-
-
 Runnable examples live in the [`examples/`](https://github.com/BlockchainCommons/provenance-mark-ts/tree/master/examples) directory.
 
 ## Status - Beta
@@ -57,7 +49,7 @@ Runnable examples live in the [`examples/`](https://github.com/BlockchainCommons
 
 ### Version History
 
-- **1.0.0-beta.1 (September 16, 2026)** - Initial beta implementation: the first release under this name, replacing `@bcts/provenance-mark`. See [MIGRATION.md](./MIGRATION.md).
+- **1.0.0-beta.1 (September 16, 2026)** - Initial beta implementation: the first release under this name, replacing `@bcts/provenance-mark`.
 
 ### Roadmap
 
@@ -71,7 +63,7 @@ Runnable examples live in the [`examples/`](https://github.com/BlockchainCommons
 To build and work on this library, you'll need the following tools:
 
 - [Node.js](https://nodejs.org/) >= 22.12 - JavaScript runtime.
-- [Bun](https://bun.sh/) - used in CI to install dependencies and run scripts (any Node-compatible package manager also works).
+- [Bun](https://bun.sh/) - used to install dependencies and run scripts (any node package manager works).
 - [TypeScript](https://www.typescriptlang.org/) >= 5.7 - language and type checker.
 
 ### Derived from ...
@@ -79,7 +71,7 @@ To build and work on this library, you'll need the following tools:
 This `provenance-mark-ts` project is either derived from or was inspired by:
 
 - [BlockchainCommons/provenance-mark-rust](https://github.com/BlockchainCommons/provenance-mark-rust) - The reference Rust implementation, by [Wolf McNally](https://github.com/wolfmcnally).
-- [paritytech/bcts](https://github.com/paritytech/bcts) - A TypeScript port covering many Blockchain Commons' implementations, by [Parity Technologies](https://github.com/paritytech).
+- [paritytech/bcts](https://github.com/paritytech/bcts) - A TypeScript port of many Blockchain Commons' specs, by [Parity Technologies](https://github.com/paritytech).
 
 ## Financial Support
 
