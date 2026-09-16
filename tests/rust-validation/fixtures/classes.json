@@ -1,0 +1,61 @@
+{
+ "count": 6,
+ "vectors": [
+  {
+   "name": "decode message low 090bf2f8b96d116cf9e9983ade1d3705 (match)",
+   "recipe": {
+    "k": "decode",
+    "form": "message",
+    "res": "low",
+    "s": "090bf2f8b96d116cf9e9983ade1d3705"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "identifier high bytewords 3 (panic-mapped: the reference asserts the word count)",
+   "recipe": {
+    "k": "identifier",
+    "res": "high",
+    "words": 3,
+    "style": "bytewords"
+   },
+   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 3"
+  },
+  {
+   "name": "domain identifier.words.fraction (J1) (js-only J1)",
+   "recipe": {
+    "k": "domain",
+    "case": "identifier.words.fraction",
+    "cls": "J1"
+   },
+   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 4.5"
+  },
+  {
+   "name": "domain encodeDate.invalid.low (J3) (js-only J3)",
+   "recipe": {
+    "k": "domain",
+    "case": "encodeDate.invalid.low",
+    "cls": "J3"
+   },
+   "expect": "throw:InvalidDate|invalid date: Invalid date"
+  },
+  {
+   "name": "domain fromUrl.string (J4) (js-only J4)",
+   "recipe": {
+    "k": "domain",
+    "case": "fromUrl.string",
+    "cls": "J4"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "url low https://example.com/?provenance=old (port-right: toUrl replaces an existing provenance parameter)",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?provenance=old"
+   },
+   "expect": "https://example.com/?provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  }
+ ]
+}

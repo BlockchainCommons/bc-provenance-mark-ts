@@ -1,0 +1,128 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build, Test and Analyze
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Check formatting
+        run: bun run format:check
+
+      - name: Run linter
+        run: bun run lint
+
+      - name: Type check
+        run: bun run typecheck
+
+      - name: Build
+        run: bun run build
+
+      - name: Run tests
+        run: bun run test
+
+      - name: Check public API surface
+        run: bun run api:check
+
+      - name: Check bundle size
+        run: bun run size
+
+      - name: Validate package
+        run: bun run lint:pkg
+
+      - name: Check dependency hygiene
+        run: bun run check:deps
+
+  rust-validation:
+    name: Cross-validate vectors against the Rust reference
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: bun install
+
+      # A home directory of the job's own: neither side may read the runner's
+      # ~/.known-values.
+      - name: Point HOME at an empty directory
+        run: |
+          mkdir -p "${{ runner.temp }}/home"
+          echo "HOME=${{ runner.temp }}/home" >> "$GITHUB_ENV"
+
+      # The stored outcomes must first equal the working tree's.
+      - name: Check the golden vectors against the working tree
+        run: bun run test:golden
+
+      # The pinned toolchain (tests/rust-validation/rust-toolchain.toml); the
+      # runner ships rustup without a default toolchain.
+      - name: Install the Rust toolchain
+        run: rustup toolchain install 1.98.1 --profile minimal --no-self-update && rustup default 1.98.1
+
+      - name: Fetch the pinned reference crates
+        working-directory: tests/rust-validation
+        run: cargo fetch --locked
+
+      - name: Replay the vectors through the reference
+        working-directory: tests/rust-validation
+        run: cargo run --release --locked --offline -- ../vectors/vectors.json
+
+      # A flipped value must be caught.
+      - name: Check that a mismatch is detected
+        working-directory: tests/rust-validation
+        run: |
+          if cargo run --release --locked --offline -- mismatch.json; then
+            echo "the mismatch fixture passed"; exit 1
+          fi
+
+      # One row per class, counted exactly.
+      - name: Check that every class is counted
+        working-directory: tests/rust-validation
+        run: |
+          out=$(cargo run --release --locked --offline -- fixtures/classes.json | tail -1)
+          echo "$out"
+          [ "$out" = "6 vectors - 1 match, 1 panic-mapped, 3 js-only (J1 1, J3 1, J4 1), 1 port-right, 0 unparsable, 0 MISMATCH" ]
+
+      # A recipe the program cannot read must fail the run.
+      - name: Check that an unparsable recipe fails
+        working-directory: tests/rust-validation
+        run: |
+          if cargo run --release --locked --offline -- fixtures/malformed.json; then
+            echo "the malformed fixture passed"; exit 1
+          fi

@@ -1,0 +1,8 @@
+# Version map: TypeScript package -> Reference implementation
+# Used by workflow automation to track upstream reference versions.
+packages:
+  provenance-mark:
+    npm: "@blockchaincommons/provenance-mark"
+    repo: "BlockchainCommons/provenance-mark-rust"
+    version: "0.24.0"
+    commit: "1732c79c89a72c3bfd66d6b23537d50e79fff9b5"

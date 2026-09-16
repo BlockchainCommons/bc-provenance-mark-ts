@@ -1,0 +1,15 @@
+{
+ "count": 1,
+ "vectors": [
+  {
+   "name": "decode message low 090bf2f8b96d116cf9e9983ade1d3705 (mismatch: one value flipped)",
+   "recipe": {
+    "k": "decode",
+    "form": "message",
+    "res": "low",
+    "s": "090bf2f8b96d116cf9e9983ade1d3705"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 9, date: 2023-06-20)"
+  }
+ ]
+}
