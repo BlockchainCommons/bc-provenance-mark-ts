@@ -26,7 +26,8 @@ function unexpected(value: unknown): string {
   if (value === null) return "null";
   if (typeof value === "boolean") return `boolean \`${String(value)}\``;
   if (typeof value === "number") {
-    return Number.isInteger(value)
+    // serde_json reads a number beyond u64 as a float, whatever its notation.
+    return Number.isSafeInteger(value)
       ? `integer \`${String(value)}\``
       : `floating point \`${String(value)}\``;
   }
@@ -52,6 +53,16 @@ export function stringField(json: JsonObject, name: string): string {
   return value;
 }
 
+/** A field that, when present, must be a string; absent is `undefined`. */
+export function optionalStringField(json: JsonObject, name: string): string | undefined {
+  const value = json[name];
+  if (value === undefined) return undefined;
+  if (typeof value !== "string") {
+    throw ProvenanceMarkError.json(`invalid type: ${unexpected(value)}, expected a string`);
+  }
+  return value;
+}
+
 /** A field that must be an unsigned integer of `bits` bits (`u8`, `u32`). */
 export function unsignedField(json: JsonObject, name: string, bits: 8 | 32): number {
   const value = field(json, name);
@@ -59,7 +70,7 @@ export function unsignedField(json: JsonObject, name: string, bits: 8 | 32): num
   if (typeof value !== "number") {
     throw ProvenanceMarkError.json(`invalid type: ${unexpected(value)}, expected ${type}`);
   }
-  if (!Number.isInteger(value)) {
+  if (!Number.isSafeInteger(value)) {
     throw ProvenanceMarkError.json(`invalid type: ${unexpected(value)}, expected ${type}`);
   }
   if (value < 0 || value > 2 ** bits - 1) {
@@ -81,6 +92,17 @@ export function decodeBase64Json(text: string): Uint8Array {
     if (error instanceof Base64DecodeError) throw ProvenanceMarkError.json(error.message, error);
     throw error;
   }
+}
+
+/**
+ * The reference's `deserialize_block`: a base64 field of exactly 32 bytes,
+ * else `Json` (`seed length is <n>, expected 32`).
+ */
+export function block32(bytes: Uint8Array): Uint8Array {
+  if (bytes.length !== 32) {
+    throw ProvenanceMarkError.json(`seed length is ${bytes.length}, expected 32`);
+  }
+  return bytes;
 }
 
 /** A `Json` error carrying another error's message, as serde's `Error::custom` does. */

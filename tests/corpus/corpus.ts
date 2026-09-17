@@ -5,7 +5,9 @@
  * validation over chains, gaps, duplicates and mixed chains, in every
  * report format; the date codecs at their edges; persisted JSON and
  * envelope state; URLs; CBOR given to each decoder; identifiers; the date
- * parser; seed and RNG-state decoding; the JavaScript input domain.
+ * parser; seed and RNG-state decoding; the seed parser; the info type;
+ * disambiguated identifiers; the envelope summariser; the JavaScript input
+ * domain.
  */
 import type { Recipe, Resolution, MarkSpec } from "../vectors/recipes";
 import { DOMAIN_CASES } from "../vectors/working-tree-adapter";
@@ -255,7 +257,7 @@ export function* jsonRecipes(): Generator<Recipe> {
   yield mark({ ...LOW.json, res: "1" });
   const { hash: _hash, ...withoutHash } = LOW.json;
   yield mark(withoutHash);
-  for (const seq of [70000, -1, 1.5, "0"]) yield mark({ ...LOW.json, seq });
+  for (const seq of [70000, -1, 1.5, "0", 1e30, 4294967296]) yield mark({ ...LOW.json, seq });
   yield mark({ ...LOW.json, key: "AAAA" });
   yield mark({ ...LOW.json, key: "not base64!" });
   yield mark({ ...LOW.json, extra: 1 });
@@ -280,7 +282,11 @@ export function* envelopeRecipes(): Generator<Recipe> {
   }
 }
 
-/** URL bases, and URLs given back to `fromUrl`. */
+/**
+ * URL bases, and URLs given back to `fromUrl`. The bases exercise every
+ * way a query can be written: the parameter is appended to the query text
+ * as it stands, so nothing in the base is re-encoded.
+ */
 export function* urlRecipes(): Generator<Recipe> {
   for (const base of [
     "https://example.com/",
@@ -291,8 +297,52 @@ export function* urlRecipes(): Generator<Recipe> {
     "https://EXAMPLE.com/A B",
     "https://example.com/?provenance=old",
     "https://example.com/?provenance=old&provenance=older",
+    "https://example.com/?q=a&provenance=old&r=1",
+    "https://example.com/?",
+    "https://example.com/??",
+    "https://example.com/?q=a+b#f",
+    "https://example.com/?q=a#b=c",
+    "HTTPS://EXAMPLE.com/path/../x?q=1",
+    "https://user:pw@example.com:8080/p?q=1",
+    "file:///tmp/x",
+    "mailto:a@b.c",
+    "https://example.com/?q=ä",
+    "https://example.com/?a=1&a=2",
+    'https://example.com/?q=a"b',
+    "https://example.com/?q=a%2Bb",
+    "https://example.com/?q=a%20b",
+    "https://example.com/?q=a b",
+    "https://example.com/?a",
+    "https://example.com/?a=b&c",
+    "https://example.com/?x=%2f",
+    "https://example.com/?q=a%ZZ",
+    "https://example.com/?q=%41",
+    "https://example.com/?q=a&",
+    "https://example.com/?&q=a",
+    "https://example.com/?q=a;b",
+    "https://example.com/?q=a'b(c)~",
+    "https://example.com/?q==",
+    "not a url",
+    "/relative/path",
   ])
     yield { k: "url", res: "low", base };
+  for (const query of [
+    "q=a%20b&provenance=",
+    "a&provenance=",
+    "a=b&c&provenance=",
+    "x=%2f&provenance=",
+    "q=a%ZZ&provenance=",
+    "q=%41&provenance=",
+    "q=a&&provenance=",
+    "&q=a&provenance=",
+    "q=a;b&provenance=",
+    "q=a%27b(c)~&provenance=",
+    "q==&provenance=",
+    "?&provenance=",
+    "provenance=old&provenance=",
+    "q=a&provenance=old&r=1&provenance=",
+  ])
+    yield { k: "fromurl", url: `https://example.com/?${query}${LOW.url}` };
   yield { k: "fromurl", url: `https://example.com/?provenance=${LOW.url}` };
   yield { k: "fromurl", url: `https://example.com/?a=1&provenance=${LOW.url}&b=2` };
   yield { k: "fromurl", url: `https://example.com/?provenance=${LOW.url.toUpperCase()}` };
@@ -310,6 +360,9 @@ export function* cborRecipes(): Generator<Recipe> {
       yield { k: "cbor", hex, via };
   for (const hex of [
     "d9054582" + LOW.untagged.slice(2),
+    "da50524f568219012c50090bf2f8b96d116cf9e9983ade1d3705",
+    "da50524f56821b000001000000000050090bf2f8b96d116cf9e9983ade1d3705",
+    "da50524f56822050090bf2f8b96d116cf9e9983ade1d3705",
     "da50524f5683000040",
     "da50524f56820450090bf2f8b96d116cf9e9983ade1d3705",
     "da50524f5682636c6f7750090bf2f8b96d116cf9e9983ade1d3705",
@@ -345,6 +398,8 @@ export function* parseRecipes(): Generator<Recipe> {
     "not a date",
     "2023-06-20T12:00:00z",
     "2023-6-8",
+    "2023-01-01T00:00:00.123456789Z",
+    "2023-06-20T00:00:00.500Z",
   ])
     yield { k: "parse", date };
 }
@@ -368,6 +423,10 @@ export function* casingRecipes(): Generator<Recipe> {
 export function* dateEdgeRecipes(): Generator<Recipe> {
   for (const [res, date] of [
     ["medium", "2000-12-31T23:59:59Z"],
+    ["medium", "2000-12-31T23:59:59.500Z"],
+    ["medium", "2000-12-31T23:59:59.999Z"],
+    ["medium", "2001-01-01T00:00:00.999Z"],
+    ["quartile", "2000-12-31T23:59:59.999Z"],
     ["medium", "2001-01-01T00:00:00Z"],
     ["medium", "2137-02-07T06:28:15Z"],
     ["medium", "2137-02-07T06:28:16Z"],
@@ -380,8 +439,91 @@ export function* dateEdgeRecipes(): Generator<Recipe> {
     ["high", "8990-01-01"],
     ["high", "8000-01-01"],
     ["high", "2023-06-20T12:00:00.999Z"],
+    ["low", "2023-12-25T10:30:60Z"],
+    ["medium", "2023-12-25T10:30:60Z"],
+    ["high", "2023-12-25T10:30:60Z"],
+    ["medium", "2023-12-31T23:59:60Z"],
+    ["high", "2023-12-31T23:59:60Z"],
   ] as const)
     yield { k: "date", res, date };
+}
+
+/** Strings given to `parseSeed`. */
+export function* seedRecipes(): Generator<Recipe> {
+  for (const text of [
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "znwVmbBQb1+QkeD8p5ak890F+UMrzoC5Ke2E1lh0zhA=",
+    "!!!!",
+    "AAAA",
+    "A".repeat(43),
+    "A".repeat(45),
+    "",
+    " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=\n",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB=",
+    "A=AA",
+    "AAAAAA=",
+    "AAA=A",
+    "AA===",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=x",
+    "AAAA====",
+    "AAAA=",
+    "AB==",
+    "AAAA-AAA",
+    "AA A=",
+    "AAAA==",
+    "AAAAAAA=",
+  ])
+    yield { k: "seed", s: text };
+}
+
+/** The info type: comments, and its JSON read back with each fault. */
+export function* infoRecipes(): Generator<Recipe> {
+  const info = (json: Record<string, unknown>): Recipe => ({ k: "info", res: "low", json });
+  for (const res of ["low", "high"] as const) {
+    yield { k: "info", res };
+    yield { k: "info", res, comment: "A comment." };
+    yield { k: "info", res, comment: "multi\nline" };
+  }
+  const base = { ur: LOW.ur, bytewords: "x", bytemoji: "y" };
+  yield info(base);
+  yield info({ ...base, comment: "c" });
+  yield info({ ...base, comment: "" });
+  yield info({ ...base, comment: 5 });
+  yield info({ ...base, comment: null });
+  yield info({ ...base, comment: ["a"] });
+  yield info({ ...base, comment: { a: 1 } });
+  yield info({ ...base, mark: "ignored" });
+  yield info({ bytewords: "x", bytemoji: "y" });
+  yield info({ ...base, ur: "ur:envelope/abc" });
+  yield info({ ...base, ur: "not a ur" });
+  yield info({ ...base, ur: "ur:provenance/nope" });
+  yield info({ ...base, bytewords: 1 });
+}
+
+/** Disambiguated identifiers over repeated and distinct marks. */
+export function* disambiguateRecipes(): Generator<Recipe> {
+  for (const style of ["bytewords", "bytemoji"] as const) {
+    yield { k: "disambiguate", res: "low", indices: [0, 1, 2, 3], style };
+    yield { k: "disambiguate", res: "low", indices: [0, 1, 0], style };
+    yield { k: "disambiguate", res: "high", indices: [0, 0], style };
+    yield { k: "disambiguate", res: "medium", indices: [3], style };
+    yield { k: "disambiguate", res: "low", indices: [], style };
+  }
+}
+
+/** The envelope summariser: a mark, and tagged leaves that do not decode. */
+export function* summaryRecipes(): Generator<Recipe> {
+  for (const hex of [
+    LOW.tagged,
+    "da50524f56820950090bf2f8b96d116cf9e9983ade1d3705",
+    "da50524f56820043090bf2",
+    "da50524f5683000040",
+    "da50524f5682636c6f7750090bf2f8b96d116cf9e9983ade1d3705",
+    "da50524f5619012c",
+  ])
+    yield { k: "summary", hex };
 }
 
 /** The JavaScript input domain. */
@@ -413,6 +555,10 @@ export const categories: Record<string, (m: Materialized) => Generator<Recipe>> 
   bytes: () => bytesRecipes(),
   casing: () => casingRecipes(),
   dateEdges: () => dateEdgeRecipes(),
+  seed: () => seedRecipes(),
+  infoType: () => infoRecipes(),
+  disambiguate: () => disambiguateRecipes(),
+  summary: () => summaryRecipes(),
   domain: () => domainRecipes(),
   generated: () => generated(),
 };

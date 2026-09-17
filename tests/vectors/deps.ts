@@ -1,6 +1,7 @@
 /** The siblings the adapters drive: the working tree's, or the frozen bundle's inlined ones. */
 import { UR } from "@blockchaincommons/uniform-resources";
-import { cbor, decodeCbor } from "@blockchaincommons/dcbor";
+import { CborDate, cbor, decodeCbor } from "@blockchaincommons/dcbor";
+import { Envelope } from "@blockchaincommons/envelope";
 import { format } from "@blockchaincommons/envelope/format";
 import { type SiblingDeps, unhex } from "./recipes";
 
@@ -12,6 +13,8 @@ export const currentDeps: SiblingDeps = {
   formatEnvelope: (e) => format(e),
   addAssertion: (e, predicate, object) => e.addAssertion(predicate, object),
   parseUR: (s) => UR.parse(s),
+  cborDate: (s) => CborDate.fromString(s),
+  leafEnvelope: (c) => Envelope.leaf(c as never),
 };
 
 export async function baselineDeps(): Promise<SiblingDeps> {

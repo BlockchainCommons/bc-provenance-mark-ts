@@ -25,7 +25,7 @@ import { ProvenanceMarkError } from "./error.js";
 import type { ValidationIssue } from "./validation-issue.js";
 import { type ProvenanceMarkResolution, isProvenanceMarkResolution } from "./resolution.js";
 import { sha256 } from "./crypto-utils.js";
-import { dateToDisplay } from "./date.js";
+import { type DateInput, dateToDisplay } from "./date.js";
 import { bytesEqual } from "./utils.js";
 import {
   type MarkFields,
@@ -49,12 +49,7 @@ import {
   markUntaggedCbor,
   messageToBytewords,
 } from "./mark-encodings.js";
-import {
-  type IdentifierStyle,
-  disambiguatedIdentifiers,
-  identifierOf,
-  markId,
-} from "./mark-identifier.js";
+import { disambiguatedIdentifiers, identifierOf, markId } from "./mark-identifier.js";
 
 /** What `ProvenanceMark.from` takes. */
 export interface ProvenanceMarkInput {
@@ -68,34 +63,27 @@ export interface ProvenanceMarkInput {
   chainId: Uint8Array;
   /** The sequence number, 0 for genesis. */
   seq: number;
-  /** The date; stored at the resolution's precision. */
-  date: Date;
+  /** The date, a `Date` or a `CborDate`; stored at the resolution's precision. */
+  date: DateInput;
   /** Any CBOR the mark carries: a `Cbor`, a `ToCbor`, or a value dcbor encodes (text, numbers, bytes, arrays, maps). */
   info?: CborInput | undefined;
 }
 
-/** How to render a Mark ID. */
+/**
+ * The two trailing parameters of `idBytewords`, `idBytemoji` and
+ * `idBytewordsMinimal`.
+ */
 export interface IdentifierOptions {
-  /** `bytewords` (four upper-case words), `minimal` (two letters a byte) or `bytemoji`. */
-  style?: IdentifierStyle | undefined;
-  /** How many ID bytes to render, 4 to 32. */
-  words?: number | undefined;
-  /** Whether to lead with the 🅟 marker. */
+  /** How many ID bytes to render, an integer from 4 to 32; 4 by default. */
+  wordCount?: number | undefined;
+  /** Whether to lead with the 🅟 marker; off by default. */
   prefix?: boolean | undefined;
 }
 
-/** Options for a set of identifiers that must stay distinct. */
+/** What `disambiguatedIdBytewords` and `disambiguatedIdBytemoji` take besides the marks. */
 export interface DisambiguatedIdentifierOptions {
-  /** `bytewords`, `minimal` or `bytemoji`. */
-  style?: IdentifierStyle | undefined;
-  /** Whether to lead with the 🅟 marker. */
+  /** Whether to lead with the 🅟 marker; off by default. */
   prefix?: boolean | undefined;
-}
-
-/** How `toBytewords` renders. */
-export interface BytewordsOptions {
-  /** `standard` (space-separated words), `uri` (hyphens) or `minimal` (two letters a word). */
-  style?: BytewordsStyle | undefined;
 }
 
 /** A tagged-CBOR codec for marks, with the `provenance` tag. */
@@ -133,8 +121,9 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
 
   /**
    * A mark from its parts; the hash is computed. The key, next key and
-   * chain id must have the resolution's link length, the sequence number
-   * must fit the resolution, the date must be one the resolution encodes.
+   * chain id must be `Uint8Array`s (a `TypeError` otherwise) of the
+   * resolution's link length, the sequence number must fit the resolution,
+   * the date must be one the resolution encodes.
    */
   static from({
     res,
@@ -233,26 +222,49 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
   }
 
   /**
-   * The Mark ID rendered for people: four upper-case bytewords by default;
-   * `{ style: "bytemoji" }`, `{ words: 8 }`, `{ prefix: true }` for 🅟.
-   * `words` outside 4 to 32, or a style that is not one of the three, is
-   * a `RangeError`.
+   * The Mark ID as upper-case bytewords: `wordCount` words (4 by default,
+   * at most 32), led by 🅟 when `prefix` is set. A `wordCount` outside 4
+   * to 32, or not an integer, is a `RangeError` where the reference
+   * asserts.
    */
-  identifier({ style = "bytewords", words = 4, prefix = false }: IdentifierOptions = {}): string {
-    return identifierOf(this.id, words, style, prefix);
+  idBytewords({ wordCount = 4, prefix = false }: IdentifierOptions = {}): string {
+    return identifierOf(this.id, wordCount, "bytewords", prefix);
+  }
+
+  /** The Mark ID as bytemoji, otherwise as `idBytewords`. */
+  idBytemoji({ wordCount = 4, prefix = false }: IdentifierOptions = {}): string {
+    return identifierOf(this.id, wordCount, "bytemoji", prefix);
+  }
+
+  /** The Mark ID as minimal bytewords (two letters a byte), otherwise as `idBytewords`. */
+  idBytewordsMinimal({ wordCount = 4, prefix = false }: IdentifierOptions = {}): string {
+    return identifierOf(this.id, wordCount, "minimal", prefix);
   }
 
   /**
-   * Identifiers for a set of marks, each only as long as it must be to
-   * differ from the others: four words unless two IDs share a prefix.
+   * Bytewords identifiers for a set of marks, each only as long as it
+   * must be to differ from the others: four words unless two IDs share a
+   * prefix.
    */
-  static disambiguatedIdentifiers(
+  static disambiguatedIdBytewords(
     marks: readonly ProvenanceMark[],
-    { style = "bytewords", prefix = false }: DisambiguatedIdentifierOptions = {},
+    { prefix = false }: DisambiguatedIdentifierOptions = {},
   ): string[] {
     return disambiguatedIdentifiers(
       marks.map((m, i) => expectMark(m, `marks[${i}]`).id),
-      style,
+      "bytewords",
+      prefix,
+    );
+  }
+
+  /** Bytemoji identifiers for a set of marks, as `disambiguatedIdBytewords`. */
+  static disambiguatedIdBytemoji(
+    marks: readonly ProvenanceMark[],
+    { prefix = false }: DisambiguatedIdentifierOptions = {},
+  ): string[] {
+    return disambiguatedIdentifiers(
+      marks.map((m, i) => expectMark(m, `marks[${i}]`).id),
+      "bytemoji",
       prefix,
     );
   }
@@ -289,8 +301,8 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
     if (a.date > b.date) {
       throw ProvenanceMarkError.validation({
         type: "DateOrdering",
-        previous: dateToDisplay(a.date),
-        next: dateToDisplay(b.date),
+        previous: new Date(a.date.getTime()),
+        next: new Date(b.date.getTime()),
       });
     }
     const expectedHash = makeHash(
@@ -305,8 +317,8 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
     if (!bytesEqual(a.hash, expectedHash)) {
       throw ProvenanceMarkError.validation({
         type: "HashMismatch",
-        expected: bytesToHex(expectedHash),
-        actual: bytesToHex(a.hash),
+        expected: expectedHash,
+        actual: new Uint8Array(a.hash),
       });
     }
   }
@@ -328,8 +340,11 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
     return { res: this.f.res, message: this.message };
   }
 
-  /** The message as bytewords; `standard` unless a style is given. */
-  toBytewords({ style = "standard" }: BytewordsOptions = {}): string {
+  /**
+   * The message as bytewords: `standard` (space-separated words) unless
+   * `uri` (hyphens) or `minimal` (two letters a word) is given.
+   */
+  toBytewords(style: BytewordsStyle = "standard"): string {
     return messageToBytewords(this.message, style);
   }
 
@@ -349,9 +364,11 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
   }
 
   /**
-   * `base` with the mark as its `provenance` query parameter; an existing
-   * `provenance` parameter is replaced. A `base` that is not a URL is
-   * `Url`.
+   * `base` with the mark appended as a `provenance` query parameter. The
+   * pair is appended to the query text as it stands, as the reference's
+   * `append_pair` does: nothing else is re-encoded, and an existing
+   * `provenance` parameter is kept (`fromUrl` then reads the first). A
+   * `base` that is not a URL is `Url`.
    */
   toUrl(base: string | URL): URL {
     let url: URL;
@@ -360,8 +377,14 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
     } catch (error) {
       throw ProvenanceMarkError.url(error instanceof Error ? error.message : String(error), error);
     }
-    url.searchParams.set("provenance", this.toUrlEncoding());
-    return url;
+    const pair = new URLSearchParams([["provenance", this.toUrlEncoding()]]).toString();
+    const href = url.href;
+    const hashAt = href.indexOf("#");
+    const beforeHash = hashAt === -1 ? href : href.slice(0, hashAt);
+    const fragment = hashAt === -1 ? "" : href.slice(hashAt);
+    const queryAt = beforeHash.indexOf("?");
+    const separator = queryAt === -1 ? "?" : queryAt === beforeHash.length - 1 ? "" : "&";
+    return new URL(`${beforeHash}${separator}${pair}${fragment}`);
   }
 
   /**

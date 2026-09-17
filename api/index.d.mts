@@ -1,4 +1,4 @@
-import { Cbor, CborCodec, CborInput, CborTagged, Tag, ToCbor } from "@blockchaincommons/dcbor";
+import { Cbor, CborCodec, CborDate, CborInput, CborTagged, Tag, ToCbor } from "@blockchaincommons/dcbor";
 import { RngOptions } from "@blockchaincommons/rand";
 import "@blockchaincommons/crypto";
 import { ToUR, UR } from "@blockchaincommons/uniform-resources";
@@ -6,19 +6,14 @@ import { Envelope, ToEnvelope } from "@blockchaincommons/envelope";
 import { BytewordsStyle } from "@blockchaincommons/uniform-resources/bytewords";
 import { FormatContext } from "@blockchaincommons/envelope/format";
 //#region src/validation-issue.d.ts
-/**
- * Copyright © 2023-2026 Blockchain Commons, LLC
- *
- * What `checkPrecedes` and `validate` can flag on a mark.
- */
-/** Why a mark does not follow its predecessor. */
+/** Why a mark does not follow its predecessor. The payloads are values; the renderers format them. */
 type ValidationIssue = {
   /** The predecessor's hash does not commit to this mark's key. */
   type: "HashMismatch";
-  /** The hash the predecessor should carry, as hex. */
-  expected: string;
-  /** The hash it carries, as hex. */
-  actual: string;
+  /** The hash the predecessor should carry. */
+  expected: Uint8Array;
+  /** The hash it carries. */
+  actual: Uint8Array;
 } | {
   /** The predecessor's hash was not made from this mark's key. */
   type: "KeyMismatch";
@@ -32,10 +27,10 @@ type ValidationIssue = {
 } | {
   /** The date is earlier than the predecessor's. */
   type: "DateOrdering";
-  /** The predecessor's date, displayed. */
-  previous: string;
-  /** This mark's date, displayed. */
-  next: string;
+  /** The predecessor's date. */
+  previous: Date;
+  /** This mark's date. */
+  next: Date;
 } | {
   /** A mark at sequence 0 that is not a genesis mark. */
   type: "NonGenesisAtZero";
@@ -44,7 +39,7 @@ type ValidationIssue = {
   type: "InvalidGenesisKey";
 };
 /** The issue as the reference displays it. */
-declare function formatValidationIssue(issue: ValidationIssue): string;
+export declare function formatValidationIssue(issue: ValidationIssue): string;
 //#endregion
 //#region src/error.d.ts
 /** A seed or RNG state that is not 32 bytes. */
@@ -187,7 +182,7 @@ interface ProvenanceMarkErrorDetailsByCode {
  */
 type ProvenanceMarkErrorCode = keyof ProvenanceMarkErrorDetailsByCode;
 /** Every code, in one list. */
-declare const PROVENANCE_MARK_ERROR_CODES: readonly ProvenanceMarkErrorCode[];
+export declare const PROVENANCE_MARK_ERROR_CODES: readonly ProvenanceMarkErrorCode[];
 /** `details` is discriminated by `code`. */
 type ProvenanceMarkErrorDetails = ProvenanceMarkErrorDetailsByCode[ProvenanceMarkErrorCode];
 /** The `details` of one code. */
@@ -212,7 +207,7 @@ type ProvenanceMarkErrorTyped<C extends ProvenanceMarkErrorCode = ProvenanceMark
  * }
  * ```
  */
-declare class ProvenanceMarkError extends Error {
+export declare class ProvenanceMarkError extends Error {
   /** Always `"ProvenanceMarkError"`. */
   override readonly name = "ProvenanceMarkError";
   /** The condition, one of `ProvenanceMarkErrorCode`. */
@@ -293,47 +288,48 @@ declare class ProvenanceMarkError extends Error {
  */
 type ProvenanceMarkResolution = "low" | "medium" | "quartile" | "high";
 /** The four resolutions, in wire-number order. */
-declare const PROVENANCE_MARK_RESOLUTIONS: readonly ProvenanceMarkResolution[];
+export declare const PROVENANCE_MARK_RESOLUTIONS: readonly ProvenanceMarkResolution[];
 /** Whether `value` is one of the four resolution names. */
-declare function isProvenanceMarkResolution(value: unknown): value is ProvenanceMarkResolution;
+export declare function isProvenanceMarkResolution(value: unknown): value is ProvenanceMarkResolution;
 /** The resolution's wire number, 0 to 3. */
-declare function resolutionCode(res: ProvenanceMarkResolution): number;
+export declare function resolutionCode(res: ProvenanceMarkResolution): number;
 /** The resolution a wire number names; `ResolutionError` for anything but 0 to 3. */
-declare function resolutionFromCode(code: number): ProvenanceMarkResolution;
+export declare function resolutionFromCode(code: number): ProvenanceMarkResolution;
 /** The length of the key, hash and chain id. */
-declare function linkLength(res: ProvenanceMarkResolution): number;
+export declare function linkLength(res: ProvenanceMarkResolution): number;
 /** The length of the sequence number: two bytes at low, four otherwise. */
-declare function seqBytesLength(res: ProvenanceMarkResolution): number;
+export declare function seqBytesLength(res: ProvenanceMarkResolution): number;
 /** The length of the date: two bytes at low, four at medium, six otherwise. */
-declare function dateBytesLength(res: ProvenanceMarkResolution): number;
+export declare function dateBytesLength(res: ProvenanceMarkResolution): number;
 /** The length of a message without its info. */
-declare function fixedLength(res: ProvenanceMarkResolution): number;
-/** Options naming the resolution a codec works at. */
-interface ResolutionOptions {
-  /** The resolution. */
-  resolution: ProvenanceMarkResolution;
-}
+export declare function fixedLength(res: ProvenanceMarkResolution): number;
 /**
  * The sequence number as big-endian bytes: two at low resolution (so at
  * most 65,535), four otherwise (at most 2^32 - 1); a u32 like the
  * reference's.
  */
-declare function encodeSeq(seq: number, { resolution }: ResolutionOptions): Uint8Array;
+export declare function serializeSeq(res: ProvenanceMarkResolution, seq: number): Uint8Array;
 /** The sequence number the bytes carry at the resolution; the length must match. */
-declare function decodeSeq(data: Uint8Array, { resolution }: ResolutionOptions): number;
+export declare function deserializeSeq(res: ProvenanceMarkResolution, data: Uint8Array): number;
 //#endregion
 //#region src/date.d.ts
-/** A `Date` that holds a time; `InvalidDate` otherwise. */
-declare function expectDate(date: Date): Date;
+/** What every date input accepts: a JS `Date`, or dcbor's `CborDate`. */
+type DateInput = Date | CborDate;
+/**
+ * The `Date` view of a date input: a `CborDate` to the millisecond, a
+ * `Date` as is. Anything else, or a `Date` that holds no time, is
+ * `InvalidDate`.
+ */
+export declare function expectDate(date: DateInput): Date;
 /**
  * The date as the resolution stores it: two bytes (day precision, years
  * 2023 to 2150) at low, four (second precision from 2001) at medium, six
- * (millisecond precision) at quartile and high. A `Date` that holds no
- * time is `InvalidDate`.
+ * (millisecond precision) at quartile and high. A `Date` or a `CborDate`;
+ * a `Date` that holds no time is `InvalidDate`.
  */
-declare function encodeDate(date: Date, { resolution }: ResolutionOptions): Uint8Array;
+export declare function serializeDate(res: ProvenanceMarkResolution, date: DateInput): Uint8Array;
 /** The date the bytes carry at the resolution; the length must match. */
-declare function decodeDate(bytes: Uint8Array, { resolution }: ResolutionOptions): Date;
+export declare function deserializeDate(res: ProvenanceMarkResolution, bytes: Uint8Array): Date;
 /** The valid days of a month, inclusive. */
 interface DayRange {
   /** The first day, 1. */
@@ -342,18 +338,18 @@ interface DayRange {
   max: number;
 }
 /** The valid days of a month, `min` to `max` inclusive. */
-declare function rangeOfDaysInMonth(year: number, month: number): DayRange;
+export declare function rangeOfDaysInMonth(year: number, month: number): DayRange;
 /** ISO 8601 with milliseconds, as `Date.toISOString`. */
-declare function dateToIso8601(date: Date): string;
+export declare function dateToIso8601(date: DateInput): string;
 /**
  * The reference's `Date::from_string`: RFC 3339 with a zone (`Z` or an
  * offset; fractions kept to the millisecond), or a bare `YYYY-MM-DD` read
  * as UTC midnight, calendar-checked. Anything else (a time without a
  * zone, prose, an impossible date, an epoch number) is `InvalidDate`.
  */
-declare function dateFromIso8601(str: string): Date;
+export declare function dateFromIso8601(str: string): Date;
 /** `YYYY-MM-DD` in UTC. */
-declare function dateToDateString(date: Date): string;
+export declare function dateToDateString(date: DateInput): string;
 /**
  * The reference's `Date` display: `YYYY-MM-DD` when the UTC time is
  * exactly midnight (subseconds ignored), else RFC 3339 at second
@@ -361,13 +357,13 @@ declare function dateToDateString(date: Date): string;
  * package emits (debug strings, JSON, validation issues, summaries) is
  * this one.
  */
-declare function dateToDisplay(date: Date): string;
+export declare function dateToDisplay(date: DateInput): string;
 //#endregion
 //#region src/seed.d.ts
 /** The seed's length in bytes. */
-declare const PROVENANCE_SEED_LENGTH = 32;
+export declare const PROVENANCE_SEED_LENGTH = 32;
 /** The 32 bytes a generator's whole chain derives from. Frozen. */
-declare class ProvenanceSeed {
+export declare class ProvenanceSeed {
   private readonly data;
   private constructor();
   /** Exactly 32 bytes; anything else is `InvalidSeedLength` (a non-byte-string a `TypeError`). */
@@ -393,29 +389,34 @@ declare class ProvenanceSeed {
 }
 //#endregion
 //#region src/parse.d.ts
-/** A base64 32-byte seed; bad base64 is `Base64`, the wrong length `InvalidSeedLength`. */
-declare function parseSeed(s: string): ProvenanceSeed;
+/**
+ * A base64 32-byte seed, read as the reference's `parse_seed` reads it:
+ * through the seed's serde form, so bad base64 or the wrong length is
+ * `Json` with serde's text (`Invalid symbol 33, offset 0.`, `seed length is
+ * 3, expected 32`).
+ */
+export declare function parseSeed(s: string): ProvenanceSeed;
 /**
  * RFC 3339 with a zone, or `YYYY-MM-DD` (UTC midnight), as the
  * reference's `Date::from_string`; anything else is `InvalidDate`.
  */
-declare function parseDate(s: string): Date;
+export declare function parseDate(s: string): Date;
 //#endregion
 //#region src/crypto-utils.d.ts
 /** HKDF-SHA-256 of `data` with no salt and no info, 32 bytes: the passphrase and obfuscation KDF. */
-declare function extendKey(data: Uint8Array): Uint8Array;
+export declare function extendKey(data: Uint8Array): Uint8Array;
 /**
  * XORs `message` with ChaCha20 keyed by `extendKey(key)`, the nonce being
  * the last twelve bytes of the extended key reversed. Applying it twice
  * restores the message; the empty message stays empty.
  */
-declare function obfuscate(key: Uint8Array, message: Uint8Array): Uint8Array;
+export declare function obfuscate(key: Uint8Array, message: Uint8Array): Uint8Array;
 //#endregion
 //#region src/rng-state.d.ts
 /** The state's length in bytes. */
-declare const RNG_STATE_LENGTH = 32;
+export declare const RNG_STATE_LENGTH = 32;
 /** The 32 bytes of xoshiro256** state a generator persists between marks. Frozen. */
-declare class RngState {
+export declare class RngState {
   private readonly data;
   private constructor();
   /** Exactly 32 bytes; anything else is `InvalidRngStateLength` (a non-byte-string a `TypeError`). */
@@ -436,14 +437,6 @@ declare class RngState {
   static fromCbor(cborValue: Cbor): RngState;
 }
 //#endregion
-//#region src/mark-identifier.d.ts
-/** The character that flags a provenance-mark identifier: 🅟. */
-declare const MARK_ID_PREFIX = "🅟";
-/** The three identifier styles. */
-type IdentifierStyle = "bytewords" | "minimal" | "bytemoji";
-/** The three identifier styles, for checks. */
-declare const IDENTIFIER_STYLES: readonly IdentifierStyle[];
-//#endregion
 //#region src/mark.d.ts
 /** What `ProvenanceMark.from` takes. */
 interface ProvenanceMarkInput {
@@ -457,31 +450,25 @@ interface ProvenanceMarkInput {
   chainId: Uint8Array;
   /** The sequence number, 0 for genesis. */
   seq: number;
-  /** The date; stored at the resolution's precision. */
-  date: Date;
+  /** The date, a `Date` or a `CborDate`; stored at the resolution's precision. */
+  date: DateInput;
   /** Any CBOR the mark carries: a `Cbor`, a `ToCbor`, or a value dcbor encodes (text, numbers, bytes, arrays, maps). */
   info?: CborInput | undefined;
 }
-/** How to render a Mark ID. */
+/**
+ * The two trailing parameters of `idBytewords`, `idBytemoji` and
+ * `idBytewordsMinimal`.
+ */
 interface IdentifierOptions {
-  /** `bytewords` (four upper-case words), `minimal` (two letters a byte) or `bytemoji`. */
-  style?: IdentifierStyle | undefined;
-  /** How many ID bytes to render, 4 to 32. */
-  words?: number | undefined;
-  /** Whether to lead with the 🅟 marker. */
+  /** How many ID bytes to render, an integer from 4 to 32; 4 by default. */
+  wordCount?: number | undefined;
+  /** Whether to lead with the 🅟 marker; off by default. */
   prefix?: boolean | undefined;
 }
-/** Options for a set of identifiers that must stay distinct. */
+/** What `disambiguatedIdBytewords` and `disambiguatedIdBytemoji` take besides the marks. */
 interface DisambiguatedIdentifierOptions {
-  /** `bytewords`, `minimal` or `bytemoji`. */
-  style?: IdentifierStyle | undefined;
-  /** Whether to lead with the 🅟 marker. */
+  /** Whether to lead with the 🅟 marker; off by default. */
   prefix?: boolean | undefined;
-}
-/** How `toBytewords` renders. */
-interface BytewordsOptions {
-  /** `standard` (space-separated words), `uri` (hyphens) or `minimal` (two letters a word). */
-  style?: BytewordsStyle | undefined;
 }
 /** A tagged-CBOR codec for marks, with the `provenance` tag. */
 interface ProvenanceMarkCodec extends CborCodec<ProvenanceMark> {
@@ -499,13 +486,14 @@ interface ProvenanceMarkCodec extends CborCodec<ProvenanceMark> {
  * mark.toUR().toString(); // "ur:provenance/…"
  * ```
  */
-declare class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
+export declare class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
   private readonly f;
   private constructor();
   /**
    * A mark from its parts; the hash is computed. The key, next key and
-   * chain id must have the resolution's link length, the sequence number
-   * must fit the resolution, the date must be one the resolution encodes.
+   * chain id must be `Uint8Array`s (a `TypeError` otherwise) of the
+   * resolution's link length, the sequence number must fit the resolution,
+   * the date must be one the resolution encodes.
    */
   static from({ res, key, nextKey, chainId, seq, date, info }: ProvenanceMarkInput): ProvenanceMark;
   /** A mark from its wire message at a resolution: `key ‖ obfuscated payload`. */
@@ -542,17 +530,24 @@ declare class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
   /** SHA-256 of the tagged CBOR. */
   fingerprint(): Uint8Array;
   /**
-   * The Mark ID rendered for people: four upper-case bytewords by default;
-   * `{ style: "bytemoji" }`, `{ words: 8 }`, `{ prefix: true }` for 🅟.
-   * `words` outside 4 to 32, or a style that is not one of the three, is
-   * a `RangeError`.
+   * The Mark ID as upper-case bytewords: `wordCount` words (4 by default,
+   * at most 32), led by 🅟 when `prefix` is set. A `wordCount` outside 4
+   * to 32, or not an integer, is a `RangeError` where the reference
+   * asserts.
    */
-  identifier({ style, words, prefix }?: IdentifierOptions): string;
+  idBytewords({ wordCount, prefix }?: IdentifierOptions): string;
+  /** The Mark ID as bytemoji, otherwise as `idBytewords`. */
+  idBytemoji({ wordCount, prefix }?: IdentifierOptions): string;
+  /** The Mark ID as minimal bytewords (two letters a byte), otherwise as `idBytewords`. */
+  idBytewordsMinimal({ wordCount, prefix }?: IdentifierOptions): string;
   /**
-   * Identifiers for a set of marks, each only as long as it must be to
-   * differ from the others: four words unless two IDs share a prefix.
+   * Bytewords identifiers for a set of marks, each only as long as it
+   * must be to differ from the others: four words unless two IDs share a
+   * prefix.
    */
-  static disambiguatedIdentifiers(marks: readonly ProvenanceMark[], { style, prefix }?: DisambiguatedIdentifierOptions): string[];
+  static disambiguatedIdBytewords(marks: readonly ProvenanceMark[], { prefix }?: DisambiguatedIdentifierOptions): string[];
+  /** Bytemoji identifiers for a set of marks, as `disambiguatedIdBytewords`. */
+  static disambiguatedIdBytemoji(marks: readonly ProvenanceMark[], { prefix }?: DisambiguatedIdentifierOptions): string[];
   /** Whether `next` follows this mark in its chain. */
   precedes(next: ProvenanceMark): boolean;
   /**
@@ -564,8 +559,11 @@ declare class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
   /** Whether each mark precedes the next; at least two marks, a genesis first if at 0. */
   static isSequenceValid(marks: readonly ProvenanceMark[]): boolean;
   private wire;
-  /** The message as bytewords; `standard` unless a style is given. */
-  toBytewords({ style }?: BytewordsOptions): string;
+  /**
+   * The message as bytewords: `standard` (space-separated words) unless
+   * `uri` (hyphens) or `minimal` (two letters a word) is given.
+   */
+  toBytewords(style?: BytewordsStyle): string;
   /** Standard bytewords at a resolution; a decode failure is `Bytewords`. */
   static fromBytewords(res: ProvenanceMarkResolution, bytewords: string): ProvenanceMark;
   /** The `provenance` query parameter: minimal bytewords of the tagged CBOR. */
@@ -573,9 +571,11 @@ declare class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
   /** The `provenance` query parameter, parsed; a decode failure is `Bytewords` or `Cbor`. */
   static fromUrlEncoding(urlEncoding: string): ProvenanceMark;
   /**
-   * `base` with the mark as its `provenance` query parameter; an existing
-   * `provenance` parameter is replaced. A `base` that is not a URL is
-   * `Url`.
+   * `base` with the mark appended as a `provenance` query parameter. The
+   * pair is appended to the query text as it stands, as the reference's
+   * `append_pair` does: nothing else is re-encoded, and an existing
+   * `provenance` parameter is kept (`fromUrl` then reads the first). A
+   * `base` that is not a URL is `Url`.
    */
   toUrl(base: string | URL): URL;
   /**
@@ -637,6 +637,10 @@ declare class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
   equals(other: ProvenanceMark): boolean;
 }
 //#endregion
+//#region src/mark-identifier.d.ts
+/** The character that flags a provenance-mark identifier: 🅟. */
+export declare const MARK_ID_PREFIX = "🅟";
+//#endregion
 //#region src/generator.d.ts
 /** What `ProvenanceMarkGenerator.from` takes. */
 interface ProvenanceMarkGeneratorInput {
@@ -654,11 +658,6 @@ interface ProvenanceMarkGeneratorState extends ProvenanceMarkGeneratorInput {
   /** The RNG state the next key is drawn from. */
   rngState: RngState;
 }
-/** What `next` takes besides the date. */
-interface NextMarkOptions {
-  /** Any CBOR the mark carries: a `Cbor`, a `ToCbor`, or a value dcbor encodes. */
-  info?: CborInput | undefined;
-}
 /**
  * Produces a chain of marks from a seed: the chain id and the RNG state
  * derive from the seed, each `next` draws the next key and advances the
@@ -667,11 +666,11 @@ interface NextMarkOptions {
  * ```ts
  * const generator = ProvenanceMarkGenerator.fromPassphrase("low", "Wolf");
  * const genesis = generator.next(new Date("2023-06-20T12:00:00Z"));
- * const second = generator.next(new Date("2023-06-21T12:00:00Z"), { info: "second work" });
+ * const second = generator.next(new Date("2023-06-21T12:00:00Z"), "second work");
  * genesis.precedes(second); // true
  * ```
  */
-declare class ProvenanceMarkGenerator implements ToEnvelope {
+export declare class ProvenanceMarkGenerator implements ToEnvelope {
   private readonly _res;
   private readonly _seed;
   private readonly _chainId;
@@ -703,11 +702,15 @@ declare class ProvenanceMarkGenerator implements ToEnvelope {
   /**
    * The next mark: the genesis mark's key is the chain id, every later
    * key is drawn from the RNG (which advances); the next key is drawn
-   * from a copy so the hash commits to it. A date the resolution cannot
-   * encode (`YearOutOfRange`, `DateOutOfRange`, `InvalidDate`) throws
-   * before any state changes.
+   * from a copy so the hash commits to it. The date is a `Date` or a
+   * `CborDate`; one the resolution cannot encode (`YearOutOfRange`,
+   * `DateOutOfRange`, `InvalidDate`) throws before any state changes.
+   * `info` is any CBOR the mark carries: a `Cbor`, a `ToCbor`, or a value
+   * dcbor encodes.
    */
-  next(date: Date, { info }?: NextMarkOptions): ProvenanceMark;
+  next(date: DateInput, info?: CborInput): ProvenanceMark;
+  /** Same resolution, seed, chain id, next sequence number and RNG state; a `TypeError` for a non-generator. */
+  equals(other: ProvenanceMarkGenerator): boolean;
   /** `ProvenanceMarkGenerator(chainID: <hex>, res: <name>, seed: <hex>, nextSeq: <n>, rngState: <hex>)`. */
   toString(): string;
   /** `res` (wire number), `seed`, `chainID`, `nextSeq`, `rngState`, bytes in base64. */
@@ -736,11 +739,6 @@ declare class ProvenanceMarkGenerator implements ToEnvelope {
 //#region src/validate.d.ts
 /** How `formatReport` renders: prose, one-line JSON, or indented JSON. */
 type ValidationReportFormat = "text" | "jsonCompact" | "jsonPretty";
-/** What `formatReport` takes besides the report. */
-interface FormatReportOptions {
-  /** `text` unless given. */
-  format?: ValidationReportFormat | undefined;
-}
 /** A mark with the issues found where it joins its predecessor. */
 interface FlaggedMark {
   /** The mark. */
@@ -776,40 +774,39 @@ interface ValidationReport {
   readonly chains: readonly ChainReport[];
 }
 /** The chain id as hex. */
-declare function chainIdHex(report: ChainReport): string;
+export declare function chainIdHex(report: ChainReport): string;
 /**
  * Whether anything is wrong: a chain without genesis, a flagged mark, more
  * than one chain, or a chain in more than one sequence.
  */
-declare function hasIssues(report: ValidationReport): boolean;
+export declare function hasIssues(report: ValidationReport): boolean;
 /**
- * The report as text (empty when there is nothing to report) or JSON. A
- * format that is not one of the three is a `RangeError`.
+ * The report as text (empty when there is nothing to report) unless
+ * `jsonCompact` or `jsonPretty` is asked for. A format that is not one of
+ * the three is a `RangeError`.
  */
-declare function formatReport(report: ValidationReport, { format }?: FormatReportOptions): string;
+export declare function formatReport(report: ValidationReport, format?: ValidationReportFormat): string;
 /**
  * Validates a set of marks: drops exact duplicates, bins by chain id,
  * sorts each chain by sequence, splits it into verifying runs, and orders
  * the chains by id.
  */
-declare function validate(marks: readonly ProvenanceMark[]): ValidationReport;
+export declare function validate(marks: readonly ProvenanceMark[]): ValidationReport;
 //#endregion
 //#region src/mark-info.d.ts
-/** What `ProvenanceMarkInfo.from` takes besides the mark. */
-interface MarkInfoOptions {
-  /** Free text to show with the mark; empty by default. */
-  comment?: string | undefined;
-}
 /** A mark with its UR and identifiers rendered once, plus a comment, for display. Frozen. */
-declare class ProvenanceMarkInfo {
+export declare class ProvenanceMarkInfo {
   private readonly _mark;
   private readonly _ur;
   private readonly _bytewords;
   private readonly _bytemoji;
   private readonly _comment;
   private constructor();
-  /** The mark's UR and its 🅟-prefixed four-word identifiers. */
-  static from(mark: ProvenanceMark, { comment }?: MarkInfoOptions): ProvenanceMarkInfo;
+  /**
+   * The mark's UR and its 🅟-prefixed four-word identifiers, with free
+   * text to show alongside (empty unless given).
+   */
+  static from(mark: ProvenanceMark, comment?: string): ProvenanceMarkInfo;
   /** The mark. */
   get mark(): ProvenanceMark;
   /** The mark's UR. */
@@ -837,13 +834,13 @@ declare class ProvenanceMarkInfo {
  * Registers envelope's tags and summarisers, then the provenance-mark
  * summariser, in `context` (the reference's `register_tags_in`).
  */
-declare function registerTagsIn(context: FormatContext): void;
+export declare function registerTagsIn(context: FormatContext): void;
 /**
  * `registerTagsIn` on the global format context (the reference's
  * `register_tags`): envelope's `registerTags()`, which installs the
  * envelope summarisers once, then the provenance-mark summariser.
  */
-declare function registerTags(): void;
+export declare function registerTags(): void;
 //#endregion
-export { type BytewordsOptions, type ChainReport, type DayRange, type DisambiguatedIdentifierOptions, type ExpectedActualCode, type ExpectedActualDetails, type FlaggedMark, type FormatReportOptions, IDENTIFIER_STYLES, type IdentifierOptions, type IdentifierStyle, type InvalidInfoCborDetails, type InvalidMonthOrDayDetails, type KeyDetails, MARK_ID_PREFIX, type MarkInfoOptions, type MessageCode, type MessageDetails, type MissingUrlParameterDetails, type NextMarkOptions, PROVENANCE_MARK_ERROR_CODES, PROVENANCE_MARK_RESOLUTIONS, PROVENANCE_SEED_LENGTH, ProvenanceMark, type ProvenanceMarkCodec, ProvenanceMarkError, type ProvenanceMarkErrorCode, type ProvenanceMarkErrorDetails, type ProvenanceMarkErrorDetailsByCode, type ProvenanceMarkErrorDetailsFor, type ProvenanceMarkErrorTyped, ProvenanceMarkGenerator, type ProvenanceMarkGeneratorInput, type ProvenanceMarkGeneratorState, ProvenanceMarkInfo, type ProvenanceMarkInput, type ProvenanceMarkResolution, ProvenanceSeed, RNG_STATE_LENGTH, type ReasonCode, type ReasonDetails, type ResolutionOptions, RngState, type SeedLengthDetails, type SequenceReport, type ValidationDetails, type ValidationIssue, type ValidationReport, type ValidationReportFormat, type YearOutOfRangeDetails, chainIdHex, dateBytesLength, dateFromIso8601, dateToDateString, dateToDisplay, dateToIso8601, decodeDate, decodeSeq, encodeDate, encodeSeq, expectDate, extendKey, fixedLength, formatReport, formatValidationIssue, hasIssues, isProvenanceMarkResolution, linkLength, obfuscate, parseDate, parseSeed, rangeOfDaysInMonth, registerTags, registerTagsIn, resolutionCode, resolutionFromCode, seqBytesLength, validate };
+export type { ChainReport, DateInput, DayRange, DisambiguatedIdentifierOptions, ExpectedActualCode, ExpectedActualDetails, FlaggedMark, IdentifierOptions, InvalidInfoCborDetails, InvalidMonthOrDayDetails, KeyDetails, MessageCode, MessageDetails, MissingUrlParameterDetails, ProvenanceMarkCodec, ProvenanceMarkErrorCode, ProvenanceMarkErrorDetails, ProvenanceMarkErrorDetailsByCode, ProvenanceMarkErrorDetailsFor, ProvenanceMarkErrorTyped, ProvenanceMarkGeneratorInput, ProvenanceMarkGeneratorState, ProvenanceMarkInput, ProvenanceMarkResolution, ReasonCode, ReasonDetails, SeedLengthDetails, SequenceReport, ValidationDetails, ValidationIssue, ValidationReport, ValidationReportFormat, YearOutOfRangeDetails };
 //# sourceMappingURL=index.d.mts.map

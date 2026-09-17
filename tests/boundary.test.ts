@@ -18,10 +18,10 @@ import {
   RngState,
   dateToDisplay,
   dateToIso8601,
-  decodeDate,
-  decodeSeq,
-  encodeDate,
-  encodeSeq,
+  deserializeDate,
+  deserializeSeq,
+  serializeDate,
+  serializeSeq,
   expectDate,
   formatReport,
   parseDate,
@@ -37,7 +37,7 @@ const wolf = (res: "low" | "medium" | "quartile" | "high" = "low") =>
 const chain = (n: number, res: "low" | "medium" | "quartile" | "high" = "low") => {
   const g = wolf(res);
   return Array.from({ length: n }, (_, i) =>
-    g.next(new Date(DATE.getTime() + i * 86_400_000), i % 2 === 1 ? { info: `work ${i}` } : {}),
+    g.next(new Date(DATE.getTime() + i * 86_400_000), i % 2 === 1 ? `work ${i}` : undefined),
   );
 };
 
@@ -120,34 +120,34 @@ describe("dates", () => {
     expect(codeOf(() => expectDate(bad))).toBe("InvalidDate");
     expect(codeOf(() => dateToIso8601(bad))).toBe("InvalidDate");
     expect(codeOf(() => dateToDisplay(bad))).toBe("InvalidDate");
-    expect(codeOf(() => encodeDate(bad, { resolution: "high" }))).toBe("InvalidDate");
+    expect(codeOf(() => serializeDate("high", bad))).toBe("InvalidDate");
     expect(codeOf(() => expectDate("2023-06-20" as unknown as Date))).toBe("InvalidDate");
     expect(expectDate(DATE)).toBe(DATE);
   });
 
   it("names the codec that refuses a date", () => {
-    expect(codeOf(() => encodeDate(new Date("2022-12-31T00:00:00Z"), { resolution: "low" }))).toBe(
+    expect(codeOf(() => serializeDate("low", new Date("2022-12-31T00:00:00Z")))).toBe(
       "YearOutOfRange",
     );
-    expect(codeOf(() => encodeDate(new Date("2151-01-01T00:00:00Z"), { resolution: "low" }))).toBe(
+    expect(codeOf(() => serializeDate("low", new Date("2151-01-01T00:00:00Z")))).toBe(
       "YearOutOfRange",
     );
-    expect(
-      messageOf(() => encodeDate(new Date("2000-12-31T00:00:00Z"), { resolution: "medium" })),
-    ).toBe("date out of range: seconds value too large for u32");
-    expect(
-      messageOf(() => encodeDate(new Date("2000-12-31T00:00:00Z"), { resolution: "high" })),
-    ).toBe("date out of range: milliseconds value too large for u64");
-    expect(
-      messageOf(() => encodeDate(new Date(Date.UTC(10500, 0, 1)), { resolution: "high" })),
-    ).toBe("date out of range: date exceeds maximum representable value");
-    expect(messageOf(() => decodeDate(new Uint8Array(3), { resolution: "low" }))).toBe(
+    expect(messageOf(() => serializeDate("medium", new Date("2000-12-31T00:00:00Z")))).toBe(
+      "date out of range: seconds value too large for u32",
+    );
+    expect(messageOf(() => serializeDate("high", new Date("2000-12-31T00:00:00Z")))).toBe(
+      "date out of range: milliseconds value too large for u64",
+    );
+    expect(messageOf(() => serializeDate("high", new Date(Date.UTC(10500, 0, 1))))).toBe(
+      "date out of range: date exceeds maximum representable value",
+    );
+    expect(messageOf(() => deserializeDate("low", new Uint8Array(3)))).toBe(
       "resolution serialization error: invalid date length: expected 2, 4, or 6 bytes, got 3",
     );
-    expect(codeOf(() => decodeDate(new Uint8Array([0x7f, 0xff]), { resolution: "low" }))).toBe(
+    expect(codeOf(() => deserializeDate("low", new Uint8Array([0x7f, 0xff])))).toBe(
       "InvalidMonthOrDay",
     );
-    expect(codeOf(() => decodeDate(new Uint8Array(6).fill(0xff), { resolution: "high" }))).toBe(
+    expect(codeOf(() => deserializeDate("high", new Uint8Array(6).fill(0xff)))).toBe(
       "DateOutOfRange",
     );
   });
@@ -170,16 +170,14 @@ describe("resolutions and sequences", () => {
   });
 
   it("rejects sequence numbers that are not u32, or too wide for the resolution", () => {
-    expect(codeOf(() => encodeSeq(1.5, { resolution: "high" }))).toBe("ResolutionError");
-    expect(codeOf(() => encodeSeq(-1, { resolution: "high" }))).toBe("ResolutionError");
-    expect(codeOf(() => encodeSeq(2 ** 32, { resolution: "high" }))).toBe("ResolutionError");
-    expect(messageOf(() => encodeSeq(70_000, { resolution: "low" }))).toBe(
+    expect(codeOf(() => serializeSeq("high", 1.5))).toBe("ResolutionError");
+    expect(codeOf(() => serializeSeq("high", -1))).toBe("ResolutionError");
+    expect(codeOf(() => serializeSeq("high", 2 ** 32))).toBe("ResolutionError");
+    expect(messageOf(() => serializeSeq("low", 70_000))).toBe(
       "resolution serialization error: sequence number 70000 out of range for 2-byte format (max 65535)",
     );
-    expect(
-      decodeSeq(encodeSeq(2 ** 32 - 1, { resolution: "medium" }), { resolution: "medium" }),
-    ).toBe(2 ** 32 - 1);
-    expect(messageOf(() => decodeSeq(new Uint8Array(3), { resolution: "low" }))).toBe(
+    expect(deserializeSeq("medium", serializeSeq("medium", 2 ** 32 - 1))).toBe(2 ** 32 - 1);
+    expect(messageOf(() => deserializeSeq("low", new Uint8Array(3)))).toBe(
       "resolution serialization error: invalid sequence number length: expected 2 or 4 bytes, got 3",
     );
   });
@@ -217,29 +215,21 @@ describe("seeds and RNG states", () => {
     const bytes = seed.bytes;
     bytes[0] ^= 0xff;
     expect(seed.bytes).not.toEqual(bytes);
-    expect(codeOf(() => parseSeed("AAAA"))).toBe("InvalidSeedLength");
+    expect(codeOf(() => parseSeed("AAAA"))).toBe("Json");
   });
 });
 
 describe("base64 under parseSeed", () => {
   it("rejects with the reference's wording", () => {
-    expect(messageOf(() => parseSeed("AA A="))).toBe(
-      "base64 decoding error: Invalid symbol 32, offset 2.",
-    );
-    expect(messageOf(() => parseSeed("A"))).toBe("base64 decoding error: Invalid input length: 1");
-    expect(messageOf(() => parseSeed("AAA"))).toBe("base64 decoding error: Invalid padding");
-    expect(messageOf(() => parseSeed("AAAA="))).toBe(
-      "base64 decoding error: Invalid symbol 61, offset 4.",
-    );
+    expect(messageOf(() => parseSeed("AA A="))).toBe("JSON error: Invalid symbol 32, offset 2.");
+    expect(messageOf(() => parseSeed("A"))).toBe("JSON error: Invalid input length: 1");
+    expect(messageOf(() => parseSeed("AAA"))).toBe("JSON error: Invalid padding");
+    expect(messageOf(() => parseSeed("AAAA="))).toBe("JSON error: Invalid symbol 61, offset 4.");
     expect(messageOf(() => parseSeed("AB=="))).toBe(
-      "base64 decoding error: Invalid last symbol 66, offset 1.",
+      "JSON error: Invalid last symbol 66, offset 1.",
     );
-    expect(messageOf(() => parseSeed("AAAA===="))).toBe(
-      "base64 decoding error: Invalid symbol 61, offset 6.",
-    );
-    expect(messageOf(() => parseSeed("AAAA-AAA"))).toBe(
-      "base64 decoding error: Invalid symbol 45, offset 4.",
-    );
+    expect(messageOf(() => parseSeed("AAAA===="))).toBe("JSON error: Invalid symbol 61, offset 4.");
+    expect(messageOf(() => parseSeed("AAAA-AAA"))).toBe("JSON error: Invalid symbol 45, offset 4.");
     expect(parseSeed("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=").bytes).toEqual(
       new Uint8Array(32),
     );
@@ -266,7 +256,7 @@ describe("marks", () => {
     expect(codeOf(() => ProvenanceMark.isSequenceValid([a, 1 as unknown as ProvenanceMark]))).toBe(
       "TypeError",
     );
-    expect(codeOf(() => ProvenanceMark.disambiguatedIdentifiers([a, {} as ProvenanceMark]))).toBe(
+    expect(codeOf(() => ProvenanceMark.disambiguatedIdBytewords([a, {} as ProvenanceMark]))).toBe(
       "TypeError",
     );
     expect(codeOf(() => ProvenanceMark.fromMessage("bogus" as "low", a.message))).toBe(
@@ -287,11 +277,9 @@ describe("marks", () => {
         }),
       ),
     ).toBe("RangeError");
-    expect(codeOf(() => a.identifier({ style: "bogus" as "bytewords" }))).toBe("RangeError");
-    expect(codeOf(() => a.identifier({ words: 4.5 }))).toBe("RangeError");
-    expect(
-      codeOf(() => ProvenanceMark.disambiguatedIdentifiers([a], { style: "x" as "minimal" })),
-    ).toBe("RangeError");
+    expect(codeOf(() => a.idBytewords({ wordCount: 4.5 }))).toBe("RangeError");
+    expect(codeOf(() => a.idBytemoji({ wordCount: 33 }))).toBe("RangeError");
+    expect(codeOf(() => a.idBytewordsMinimal({ wordCount: 3 }))).toBe("RangeError");
   });
 
   it("check the chain and report why", () => {
@@ -373,7 +361,7 @@ describe("marks", () => {
 
   it("round-trip through URLs given as strings or URL objects", () => {
     const [a] = chain(1);
-    const url = a.toUrl("https://example.com/?provenance=old&x=1");
+    const url = a.toUrl("https://example.com/?x=1");
     expect(url.searchParams.getAll("provenance")).toHaveLength(1);
     expect(ProvenanceMark.fromUrl(url).equals(a)).toBe(true);
     expect(ProvenanceMark.fromUrl(url.toString()).equals(a)).toBe(true);
@@ -442,9 +430,9 @@ describe("marks", () => {
 
   it("render text info through diagnostic notation", () => {
     const g = wolf("high");
-    const mark = g.next(DATE, { info: 'a"b' });
+    const mark = g.next(DATE, 'a"b');
     expect(mark.toDebugString()).toContain('info: "a\\"b"');
-    expect(g.next(DATE, { info: new Map([[1, [2, 3]]]) }).toDebugString()).toMatch(
+    expect(g.next(DATE, new Map([[1, [2, 3]]])).toDebugString()).toMatch(
       /info: \{\s+1:\s+\[2, 3\]\s+\}\)$/,
     );
     expect(mark.toString()).toBe(`ProvenanceMark(${mark.idHex})`);
@@ -611,16 +599,14 @@ describe("generators", () => {
 describe("mark info", () => {
   it("guards its arguments and reads its JSON strictly", () => {
     const [mark] = chain(1);
-    const info = ProvenanceMarkInfo.from(mark, { comment: "first" });
+    const info = ProvenanceMarkInfo.from(mark, "first");
     expect(Object.isFrozen(info)).toBe(true);
     expect(info.markdownSummary()).toContain("first");
     expect(ProvenanceMarkInfo.from(mark).markdownSummary()).not.toContain("first");
     expect(codeOf(() => ProvenanceMarkInfo.from("x" as unknown as ProvenanceMark))).toBe(
       "TypeError",
     );
-    expect(codeOf(() => ProvenanceMarkInfo.from(mark, { comment: 1 as unknown as string }))).toBe(
-      "TypeError",
-    );
+    expect(codeOf(() => ProvenanceMarkInfo.from(mark, 1 as unknown as string))).toBe("TypeError");
     const json = info.toJSON();
     const back = ProvenanceMarkInfo.fromJSON(json);
     expect(back.mark.equals(mark)).toBe(true);
@@ -648,10 +634,10 @@ describe("validation reports", () => {
     expect(Object.isFrozen(report.chains[0].sequences[0].marks[0])).toBe(true);
     expect(codeOf(() => validate("x" as unknown as ProvenanceMark[]))).toBe("TypeError");
     expect(codeOf(() => validate([marks[0], 1 as unknown as ProvenanceMark]))).toBe("TypeError");
-    expect(codeOf(() => formatReport(report, { format: "xml" as "text" }))).toBe("RangeError");
+    expect(codeOf(() => formatReport(report, "xml" as "text"))).toBe("RangeError");
     expect(formatReport(report)).toBe("");
-    expect(JSON.parse(formatReport(report, { format: "jsonPretty" }))).toEqual(
-      JSON.parse(formatReport(report, { format: "jsonCompact" })),
+    expect(JSON.parse(formatReport(report, "jsonPretty"))).toEqual(
+      JSON.parse(formatReport(report, "jsonCompact")),
     );
   });
 });

@@ -48,18 +48,34 @@ export class Base64DecodeError extends Error {
  */
 export function fromBase64(base64: string): Uint8Array {
   const n = base64.length;
-  let end = n;
-  while (end > 0 && base64[end - 1] === "=") end--;
-  const padding = n - end;
-  for (let i = 0; i < end; i++) {
+  let firstPad = -1;
+  for (let i = 0; i < n; i++) {
     const c = base64.charCodeAt(i);
-    if (c > 127 || VALUES[c] < 0) throw new Base64DecodeError(`Invalid symbol ${c}, offset ${i}.`);
+    if (c === 61) {
+      if (firstPad < 0) {
+        firstPad = i;
+        // Padding can only complete a quad that already holds two symbols.
+        if (i % 4 < 2) throw new Base64DecodeError(`Invalid symbol 61, offset ${i}.`);
+      }
+      continue;
+    }
+    const symbol = c <= 127 && VALUES[c] >= 0;
+    if (firstPad >= 0) {
+      // After padding, a symbol makes the padding the fault; anything else is itself the fault.
+      throw new Base64DecodeError(
+        symbol ? `Invalid symbol 61, offset ${firstPad}.` : `Invalid symbol ${c}, offset ${i}.`,
+      );
+    }
+    if (!symbol) throw new Base64DecodeError(`Invalid symbol ${c}, offset ${i}.`);
   }
-  if (padding > 2 || (padding > 0 && n % 4 !== 0)) {
-    throw new Base64DecodeError(`Invalid symbol 61, offset ${end + (padding > 2 ? 2 : 0)}.`);
-  }
+  const end = firstPad < 0 ? n : firstPad;
   if (end % 4 === 1) throw new Base64DecodeError(`Invalid input length: ${end}`);
-  if (n % 4 !== 0) throw new Base64DecodeError("Invalid padding");
+  // The final quad takes exactly the padding it lacks: more blames the first
+  // `=`, less (or none) is a padding fault.
+  const required = end % 4 === 0 ? 0 : 4 - (end % 4);
+  const padding = n - end;
+  if (padding > required) throw new Base64DecodeError(`Invalid symbol 61, offset ${firstPad}.`);
+  if (padding < required) throw new Base64DecodeError("Invalid padding");
   const out = new Uint8Array(Math.floor((end * 3) / 4));
   let o = 0;
   let acc = 0;

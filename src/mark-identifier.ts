@@ -11,15 +11,8 @@ import { identifier } from "@blockchaincommons/uniform-resources/bytewords";
 /** The character that flags a provenance-mark identifier: 🅟. */
 export const MARK_ID_PREFIX = "\u{1F15F}";
 
-/** The three identifier styles. */
-export type IdentifierStyle = "bytewords" | "minimal" | "bytemoji";
-
-/** The three identifier styles, for checks. */
-export const IDENTIFIER_STYLES: readonly IdentifierStyle[] = Object.freeze([
-  "bytewords",
-  "minimal",
-  "bytemoji",
-]);
+/** The three renderings of an ID's bytes. */
+export type IdStyle = "bytewords" | "minimal" | "bytemoji";
 
 /**
  * The 32-byte Mark ID: the stored hash, filled to 32 bytes from the
@@ -36,19 +29,11 @@ export function markId(hash: Uint8Array, fingerprint: () => Uint8Array): Uint8Ar
 /** The word count must be an integer from 4 to 32 (the reference asserts it). */
 function checkWordCount(wordCount: number): void {
   if (!Number.isInteger(wordCount) || wordCount < 4 || wordCount > 32) {
-    throw new RangeError(`words must be an integer from 4 to 32, got ${String(wordCount)}`);
+    throw new RangeError(`wordCount must be an integer from 4 to 32, got ${String(wordCount)}`);
   }
 }
 
-function checkStyle(style: IdentifierStyle): void {
-  if (!(IDENTIFIER_STYLES as readonly unknown[]).includes(style)) {
-    throw new RangeError(
-      `style must be one of ${IDENTIFIER_STYLES.map((s) => `"${s}"`).join(", ")}, got ${JSON.stringify(style)}`,
-    );
-  }
-}
-
-function render(bytes: Uint8Array, style: IdentifierStyle, prefix: boolean): string {
+function render(bytes: Uint8Array, style: IdStyle, prefix: boolean): string {
   const s = (
     style === "bytewords" ? identifier(bytes) : identifier(bytes, { style })
   ).toUpperCase();
@@ -59,11 +44,10 @@ function render(bytes: Uint8Array, style: IdentifierStyle, prefix: boolean): str
 export function identifierOf(
   id: Uint8Array,
   wordCount: number,
-  style: IdentifierStyle,
+  style: IdStyle,
   prefix: boolean,
 ): string {
   checkWordCount(wordCount);
-  checkStyle(style);
   return render(id.subarray(0, wordCount), style, prefix);
 }
 
@@ -118,10 +102,9 @@ function resolveCollisionGroup(
 /** Identifiers for a set of IDs, each as long as it needs to be unique in the set. */
 export function disambiguatedIdentifiers(
   ids: Uint8Array[],
-  style: IdentifierStyle,
+  style: IdStyle,
   prefix: boolean,
 ): string[] {
-  checkStyle(style);
   const lengths = minimalNoncollidingPrefixLengths(ids);
   return ids.map((id, i) => render(id.subarray(0, lengths[i]), style, prefix));
 }

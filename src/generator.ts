@@ -29,9 +29,10 @@ import { ProvenanceSeed } from "./seed.js";
 import { RngState } from "./rng-state.js";
 import { sha256 } from "./crypto-utils.js";
 import { ProvenanceMark } from "./mark.js";
-import { toBase64 } from "./utils.js";
+import { bytesEqual, toBase64 } from "./utils.js";
+import type { DateInput } from "./date.js";
 import { resolutionFromJson } from "./mark-encodings.js";
-import { base64Field, customJson, expectObject, unsignedField } from "./json.js";
+import { base64Field, block32, customJson, expectObject, unsignedField } from "./json.js";
 
 /** What `ProvenanceMarkGenerator.from` takes. */
 export interface ProvenanceMarkGeneratorInput {
@@ -51,12 +52,6 @@ export interface ProvenanceMarkGeneratorState extends ProvenanceMarkGeneratorInp
   rngState: RngState;
 }
 
-/** What `next` takes besides the date. */
-export interface NextMarkOptions {
-  /** Any CBOR the mark carries: a `Cbor`, a `ToCbor`, or a value dcbor encodes. */
-  info?: CborInput | undefined;
-}
-
 /** The number of assertions a generator envelope carries: its type and four fields. */
 const ENVELOPE_ASSERTION_COUNT = 5;
 
@@ -68,7 +63,7 @@ const ENVELOPE_ASSERTION_COUNT = 5;
  * ```ts
  * const generator = ProvenanceMarkGenerator.fromPassphrase("low", "Wolf");
  * const genesis = generator.next(new Date("2023-06-20T12:00:00Z"));
- * const second = generator.next(new Date("2023-06-21T12:00:00Z"), { info: "second work" });
+ * const second = generator.next(new Date("2023-06-21T12:00:00Z"), "second work");
  * genesis.precedes(second); // true
  * ```
  */
@@ -169,11 +164,13 @@ export class ProvenanceMarkGenerator implements ToEnvelope {
   /**
    * The next mark: the genesis mark's key is the chain id, every later
    * key is drawn from the RNG (which advances); the next key is drawn
-   * from a copy so the hash commits to it. A date the resolution cannot
-   * encode (`YearOutOfRange`, `DateOutOfRange`, `InvalidDate`) throws
-   * before any state changes.
+   * from a copy so the hash commits to it. The date is a `Date` or a
+   * `CborDate`; one the resolution cannot encode (`YearOutOfRange`,
+   * `DateOutOfRange`, `InvalidDate`) throws before any state changes.
+   * `info` is any CBOR the mark carries: a `Cbor`, a `ToCbor`, or a value
+   * dcbor encodes.
    */
-  next(date: Date, { info }: NextMarkOptions = {}): ProvenanceMark {
+  next(date: DateInput, info?: CborInput): ProvenanceMark {
     const rng = new SeededRng(this._rngState.bytes);
     const seq = this._nextSeq;
     let key: Uint8Array;
@@ -196,6 +193,20 @@ export class ProvenanceMarkGenerator implements ToEnvelope {
     this._nextSeq = seq + 1;
     if (seq !== 0) this._rngState = RngState.from(rng.state);
     return mark;
+  }
+
+  /** Same resolution, seed, chain id, next sequence number and RNG state; a `TypeError` for a non-generator. */
+  equals(other: ProvenanceMarkGenerator): boolean {
+    if (!(other instanceof ProvenanceMarkGenerator)) {
+      throw new TypeError("other must be a ProvenanceMarkGenerator");
+    }
+    return (
+      this._res === other._res &&
+      this._seed.equals(other._seed) &&
+      bytesEqual(this._chainId, other._chainId) &&
+      this._nextSeq === other._nextSeq &&
+      this._rngState.equals(other._rngState)
+    );
   }
 
   /** `ProvenanceMarkGenerator(chainID: <hex>, res: <name>, seed: <hex>, nextSeq: <n>, rngState: <hex>)`. */
@@ -223,10 +234,10 @@ export class ProvenanceMarkGenerator implements ToEnvelope {
   static fromJSON(json: unknown): ProvenanceMarkGenerator {
     const obj = expectObject(json);
     const res = resolutionFromJson(unsignedField(obj, "res", 8));
-    const seed = seedBlock(base64Field(obj, "seed"), "seed");
+    const seed = block32(base64Field(obj, "seed"));
     const chainId = base64Field(obj, "chainID");
     const nextSeq = unsignedField(obj, "nextSeq", 32);
-    const rngState = seedBlock(base64Field(obj, "rngState"), "rngState");
+    const rngState = block32(base64Field(obj, "rngState"));
     try {
       return ProvenanceMarkGenerator.fromState({
         res,
@@ -314,14 +325,6 @@ function leafOf<T>(envelope: Envelope, decode: (c: Cbor) => T | undefined): T {
     }
     throw error;
   }
-}
-
-/** The reference's `deserialize_block`: exactly 32 bytes, else `Json`. */
-function seedBlock(bytes: Uint8Array, _field: string): Uint8Array {
-  if (bytes.length !== 32) {
-    throw ProvenanceMarkError.json(`seed length is ${bytes.length}, expected 32`);
-  }
-  return bytes;
 }
 
 /** A resolution name, or a `RangeError`. */

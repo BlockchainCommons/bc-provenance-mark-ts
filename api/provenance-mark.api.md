@@ -7,6 +7,7 @@
 import { BytewordsStyle } from '@blockchaincommons/uniform-resources/bytewords';
 import { Cbor } from '@blockchaincommons/dcbor';
 import { CborCodec } from '@blockchaincommons/dcbor';
+import { CborDate } from '@blockchaincommons/dcbor';
 import { CborInput } from '@blockchaincommons/dcbor';
 import { CborTagged } from '@blockchaincommons/dcbor';
 import { Envelope } from '@blockchaincommons/envelope';
@@ -17,11 +18,6 @@ import { ToCbor } from '@blockchaincommons/dcbor';
 import { ToEnvelope } from '@blockchaincommons/envelope';
 import { ToUR } from '@blockchaincommons/uniform-resources';
 import { UR } from '@blockchaincommons/uniform-resources';
-
-// @public
-export interface BytewordsOptions {
-    style?: BytewordsStyle | undefined;
-}
 
 // @public
 export function chainIdHex(report: ChainReport): string;
@@ -41,13 +37,16 @@ export function dateBytesLength(res: ProvenanceMarkResolution): number;
 export function dateFromIso8601(str: string): Date;
 
 // @public
-export function dateToDateString(date: Date): string;
+export type DateInput = Date | CborDate;
 
 // @public
-export function dateToDisplay(date: Date): string;
+export function dateToDateString(date: DateInput): string;
 
 // @public
-export function dateToIso8601(date: Date): string;
+export function dateToDisplay(date: DateInput): string;
+
+// @public
+export function dateToIso8601(date: DateInput): string;
 
 // @public
 export interface DayRange {
@@ -56,25 +55,18 @@ export interface DayRange {
 }
 
 // @public
-export function decodeDate(bytes: Uint8Array, input: ResolutionOptions): Date;
+export function deserializeDate(res: ProvenanceMarkResolution, bytes: Uint8Array): Date;
 
 // @public
-export function decodeSeq(data: Uint8Array, input: ResolutionOptions): number;
+export function deserializeSeq(res: ProvenanceMarkResolution, data: Uint8Array): number;
 
 // @public
 export interface DisambiguatedIdentifierOptions {
     prefix?: boolean | undefined;
-    style?: IdentifierStyle | undefined;
 }
 
 // @public
-export function encodeDate(date: Date, input: ResolutionOptions): Uint8Array;
-
-// @public
-export function encodeSeq(seq: number, input: ResolutionOptions): Uint8Array;
-
-// @public
-export function expectDate(date: Date): Date;
+export function expectDate(date: DateInput): Date;
 
 // @public
 export type ExpectedActualCode = "ExtraKeys" | "InvalidKeyLength" | "InvalidNextKeyLength" | "InvalidChainIdLength" | "InvalidMessageLength";
@@ -99,12 +91,7 @@ export interface FlaggedMark {
 }
 
 // @public
-export function formatReport(report: ValidationReport, input?: FormatReportOptions): string;
-
-// @public
-export interface FormatReportOptions {
-    format?: ValidationReportFormat | undefined;
-}
+export function formatReport(report: ValidationReport, format?: ValidationReportFormat): string;
 
 // @public
 export function formatValidationIssue(issue: ValidationIssue): string;
@@ -113,17 +100,10 @@ export function formatValidationIssue(issue: ValidationIssue): string;
 export function hasIssues(report: ValidationReport): boolean;
 
 // @public
-export const IDENTIFIER_STYLES: readonly IdentifierStyle[];
-
-// @public
 export interface IdentifierOptions {
     prefix?: boolean | undefined;
-    style?: IdentifierStyle | undefined;
-    words?: number | undefined;
+    wordCount?: number | undefined;
 }
-
-// @public
-export type IdentifierStyle = "bytewords" | "minimal" | "bytemoji";
 
 // @public
 export interface InvalidInfoCborDetails {
@@ -154,11 +134,6 @@ export function linkLength(res: ProvenanceMarkResolution): number;
 export const MARK_ID_PREFIX = "🅟";
 
 // @public
-export interface MarkInfoOptions {
-    comment?: string | undefined;
-}
-
-// @public
 export type MessageCode = "Bytewords" | "Cbor" | "Url" | "Base64" | "Json" | "TryFromInt" | "Envelope";
 
 // @public
@@ -171,11 +146,6 @@ export interface MessageDetails<C extends MessageCode = MessageCode> {
 export interface MissingUrlParameterDetails {
     code: "MissingUrlParameter";
     parameter: string;
-}
-
-// @public
-export interface NextMarkOptions {
-    info?: CborInput | undefined;
 }
 
 // @public
@@ -204,7 +174,8 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
     static get codec(): ProvenanceMarkCodec;
     get date(): Date;
     get dateBytes(): Uint8Array;
-    static disambiguatedIdentifiers(marks: readonly ProvenanceMark[], input?: DisambiguatedIdentifierOptions): string[];
+    static disambiguatedIdBytemoji(marks: readonly ProvenanceMark[], input?: DisambiguatedIdentifierOptions): string[];
+    static disambiguatedIdBytewords(marks: readonly ProvenanceMark[], input?: DisambiguatedIdentifierOptions): string[];
     equals(other: ProvenanceMark): boolean;
     fingerprint(): Uint8Array;
     static from(input: ProvenanceMarkInput): ProvenanceMark;
@@ -220,7 +191,9 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
     static fromUrlEncoding(urlEncoding: string): ProvenanceMark;
     get hash(): Uint8Array;
     get id(): Uint8Array;
-    identifier(input?: IdentifierOptions): string;
+    idBytemoji(input?: IdentifierOptions): string;
+    idBytewords(input?: IdentifierOptions): string;
+    idBytewordsMinimal(input?: IdentifierOptions): string;
     get idHex(): string;
     get info(): Cbor | undefined;
     get isGenesis(): boolean;
@@ -231,7 +204,7 @@ export class ProvenanceMark implements ToCbor, CborTagged, ToUR, ToEnvelope {
     get res(): ProvenanceMarkResolution;
     get seq(): number;
     get seqBytes(): Uint8Array;
-    toBytewords(input?: BytewordsOptions): string;
+    toBytewords(style?: BytewordsStyle): string;
     toCbor(): Cbor;
     toDebugString(): string;
     toEnvelope(): Envelope;
@@ -331,12 +304,13 @@ export type ProvenanceMarkErrorTyped<C extends ProvenanceMarkErrorCode = Provena
 // @public
 export class ProvenanceMarkGenerator implements ToEnvelope {
     get chainId(): Uint8Array;
+    equals(other: ProvenanceMarkGenerator): boolean;
     static from(input: ProvenanceMarkGeneratorInput): ProvenanceMarkGenerator;
     static fromEnvelope(envelope: Envelope): ProvenanceMarkGenerator;
     static fromJSON(json: unknown): ProvenanceMarkGenerator;
     static fromPassphrase(res: ProvenanceMarkResolution, passphrase: string): ProvenanceMarkGenerator;
     static fromState(state: ProvenanceMarkGeneratorState): ProvenanceMarkGenerator;
-    next(date: Date, input?: NextMarkOptions): ProvenanceMark;
+    next(date: DateInput, info?: CborInput): ProvenanceMark;
     get nextSeq(): number;
     static random(res: ProvenanceMarkResolution, options?: RngOptions): ProvenanceMarkGenerator;
     get res(): ProvenanceMarkResolution;
@@ -365,7 +339,7 @@ export class ProvenanceMarkInfo {
     get bytemoji(): string;
     get bytewords(): string;
     get comment(): string;
-    static from(mark: ProvenanceMark, input?: MarkInfoOptions): ProvenanceMarkInfo;
+    static from(mark: ProvenanceMark, comment?: string): ProvenanceMarkInfo;
     static fromJSON(json: unknown): ProvenanceMarkInfo;
     get mark(): ProvenanceMark;
     markdownSummary(): string;
@@ -376,7 +350,7 @@ export class ProvenanceMarkInfo {
 // @public
 export interface ProvenanceMarkInput {
     chainId: Uint8Array;
-    date: Date;
+    date: DateInput;
     info?: CborInput | undefined;
     key: Uint8Array;
     nextKey: Uint8Array;
@@ -424,11 +398,6 @@ export function resolutionCode(res: ProvenanceMarkResolution): number;
 export function resolutionFromCode(code: number): ProvenanceMarkResolution;
 
 // @public
-export interface ResolutionOptions {
-    resolution: ProvenanceMarkResolution;
-}
-
-// @public
 export const RNG_STATE_LENGTH = 32;
 
 // @public
@@ -458,6 +427,12 @@ export interface SequenceReport {
 }
 
 // @public
+export function serializeDate(res: ProvenanceMarkResolution, date: DateInput): Uint8Array;
+
+// @public
+export function serializeSeq(res: ProvenanceMarkResolution, seq: number): Uint8Array;
+
+// @public
 export function validate(marks: readonly ProvenanceMark[]): ValidationReport;
 
 // @public
@@ -469,8 +444,8 @@ export interface ValidationDetails {
 // @public
 export type ValidationIssue = {
     type: "HashMismatch";
-    expected: string;
-    actual: string;
+    expected: Uint8Array;
+    actual: Uint8Array;
 } | {
     type: "KeyMismatch";
 } | {
@@ -479,8 +454,8 @@ export type ValidationIssue = {
     actual: number;
 } | {
     type: "DateOrdering";
-    previous: string;
-    next: string;
+    previous: Date;
+    next: Date;
 } | {
     type: "NonGenesisAtZero";
 } | {

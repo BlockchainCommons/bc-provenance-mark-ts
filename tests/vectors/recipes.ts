@@ -3,8 +3,9 @@
  * encoding of every mark), a mark decoded from one of its encodings, a
  * validation report over sets of marks, the date codecs, persisted JSON
  * and envelope state, URLs, CBOR given to each decoder, identifiers, the
- * date parser, seed and RNG-state decoding, and the JavaScript input
- * domain. `materialize` runs a recipe through a `VectorApi` and returns
+ * date parser, the seed parser, seed and RNG-state decoding, the info
+ * type, disambiguated identifiers, the envelope summariser, and the
+ * JavaScript input domain. `materialize` runs a recipe through a `VectorApi` and returns
  * one outcome string, so the same recipe drives the golden file, the
  * differential and the Rust harness.
  *
@@ -47,6 +48,17 @@ export type Recipe =
   | { k: "parse"; date: string }
   /** A byte string given to `ProvenanceSeed.fromCbor` or `RngState.fromCbor`. */
   | { k: "bytes"; kind: "seed" | "rngState"; hex: string }
+  /** A string given to `parseSeed`. */
+  | { k: "seed"; s: string }
+  /**
+   * The info type: from the reference chain's genesis mark at `res` with a
+   * comment, or read from `json`; the Markdown summary and the JSON both ways.
+   */
+  | { k: "info"; res: Resolution; comment?: string; json?: Record<string, unknown> }
+  /** Disambiguated identifiers of the reference chain's marks at `res`, by index (repeats allowed). */
+  | { k: "disambiguate"; res: Resolution; indices: number[]; style: "bytewords" | "bytemoji" }
+  /** The envelope format of a leaf holding these CBOR bytes (a mark, good or malformed). */
+  | { k: "summary"; hex: string }
   /** The JavaScript input domain; the reference has no analogue (`js-only`). */
   | { k: "domain"; case: string; cls: DomainClass };
 export type Outcome = string;
@@ -78,7 +90,11 @@ export interface VectorApi {
     marks: MarkSpec[],
   ): { marks: MarkOutputs[]; generator: string };
   decode(form: DecodeForm, res: Resolution, s: string): string;
-  validate(res: Resolution, chains: string[][], pretty: boolean): { text: string; json: string };
+  validate(
+    res: Resolution,
+    chains: string[][],
+    pretty: boolean,
+  ): { text: string; json: string; hasIssues: boolean };
   encodeDate(res: Resolution, date: string): string;
   decodeDate(res: Resolution, bytes: string): string;
   json(target: "mark" | "generator", json: Record<string, unknown>): string;
@@ -89,6 +105,14 @@ export interface VectorApi {
   identifier(res: Resolution, words: number, style: IdentifierStyleName): string;
   parseDate(date: string): string;
   bytes(kind: "seed" | "rngState", hex: string): string;
+  seed(s: string): string;
+  info(
+    res: Resolution,
+    comment: string | undefined,
+    json: Record<string, unknown> | undefined,
+  ): string;
+  disambiguate(res: Resolution, indices: number[], style: "bytewords" | "bytemoji"): string;
+  summary(hex: string): string;
   domain(name: string): string;
   /** The error's code, with the wrapped error's code in brackets where the reference wraps one. */
   errorCode(e: unknown): string;
@@ -134,17 +158,26 @@ export function recipeName(r: Recipe): string {
       return `parse ${JSON.stringify(r.date)}`;
     case "bytes":
       return `bytes ${r.kind} ${r.hex.slice(0, 16)}${r.hex.length > 16 ? "…" : ""} (${r.hex.length / 2})`;
+    case "seed":
+      return `seed ${JSON.stringify(r.s.length > 24 ? `${r.s.slice(0, 16)}…${r.s.slice(-6)}` : r.s)} (${r.s.length})`;
+    case "info":
+      return `info ${r.res}${r.comment !== undefined ? ` ${JSON.stringify(r.comment)}` : ""}${r.json !== undefined ? ` json ${JSON.stringify(r.json).slice(0, 48)}` : ""}`;
+    case "disambiguate":
+      return `disambiguate ${r.res} ${r.style} [${r.indices.join(",")}]`;
+    case "summary":
+      return `summary ${r.hex.slice(0, 24)}${r.hex.length > 24 ? "…" : ""}`;
     case "domain":
       return `domain ${r.case} (${r.cls})`;
   }
 }
 
 /**
- * The frozen bundle exports no CBOR decoder (so no raw CBOR bytes and no
- * CBOR info payloads) and has no JavaScript-domain guards to compare.
+ * The frozen bundle exports no CBOR decoder (so no raw CBOR bytes, no CBOR
+ * info payloads and no summariser rows), reads the info type through a
+ * different shape, and has no JavaScript-domain guards to compare.
  */
 export const isBaselineSupported = (r: Recipe): boolean => {
-  if (r.k === "cbor" || r.k === "domain") return false;
+  if (r.k === "cbor" || r.k === "domain" || r.k === "info" || r.k === "summary") return false;
   if (r.k === "generator") return r.marks.every((m) => m.infoHex === undefined);
   return true;
 };
@@ -166,7 +199,7 @@ export function materialize(api: VectorApi, r: Recipe): Outcome {
         return api.decode(r.form, r.res, r.s);
       case "validate": {
         const v = api.validate(r.res, r.chains, r.pretty === true);
-        return `${v.text}\n===\n${v.json}`;
+        return `${v.text}\n===\n${v.json}\n===\nhasIssues=${String(v.hasIssues)}`;
       }
       case "date":
         return r.date !== undefined
@@ -188,6 +221,14 @@ export function materialize(api: VectorApi, r: Recipe): Outcome {
         return api.parseDate(r.date);
       case "bytes":
         return api.bytes(r.kind, r.hex);
+      case "seed":
+        return api.seed(r.s);
+      case "info":
+        return api.info(r.res, r.comment, r.json);
+      case "disambiguate":
+        return api.disambiguate(r.res, r.indices, r.style);
+      case "summary":
+        return api.summary(r.hex);
       case "domain":
         return api.domain(r.case);
     }
@@ -206,9 +247,9 @@ export const attempt = (api: VectorApi, f: () => string | undefined | void): str
   }
 };
 
-/** The reference's `Date` display: the date alone at midnight, else ISO seconds. */
+/** The reference's `Date` display: subseconds ignored; the date alone at midnight, else ISO seconds. */
 export const displayDate = (d: Date): string => {
-  const iso = d.toISOString();
+  const iso = new Date(d.getTime() - d.getUTCMilliseconds()).toISOString();
   return iso.endsWith("T00:00:00.000Z") ? iso.slice(0, 10) : iso.replace(/\.\d{3}Z$/, "Z");
 };
 
@@ -225,4 +266,8 @@ export interface SiblingDeps {
   addAssertion: (e: any, predicate: string, object: string | number) => any;
   /** The UR string parsed into a UR value (the working tree's `fromUR` takes a UR). */
   parseUR?: (s: string) => unknown;
+  /** A `CborDate` from its string. */
+  cborDate?: (s: string) => unknown;
+  /** A leaf envelope over a CBOR value. */
+  leafEnvelope?: (c: unknown) => unknown;
 }

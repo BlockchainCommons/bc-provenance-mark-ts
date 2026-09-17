@@ -8,14 +8,10 @@ import { ProvenanceMark, ProvenanceMarkGenerator, ProvenanceMarkInfo } from "../
 
 // Expected debug strings for low resolution marks.
 //
-// Mirrors Rust `tests/mark.rs::test_low::expected_debug` (lines 180-191).
-// The Low-resolution wire format only stores year/month/day, so the
+// Mirrors Rust `tests/mark.rs::test_low::expected_debug`. The
+// Low-resolution wire format only stores year/month/day, so the
 // deserialised date is always midnight UTC and `toDebugString` —
 // per the Rust `Date::Display` rules — emits just `YYYY-MM-DD`.
-//
-// This vector exists to lock down the `dateToDisplay` parity fix; an
-// older revision of this port emitted `2023-06-20T00:00:00Z` for these
-// marks, which broke the Rust expected-debug comparison.
 const EXPECTED_DEBUG_LOW = [
   "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)",
   "ProvenanceMark(key: 558dbfc6, hash: 477e3ce6, chainID: 090bf2f8, seq: 1, date: 2023-06-21)",
@@ -597,12 +593,12 @@ describe("ProvenanceMark", () => {
         marks.push(generator.next(date));
       }
 
-      // Legacy 8-char ID format (preserved via identifier())
+      // The 8-char short form, sliced from the 64-char id.
       expect(marks.map((m) => `ProvenanceMark(${m.idHex.slice(0, 8)})`)).toEqual(
         EXPECTED_DISPLAY_LOW,
       );
 
-      // New 64-char Mark ID format via toString() (matches rust v0.24+ Display)
+      // toString() carries the full 64-char id, as the reference's Display does.
       for (const m of marks) {
         expect(m.toString()).toBe(`ProvenanceMark(${m.idHex})`);
         expect(m.toString()).toMatch(/^ProvenanceMark\([0-9a-f]{64}\)$/);
@@ -631,16 +627,15 @@ describe("ProvenanceMark", () => {
     it("ProvenanceMarkInfo.toUR() matches mark.toUR() (untagged-CBOR parity)", () => {
       // Rust `ProvenanceMarkInfo::new(mark, ...)` calls `mark.toUR()` —
       // i.e. the {@link UREncodable} implementation, whose payload is
-      // the **untagged** CBOR with type `"provenance"`. Earlier
-      // revisions of this port wrapped tagged CBOR in
-      // `UR.new("provenance", ...)`, which prepended the CBOR tag to
-      // the UR bytewords and broke cross-impl interop. This test
-      // locks the fix in place: the wrapper's UR string must equal the
-      // first Wolf-passphrase Low-res mark's UR string verbatim.
+      // the **untagged** CBOR with type `"provenance"`. Wrapping the
+      // *tagged* CBOR instead would prepend the CBOR tag to the UR
+      // bytewords and break cross-impl interop, so this pins the
+      // wrapper's UR string to equal the first Wolf-passphrase
+      // Low-res mark's UR string verbatim.
       const generator = ProvenanceMarkGenerator.fromPassphrase("low", "Wolf");
       const mark = generator.next(new Date(Date.UTC(2023, 5, 20, 12, 0, 0, 0)));
 
-      const info = ProvenanceMarkInfo.from(mark, { comment: "Test comment" });
+      const info = ProvenanceMarkInfo.from(mark, "Test comment");
 
       // The wrapper's UR string is byte-for-byte the mark's UR string.
       expect(info.ur.toString()).toBe(mark.toUR().toString());
@@ -680,7 +675,7 @@ describe("ProvenanceMark", () => {
       }
 
       // Verify bytewords identifiers
-      expect(marks.map((m) => m.identifier({ prefix: false }))).toEqual(EXPECTED_ID_WORDS_LOW);
+      expect(marks.map((m) => m.idBytewords({ prefix: false }))).toEqual(EXPECTED_ID_WORDS_LOW);
     });
 
     it("should match Rust expected bytemoji identifiers", () => {
@@ -693,9 +688,7 @@ describe("ProvenanceMark", () => {
       }
 
       // Verify bytemoji identifiers
-      expect(marks.map((m) => m.identifier({ style: "bytemoji", prefix: false }))).toEqual(
-        EXPECTED_BYTEMOJI_IDS_LOW,
-      );
+      expect(marks.map((m) => m.idBytemoji({ prefix: false }))).toEqual(EXPECTED_BYTEMOJI_IDS_LOW);
     });
 
     it("should match Rust expected UR strings", () => {
@@ -746,15 +739,15 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
-      // Legacy 8-char ID format (preserved via identifier())
+      // The 8-char short form, sliced from the 64-char id.
       expect(marks.map((m) => `ProvenanceMark(${m.idHex.slice(0, 8)})`)).toEqual(
         EXPECTED_DISPLAY_LOW_WITH_INFO,
       );
 
-      // New 64-char Mark ID format via toString() (matches rust v0.24+ Display)
+      // toString() carries the full 64-char id, as the reference's Display does.
       for (const m of marks) {
         expect(m.toString()).toBe(`ProvenanceMark(${m.idHex})`);
         expect(m.toString()).toMatch(/^ProvenanceMark\([0-9a-f]{64}\)$/);
@@ -791,7 +784,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => `ProvenanceMark(${m.idHex.slice(0, 8)})`)).toEqual(
@@ -810,7 +803,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toDebugString())).toEqual(EXPECTED_DEBUG_MEDIUM_WITH_INFO);
@@ -822,7 +815,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toBytewords())).toEqual(EXPECTED_BYTEWORDS_MEDIUM_WITH_INFO);
@@ -834,10 +827,10 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
-      expect(marks.map((m) => m.identifier({ prefix: false }))).toEqual(
+      expect(marks.map((m) => m.idBytewords({ prefix: false }))).toEqual(
         EXPECTED_ID_WORDS_MEDIUM_WITH_INFO,
       );
     });
@@ -848,10 +841,10 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
-      expect(marks.map((m) => m.identifier({ style: "bytemoji", prefix: false }))).toEqual(
+      expect(marks.map((m) => m.idBytemoji({ prefix: false }))).toEqual(
         EXPECTED_BYTEMOJI_IDS_MEDIUM_WITH_INFO,
       );
     });
@@ -862,7 +855,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toUR().toString())).toEqual(EXPECTED_URS_MEDIUM_WITH_INFO);
@@ -874,7 +867,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       const baseUrl = "https://example.com/validate";
@@ -889,7 +882,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => `ProvenanceMark(${m.idHex.slice(0, 8)})`)).toEqual(
@@ -908,7 +901,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toDebugString())).toEqual(EXPECTED_DEBUG_QUARTILE_WITH_INFO);
@@ -920,7 +913,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toBytewords())).toEqual(EXPECTED_BYTEWORDS_QUARTILE_WITH_INFO);
@@ -932,10 +925,10 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
-      expect(marks.map((m) => m.identifier({ prefix: false }))).toEqual(
+      expect(marks.map((m) => m.idBytewords({ prefix: false }))).toEqual(
         EXPECTED_ID_WORDS_QUARTILE_WITH_INFO,
       );
     });
@@ -946,10 +939,10 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
-      expect(marks.map((m) => m.identifier({ style: "bytemoji", prefix: false }))).toEqual(
+      expect(marks.map((m) => m.idBytemoji({ prefix: false }))).toEqual(
         EXPECTED_BYTEMOJI_IDS_QUARTILE_WITH_INFO,
       );
     });
@@ -960,7 +953,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toUR().toString())).toEqual(EXPECTED_URS_QUARTILE_WITH_INFO);
@@ -972,7 +965,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       const baseUrl = "https://example.com/validate";
@@ -989,7 +982,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => `ProvenanceMark(${m.idHex.slice(0, 8)})`)).toEqual(
@@ -1008,7 +1001,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toDebugString())).toEqual(EXPECTED_DEBUG_HIGH_WITH_INFO);
@@ -1020,7 +1013,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toBytewords())).toEqual(EXPECTED_BYTEWORDS_HIGH_WITH_INFO);
@@ -1032,10 +1025,10 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
-      expect(marks.map((m) => m.identifier({ prefix: false }))).toEqual(
+      expect(marks.map((m) => m.idBytewords({ prefix: false }))).toEqual(
         EXPECTED_ID_WORDS_HIGH_WITH_INFO,
       );
     });
@@ -1046,10 +1039,10 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
-      expect(marks.map((m) => m.identifier({ style: "bytemoji", prefix: false }))).toEqual(
+      expect(marks.map((m) => m.idBytemoji({ prefix: false }))).toEqual(
         EXPECTED_BYTEMOJI_IDS_HIGH_WITH_INFO,
       );
     });
@@ -1060,7 +1053,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       expect(marks.map((m) => m.toUR().toString())).toEqual(EXPECTED_URS_HIGH_WITH_INFO);
@@ -1072,7 +1065,7 @@ describe("ProvenanceMark", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 10; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Lorem ipsum sit dolor amet.") }));
+        marks.push(generator.next(date, cbor("Lorem ipsum sit dolor amet.")));
       }
 
       const baseUrl = "https://example.com/validate";

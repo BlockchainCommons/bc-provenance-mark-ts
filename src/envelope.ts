@@ -15,6 +15,7 @@ import {
 } from "@blockchaincommons/envelope/format";
 import { type Cbor, type SummarizerResult, CborError } from "@blockchaincommons/dcbor";
 import { TAG_PROVENANCE_MARK } from "@blockchaincommons/tags";
+import { ProvenanceMarkError } from "./error.js";
 import { ProvenanceMark } from "./mark.js";
 
 /**
@@ -33,8 +34,15 @@ function markSummarizerIn(context: FormatContext): void {
     (untaggedCbor: Cbor, _flat: boolean): SummarizerResult => {
       try {
         return { ok: true, value: ProvenanceMark.fromUntaggedCbor(untaggedCbor).toString() };
-      } catch {
-        return { ok: false, error: CborError.custom("invalid provenance mark") };
+      } catch (error) {
+        // The decoder's own reason, as the reference's summariser propagates it.
+        const cause = ProvenanceMarkError.isProvenanceMarkError(error) ? error.cause : undefined;
+        const reason = CborError.isCborError(cause)
+          ? cause.message
+          : error instanceof Error
+            ? error.message
+            : String(error);
+        return { ok: false, error: CborError.custom(reason) };
       }
     },
   );

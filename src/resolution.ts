@@ -4,7 +4,7 @@
  * The four resolutions and the field widths each fixes.
  */
 
-import { type Cbor, cbor, expectUnsigned } from "@blockchaincommons/dcbor";
+import { type Cbor, CborError, cbor, expectUnsigned } from "@blockchaincommons/dcbor";
 
 import { ProvenanceMarkError } from "./error.js";
 
@@ -127,24 +127,18 @@ export function infoRangeStart(res: ProvenanceMarkResolution): number {
   return dateBytesRange(res).end;
 }
 
-/** Options naming the resolution a codec works at. */
-export interface ResolutionOptions {
-  /** The resolution. */
-  resolution: ProvenanceMarkResolution;
-}
-
 /**
  * The sequence number as big-endian bytes: two at low resolution (so at
  * most 65,535), four otherwise (at most 2^32 - 1); a u32 like the
  * reference's.
  */
-export function encodeSeq(seq: number, { resolution }: ResolutionOptions): Uint8Array {
+export function serializeSeq(res: ProvenanceMarkResolution, seq: number): Uint8Array {
   if (!Number.isInteger(seq) || seq < 0 || seq > 0xffffffff) {
     throw ProvenanceMarkError.resolution(
       `sequence number must be an integer in 0..4294967295, got ${String(seq)}`,
     );
   }
-  if (seqBytesLength(resolution) === 2) {
+  if (seqBytesLength(res) === 2) {
     if (seq > 0xffff) {
       throw ProvenanceMarkError.resolution(
         `sequence number ${seq} out of range for 2-byte format (max ${0xffff})`,
@@ -156,8 +150,8 @@ export function encodeSeq(seq: number, { resolution }: ResolutionOptions): Uint8
 }
 
 /** The sequence number the bytes carry at the resolution; the length must match. */
-export function decodeSeq(data: Uint8Array, { resolution }: ResolutionOptions): number {
-  const len = seqBytesLength(resolution);
+export function deserializeSeq(res: ProvenanceMarkResolution, data: Uint8Array): number {
+  const len = seqBytesLength(res);
   if (data.length !== len) {
     throw ProvenanceMarkError.resolution(
       `invalid sequence number length: expected 2 or 4 bytes, got ${data.length}`,
@@ -172,7 +166,13 @@ export function resolutionToCbor(res: ProvenanceMarkResolution): Cbor {
   return cbor(resolutionCode(res));
 }
 
-/** The resolution a CBOR unsigned integer names. */
+/**
+ * The resolution a CBOR unsigned integer names, read as the reference's
+ * `u8`: not an unsigned integer is `WrongType`, above 255 `OutOfRange`,
+ * then an unknown wire number is the resolution error.
+ */
 export function resolutionFromCbor(cborValue: Cbor): ProvenanceMarkResolution {
-  return resolutionFromCode(Number(expectUnsigned(cborValue)));
+  const value = expectUnsigned(cborValue);
+  if (value > 255n) throw CborError.outOfRange();
+  return resolutionFromCode(Number(value));
 }
