@@ -7,7 +7,7 @@
       "dependencies": {
         "@blockchaincommons/crypto": "^1.0.0-beta.3",
         "@blockchaincommons/dcbor": "^1.0.0-beta.3",
-        "@blockchaincommons/envelope": "^1.0.0-beta.3",
+        "@blockchaincommons/envelope": "^1.0.0-beta.4",
         "@blockchaincommons/rand": "^1.0.0-beta.3",
         "@blockchaincommons/tags": "^1.0.0-beta.3",
         "@blockchaincommons/uniform-resources": "^1.0.0-beta.3",
@@ -58,7 +58,7 @@
 
     "@blockchaincommons/dcbor": ["@blockchaincommons/dcbor@1.0.0-beta.3", "", {}, "sha512-WMX+A+ohCNl5vbq8jv+8/N+ygmgFG9V2V60dggRa8WfO+Ab/vvhl7W8mMeY9Rm9iSll3CK1q0bSNoWHPWfu9eg=="],
 
-    "@blockchaincommons/envelope": ["@blockchaincommons/envelope@1.0.0-beta.3", "", { "dependencies": { "@blockchaincommons/components": "^1.0.0-beta.3", "@blockchaincommons/crypto": "^1.0.0-beta.3", "@blockchaincommons/dcbor": "^1.0.0-beta.3", "@blockchaincommons/known-values": "^1.0.0-beta.3", "@blockchaincommons/rand": "^1.0.0-beta.3", "@blockchaincommons/sskr": "^1.0.0-beta.3", "@blockchaincommons/tags": "^1.0.0-beta.3", "@blockchaincommons/uniform-resources": "^1.0.0-beta.3" } }, "sha512-UszBixgvDiE8Bq0C5rTEFORicBx5VsIlVSFDsmEMzOjGD2IKRZg2B5u05w4d0XAVrhiACtg+RZN4nklBoy7YZg=="],
+    "@blockchaincommons/envelope": ["@blockchaincommons/envelope@1.0.0-beta.4", "", { "dependencies": { "@blockchaincommons/components": "^1.0.0-beta.4", "@blockchaincommons/crypto": "^1.0.0-beta.3", "@blockchaincommons/dcbor": "^1.0.0-beta.3", "@blockchaincommons/known-values": "^1.0.0-beta.4", "@blockchaincommons/rand": "^1.0.0-beta.3", "@blockchaincommons/sskr": "^1.0.0-beta.3", "@blockchaincommons/tags": "^1.0.0-beta.3", "@blockchaincommons/uniform-resources": "^1.0.0-beta.3" } }, "sha512-6V7B8mwa1Tw9nKjIjgCnZ/V6/r0skBV1nEcjZx4/Wns+yG0D0m29m8f04OXvjzfj995bqTE3hy3B6xgnd5AZ5Q=="],
 
     "@blockchaincommons/known-values": ["@blockchaincommons/known-values@1.0.0-beta.3", "", { "dependencies": { "@blockchaincommons/components": "^1.0.0-beta.3", "@blockchaincommons/dcbor": "^1.0.0-beta.3", "@blockchaincommons/tags": "^1.0.0-beta.3" } }, "sha512-CdBBX+4BXW0PnvQ0WTEABCFUFpwI3kYAjgdcjnWcKjA6IZMpWiGPeWYYeQEihHh0gd8jFcynha7N3fQp+VV6Pw=="],
 
@@ -751,6 +751,10 @@
     "yuku-parser": ["yuku-parser@0.10.2", "", { "dependencies": { "@yuku-toolchain/types": "^0.10.2", "yuku-ast": "^0.10.2" }, "optionalDependencies": { "@yuku-parser/binding-android-arm64": "0.10.2", "@yuku-parser/binding-darwin-arm64": "0.10.2", "@yuku-parser/binding-darwin-x64": "0.10.2", "@yuku-parser/binding-freebsd-x64": "0.10.2", "@yuku-parser/binding-linux-arm-gnu": "0.10.2", "@yuku-parser/binding-linux-arm-musl": "0.10.2", "@yuku-parser/binding-linux-arm64-gnu": "0.10.2", "@yuku-parser/binding-linux-arm64-musl": "0.10.2", "@yuku-parser/binding-linux-x64-gnu": "0.10.2", "@yuku-parser/binding-linux-x64-musl": "0.10.2", "@yuku-parser/binding-win32-arm64": "0.10.2", "@yuku-parser/binding-win32-x64": "0.10.2" } }, "sha512-CgaU0/PPjCAIEZ3WQroosOxTY3eeKldAN3h+vk8pMNz4+jl1CZzBR4pW+K/rRPF112VooCL5FdjJoiMNjDrL2A=="],
 
     "@arethetypeswrong/core/typescript": ["typescript@5.6.1-rc", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-E3b2+1zEFu84jB0YQi9BORDjz9+jGbwwy1Zi3G0LUNw7a7cePUrHMRNy8aPh53nXpkFGVHSxIZo5vKTfYaFiBQ=="],
+
+    "@blockchaincommons/envelope/@blockchaincommons/components": ["@blockchaincommons/components@1.0.0-beta.4", "", { "dependencies": { "@blockchaincommons/crypto": "^1.0.0-beta.3", "@blockchaincommons/dcbor": "^1.0.0-beta.3", "@blockchaincommons/rand": "^1.0.0-beta.3", "@blockchaincommons/sskr": "^1.0.0-beta.3", "@blockchaincommons/tags": "^1.0.0-beta.3", "@blockchaincommons/uniform-resources": "^1.0.0-beta.3", "@noble/curves": "^2.4.0", "@noble/hashes": "^2.4.0", "@noble/post-quantum": "^0.7.1", "@scure/base": "^2.4.0" } }, "sha512-kORUnkYSvG5TEo+6zOQsJTpG6ebj5akPD+tR/DXm283S2rnNfh8X3XV6OX9mX/sPwc9kKbh3/SWrbTn9V4z3XA=="],
+
+    "@blockchaincommons/envelope/@blockchaincommons/known-values": ["@blockchaincommons/known-values@1.0.0-beta.4", "", { "dependencies": { "@blockchaincommons/components": "^1.0.0-beta.4", "@blockchaincommons/dcbor": "^1.0.0-beta.3", "@blockchaincommons/tags": "^1.0.0-beta.3" } }, "sha512-g+rvMOyaos9mqgyr5ntyG7R3FuvVswh2wMePxJ7Vf5rXwtF5Ge8Af2D+bmk//jZSvsyiU/2WITek2TLehThceg=="],
 
     "@eslint-community/eslint-utils/eslint-visitor-keys": ["eslint-visitor-keys@3.4.3", "", {}, "sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag=="],
 
