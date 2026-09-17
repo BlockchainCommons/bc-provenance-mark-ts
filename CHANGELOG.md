@@ -1,11 +1,6 @@
 # Changelog
 
-## 1.0.0-beta.3 - 2026-09-16
-
-The second pass against the Rust reference: every remaining behavioural
-corner the probe found is closed, three API points move to the sibling
-standard, and the repository tooling matches the other packages. The wire
-is unchanged.
+## 1.0.0-beta.3 - 2026-09-17
 
 ### Changed
 
@@ -48,23 +43,6 @@ is unchanged.
   `toBytewords(style?)`, `ProvenanceMarkInfo.from(mark, comment?)`,
   `formatReport(report, format?)`; `NextMarkOptions`, `BytewordsOptions`,
   `MarkInfoOptions` and `FormatReportOptions` are gone.
-
-### Internal
-
-- Vectors: 638 (the seed parser, the info type, disambiguated identifiers,
-  the envelope summariser, out-of-range resolution numbers, the pre-epoch
-  second, invalid URL bases, JSON floats, `hasIssues` on every report,
-  ten more domain cases, 35 URL bases covering every way a query can be
-  written and the reference's outputs given back to `fromUrl`, leap-second
-  and sub-second date strings). Harness: `pending` class, `port-right` rows
-  for the `−1` resolution and the generator's chain-id check, `panic-mapped`
-  `toUrl`. Result: `638 vectors - 587 match, 21 panic-mapped, 28 js-only (J1 1, J3 17, J4 10), 2 port-right, 0 pending, 0 unparsable, 0 MISMATCH`.
-- `RUST_DIVERGENCES.md` restored: the record of every divergence, the
-  JS-only domain, the mapping equivalences and the reference behaviours
-  the port declines to reproduce; the harness README keeps the classes.
-- Scripts in TypeScript under `scripts/tsconfig.json`; workflow actions
-  pinned by SHA; the release publishes `--tag beta` and tags `latest`;
-  dependabot reviewers; `ajv` dropped; `lib` without `DOM`.
 
 ## 1.0.0-beta.2 - 2026-09-16
 

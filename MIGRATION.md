@@ -194,25 +194,3 @@ published as `@bcts/provenance-mark`, into its own Blockchain Commons repository
 +   "@blockchaincommons/provenance-mark": "^1.0.0-beta.1"
   }
 ```
-
-### 2. Version numbering restarts
-
-`@bcts/provenance-mark` versions moved in lockstep with every other package in the
-monorepo, which is why it reached `1.0.0-beta.6`. Each extracted package now
-versions independently and starts again at `1.0.0-beta.1`. A lower version
-number here does **not** mean older code.
-
-### 3. Node and TypeScript floors moved up
-
-| | `@bcts/provenance-mark` | `@blockchaincommons/provenance-mark` |
-|---|---|---|
-| Node | `>= 18` | `>= 22.12` |
-| TypeScript (consumers) | 6.x | `>= 5.7` |
-
-### 4. The IIFE / global-script build is gone
-
-`@bcts/provenance-mark` shipped an additional IIFE bundle exposed through the `browser`
-field. That build is dropped: IIFE entry points cannot share chunks, which forks
-module-level singletons across entry points. Use the ESM entry (`import`) or the
-CJS entry (`require`); both are declared in `exports` and validated in CI by
-`publint` and `@arethetypeswrong/cli`.
