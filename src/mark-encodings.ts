@@ -28,13 +28,13 @@ import {
 import { ProvenanceMarkError } from "./error.js";
 import {
   type ProvenanceMarkResolution,
-  encodeSeq,
+  serializeSeq,
   resolutionCode,
   resolutionFromCbor,
   resolutionFromCode,
   resolutionToCbor,
 } from "./resolution.js";
-import { dateFromIso8601, dateToDisplay, encodeDate } from "./date.js";
+import { dateFromIso8601, dateToDisplay, serializeDate } from "./date.js";
 import { toBase64 } from "./utils.js";
 import {
   type JsonObject,
@@ -210,8 +210,8 @@ export function markFieldsFromJSON(value: unknown): MarkFields {
     throw error;
   }
   try {
-    const seqBytes = encodeSeq(seq, { resolution: res });
-    const dateBytes = encodeDate(date, { resolution: res });
+    const seqBytes = serializeSeq(res, seq);
+    const dateBytes = serializeDate(res, date);
     return { res, key, hash, chainId, seqBytes, dateBytes, infoBytes, seq, date };
   } catch (error) {
     throw customJson(error);

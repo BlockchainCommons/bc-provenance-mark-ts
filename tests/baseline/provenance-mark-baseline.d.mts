@@ -4,7 +4,6 @@ import { Envelope, FormatContext, FormatContext as FormatContext$1 } from "@bloc
 //#region src/error.d.ts
 /**
  * Copyright © 2023-2026 Blockchain Commons, LLC
- * Copyright © 2025-2026 Parity Technologies
  *
  */
 /**
@@ -381,7 +380,6 @@ declare function obfuscate(key: Uint8Array, message: Uint8Array): Uint8Array;
 //#region src/xoshiro256starstar.d.ts
 /**
  * Copyright © 2023-2026 Blockchain Commons, LLC
- * Copyright © 2025-2026 Parity Technologies
  *
  */
 /**

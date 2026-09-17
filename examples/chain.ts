@@ -24,15 +24,19 @@ const generator = ProvenanceMarkGenerator.from({ res: "medium", seed });
 
 // Three marks: the genesis carries no info, the others a text and a map.
 const genesis = generator.next(new Date("2023-06-20T12:00:00Z"));
-const second = generator.next(new Date("2023-06-21T12:00:00Z"), { info: "second work" });
-const third = generator.next(new Date("2023-06-22T12:00:00Z"), {
-  info: new Map([["title", "third work"], ["pages", 12]]),
-});
+const second = generator.next(new Date("2023-06-21T12:00:00Z"), "second work");
+const third = generator.next(
+  new Date("2023-06-22T12:00:00Z"),
+  new Map([
+    ["title", "third work"],
+    ["pages", 12],
+  ]),
+);
 
 for (const mark of [genesis, second, third]) {
   console.log(mark.toDebugString());
-  console.log("  identifier:", mark.identifier({ prefix: true }));
-  console.log("  bytemoji:  ", mark.identifier({ style: "bytemoji" }));
+  console.log("  identifier:", mark.idBytewords({ prefix: true }));
+  console.log("  bytemoji:  ", mark.idBytemoji());
   console.log("  bytewords: ", mark.toBytewords());
   console.log("  ur:        ", mark.toUR().toString());
   console.log("  cbor:      ", mark.toCbor().toString());

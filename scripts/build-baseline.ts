@@ -1,7 +1,7 @@
 /**
  * Build the frozen baseline bundle.
  *
- *   bun scripts/build-baseline.mjs
+ *   bun scripts/build-baseline.ts
  *
  * Bundles src/index.ts as a single ESM file with every @blockchaincommons
  * sibling INLINED, resolving each sibling to ITS frozen baseline bundle
@@ -26,13 +26,13 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const parent = dirname(root);
-const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
-const short = pkg.name.replace("@blockchaincommons/", "");
+const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as { name: string };
+const short: string = pkg.name.replace("@blockchaincommons/", "");
 const outDir = join(root, "tests", "baseline");
 mkdirSync(outDir, { recursive: true });
 
 // Map every sibling to its frozen baseline bundle where available.
-const alias = {};
+const alias: Record<string, string> = {};
 for (const dir of readdirSync(parent)) {
   const bl = join(parent, dir, "tests", "baseline");
   if (!existsSync(bl)) continue;

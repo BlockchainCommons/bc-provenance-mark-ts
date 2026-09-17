@@ -8,7 +8,8 @@
 import { CborDate, CborError } from "@blockchaincommons/dcbor";
 
 import { ProvenanceMarkError } from "./error.js";
-import { type ResolutionOptions, dateBytesLength } from "./resolution.js";
+import { displayDate, displayDateOnly } from "./date-display.js";
+import { type ProvenanceMarkResolution, dateBytesLength } from "./resolution.js";
 
 /** 2001-01-01T00:00:00Z, the epoch of the 4- and 6-byte codecs. */
 const REFERENCE_DATE = Date.UTC(2001, 0, 1, 0, 0, 0, 0);
@@ -26,8 +27,16 @@ function isValidDay(year: number, month: number, day: number): boolean {
   return day <= daysInMonth(year, month);
 }
 
-/** A `Date` that holds a time; `InvalidDate` otherwise. */
-export function expectDate(date: Date): Date {
+/** What every date input accepts: a JS `Date`, or dcbor's `CborDate`. */
+export type DateInput = Date | CborDate;
+
+/**
+ * The `Date` view of a date input: a `CborDate` to the millisecond, a
+ * `Date` as is. Anything else, or a `Date` that holds no time, is
+ * `InvalidDate`.
+ */
+export function expectDate(date: DateInput): Date {
+  if (date instanceof CborDate) return date.toDate();
   if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
     throw ProvenanceMarkError.invalidDate("Invalid date");
   }
@@ -59,9 +68,13 @@ function decode2Bytes(bytes: Uint8Array): Date {
   return new Date(Date.UTC(year, month - 1, day, 0, 0, 0, 0));
 }
 
-/** Four bytes: seconds since 2001-01-01. */
+/**
+ * Four bytes: seconds since 2001-01-01, truncated toward zero as the
+ * reference's `num_seconds()` truncates, so an instant inside the second
+ * before the epoch encodes as the epoch.
+ */
 function encode4Bytes(date: Date): Uint8Array {
-  const seconds = Math.floor((date.getTime() - REFERENCE_DATE) / 1000);
+  const seconds = Math.trunc((date.getTime() - REFERENCE_DATE) / 1000);
   if (seconds < 0 || seconds > 0xffffffff) {
     throw ProvenanceMarkError.dateOutOfRange("seconds value too large for u32");
   }
@@ -104,24 +117,24 @@ function decode6Bytes(bytes: Uint8Array): Date {
 /**
  * The date as the resolution stores it: two bytes (day precision, years
  * 2023 to 2150) at low, four (second precision from 2001) at medium, six
- * (millisecond precision) at quartile and high. A `Date` that holds no
- * time is `InvalidDate`.
+ * (millisecond precision) at quartile and high. A `Date` or a `CborDate`;
+ * a `Date` that holds no time is `InvalidDate`.
  */
-export function encodeDate(date: Date, { resolution }: ResolutionOptions): Uint8Array {
-  expectDate(date);
-  switch (dateBytesLength(resolution)) {
+export function serializeDate(res: ProvenanceMarkResolution, date: DateInput): Uint8Array {
+  const value = expectDate(date);
+  switch (dateBytesLength(res)) {
     case 2:
-      return encode2Bytes(date);
+      return encode2Bytes(value);
     case 4:
-      return encode4Bytes(date);
+      return encode4Bytes(value);
     default:
-      return encode6Bytes(date);
+      return encode6Bytes(value);
   }
 }
 
 /** The date the bytes carry at the resolution; the length must match. */
-export function decodeDate(bytes: Uint8Array, { resolution }: ResolutionOptions): Date {
-  const len = dateBytesLength(resolution);
+export function deserializeDate(res: ProvenanceMarkResolution, bytes: Uint8Array): Date {
+  const len = dateBytesLength(res);
   if (bytes.length !== len) {
     throw ProvenanceMarkError.resolution(
       `invalid date length: expected 2, 4, or 6 bytes, got ${bytes.length}`,
@@ -151,7 +164,7 @@ export function rangeOfDaysInMonth(year: number, month: number): DayRange {
 }
 
 /** ISO 8601 with milliseconds, as `Date.toISOString`. */
-export function dateToIso8601(date: Date): string {
+export function dateToIso8601(date: DateInput): string {
   return expectDate(date).toISOString();
 }
 
@@ -173,12 +186,8 @@ export function dateFromIso8601(str: string): Date {
 }
 
 /** `YYYY-MM-DD` in UTC. */
-export function dateToDateString(date: Date): string {
-  expectDate(date);
-  const year = date.getUTCFullYear();
-  const month = (date.getUTCMonth() + 1).toString().padStart(2, "0");
-  const day = date.getUTCDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+export function dateToDateString(date: DateInput): string {
+  return displayDateOnly(expectDate(date));
 }
 
 /**
@@ -188,10 +197,6 @@ export function dateToDateString(date: Date): string {
  * package emits (debug strings, JSON, validation issues, summaries) is
  * this one.
  */
-export function dateToDisplay(date: Date): string {
-  expectDate(date);
-  const hasTime =
-    date.getUTCHours() !== 0 || date.getUTCMinutes() !== 0 || date.getUTCSeconds() !== 0;
-  if (!hasTime) return dateToDateString(date);
-  return date.toISOString().replace(/\.\d{3}Z$/, "Z");
+export function dateToDisplay(date: DateInput): string {
+  return displayDate(expectDate(date));
 }

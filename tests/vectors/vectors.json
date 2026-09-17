@@ -1,5 +1,5 @@
 {
- "count": 512,
+ "count": 638,
  "vectors": [
   {
    "name": "generator low \"Wolf\" ×10",
@@ -3021,7 +3021,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"ur:provenance/lfaegdlptkjyjtvssfctskyakghscwvemtylqzjlvssnbt\",\"ur:provenance/lfaegdsgdifpbewkzejpimhtsbmtkkgsvslerkzsutcnvw\",\"ur:provenance/lfaegduehhryvefhjtiddtselnwssbemurwkptlbfmpkny\",\"ur:provenance/lfaegdbseevyrpfesfwpvdhkdraozmgydnwlttsfwscplr\",\"ur:provenance/lfaegdgyemdwoeutynsfjkcleskobtcxnyndcsdlnehglk\",\"ur:provenance/lfaegdpyswpkiettmysgveonuestpsbbfedeaevebbwyhk\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"ur:provenance/lfaegdlptkjyjtvssfctskyakghscwvemtylqzjlvssnbt\",\"ur:provenance/lfaegdsgdifpbewkzejpimhtsbmtkkgsvslerkzsutcnvw\",\"ur:provenance/lfaegduehhryvefhjtiddtselnwssbemurwkptlbfmpkny\",\"ur:provenance/lfaegdbseevyrpfesfwpvdhkdraozmgydnwlttsfwscplr\",\"ur:provenance/lfaegdgyemdwoeutynsfjkcleskobtcxnyndcsdlnehglk\",\"ur:provenance/lfaegdpyswpkiettmysgveonuestpsbbfedeaevebbwyhk\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdlptkjyjtvssfctskyakghscwvemtylqzjlvssnbt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdsgdifpbewkzejpimhtsbmtkkgsvslerkzsutcnvw\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegduehhryvefhjtiddtselnwssbemurwkptlbfmpkny\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdbseevyrpfesfwpvdhkdraozmgydnwlttsfwscplr\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgyemdwoeutynsfjkcleskobtcxnyndcsdlnehglk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdpyswpkiettmysgveonuestpsbbfedeaevebbwyhk\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"ur:provenance/lfaegdlptkjyjtvssfctskyakghscwvemtylqzjlvssnbt\",\"ur:provenance/lfaegdsgdifpbewkzejpimhtsbmtkkgsvslerkzsutcnvw\",\"ur:provenance/lfaegduehhryvefhjtiddtselnwssbemurwkptlbfmpkny\",\"ur:provenance/lfaegdbseevyrpfesfwpvdhkdraozmgydnwlttsfwscplr\",\"ur:provenance/lfaegdgyemdwoeutynsfjkcleskobtcxnyndcsdlnehglk\",\"ur:provenance/lfaegdpyswpkiettmysgveonuestpsbbfedeaevebbwyhk\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"ur:provenance/lfaegdlptkjyjtvssfctskyakghscwvemtylqzjlvssnbt\",\"ur:provenance/lfaegdsgdifpbewkzejpimhtsbmtkkgsvslerkzsutcnvw\",\"ur:provenance/lfaegduehhryvefhjtiddtselnwssbemurwkptlbfmpkny\",\"ur:provenance/lfaegdbseevyrpfesfwpvdhkdraozmgydnwlttsfwscplr\",\"ur:provenance/lfaegdgyemdwoeutynsfjkcleskobtcxnyndcsdlnehglk\",\"ur:provenance/lfaegdpyswpkiettmysgveonuestpsbbfedeaevebbwyhk\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdlptkjyjtvssfctskyakghscwvemtylqzjlvssnbt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdsgdifpbewkzejpimhtsbmtkkgsvslerkzsutcnvw\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegduehhryvefhjtiddtselnwssbemurwkptlbfmpkny\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdbseevyrpfesfwpvdhkdraozmgydnwlttsfwscplr\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgyemdwoeutynsfjkcleskobtcxnyndcsdlnehglk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdpyswpkiettmysgveonuestpsbbfedeaevebbwyhk\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 3 090bf2f8b96d",
@@ -3036,7 +3036,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 3 090bf2f8b96d",
@@ -3051,7 +3051,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 5bdcec81 (genesis mark)\n  1: 477e3ce6\n  3: 41c525a1 (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 5bdcec81 (genesis mark)\n  1: 477e3ce6\n  3: 41c525a1 (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate low 3 558dbfc642f5",
@@ -3066,7 +3066,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: 477e3ce6\n  2: 3e5da986\n  3: 41c525a1\n===\n{\"marks\":[\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"issues\":[]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: 477e3ce6\n  2: 3e5da986\n  3: 41c525a1\n===\n{\"marks\":[\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\"issues\":[]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate low 3 090bf2f8b96d",
@@ -3081,7 +3081,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 3 536b29684dff",
@@ -3096,7 +3096,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 2+2 090bf2f8b96d",
@@ -3114,7 +3114,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 0 ",
@@ -3125,7 +3125,7 @@
      []
     ]
    },
-   "expect": "\n===\n{\"marks\":[],\"chains\":[]}"
+   "expect": "\n===\n{\"marks\":[],\"chains\":[]}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 1 090bf2f8b96d",
@@ -3138,7 +3138,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\"],\"chains\":[{\"chain_id\":\"090bf2f8\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 10 090bf2f8b55b",
@@ -3160,7 +3160,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"ur:provenance/lfadhdcxbseevyrpgyemdwoerogwtdqdoxmosrdlkooncnkgrnbzpauevtsrmyrhbekidpttindecsgw\",\"ur:provenance/lfadhdcxpyswpkiedehsolcychfzcaiatkiardteuyckgmaxzcbyiovlrhlgynhygtckuofhiokpbbnb\",\"ur:provenance/lfadhdcxfwstgysaaddpwfjyryeynnlusgktwyltpttkghdkpyhshhwswmbkktcybafhtsbdhypejyfs\",\"ur:provenance/lfadhdcxvagmlkpmntmundgyvdnlecaoiekbkgkiuthtbzgensguvlhyfmfslohpqzaxpkfegmdahebg\",\"ur:provenance/lfadhdcxhyksutdeluesbzytzohdplcycltydkknloqznettjegrrybwtldkcnsnwzsblnzeimttfxlb\",\"ur:provenance/lfadhdcxlbstprkorobeveztiywzdmuykbsatdpfrdcxytzclfsnzofpdkhemoreztjltybgbgvaltdn\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"ur:provenance/lfadhdcxbseevyrpgyemdwoerogwtdqdoxmosrdlkooncnkgrnbzpauevtsrmyrhbekidpttindecsgw\",\"ur:provenance/lfadhdcxpyswpkiedehsolcychfzcaiatkiardteuyckgmaxzcbyiovlrhlgynhygtckuofhiokpbbnb\",\"ur:provenance/lfadhdcxfwstgysaaddpwfjyryeynnlusgktwyltpttkghdkpyhshhwswmbkktcybafhtsbdhypejyfs\",\"ur:provenance/lfadhdcxvagmlkpmntmundgyvdnlecaoiekbkgkiuthtbzgensguvlhyfmfslohpqzaxpkfegmdahebg\",\"ur:provenance/lfadhdcxhyksutdeluesbzytzohdplcycltydkknloqznettjegrrybwtldkcnsnwzsblnzeimttfxlb\",\"ur:provenance/lfadhdcxlbstprkorobeveztiywzdmuykbsatdpfrdcxytzclfsnzofpdkhemoreztjltybgbgvaltdn\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxbseevyrpgyemdwoerogwtdqdoxmosrdlkooncnkgrnbzpauevtsrmyrhbekidpttindecsgw\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxpyswpkiedehsolcychfzcaiatkiardteuyckgmaxzcbyiovlrhlgynhygtckuofhiokpbbnb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxfwstgysaaddpwfjyryeynnlusgktwyltpttkghdkpyhshhwswmbkktcybafhtsbdhypejyfs\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxvagmlkpmntmundgyvdnlecaoiekbkgkiuthtbzgensguvlhyfmfslohpqzaxpkfegmdahebg\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxhyksutdeluesbzytzohdplcycltydkknloqznettjegrrybwtldkcnsnwzsblnzeimttfxlb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxlbstprkorobeveztiywzdmuykbsatdpfrdcxytzclfsnzofpdkhemoreztjltybgbgvaltdn\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"ur:provenance/lfadhdcxbseevyrpgyemdwoerogwtdqdoxmosrdlkooncnkgrnbzpauevtsrmyrhbekidpttindecsgw\",\"ur:provenance/lfadhdcxpyswpkiedehsolcychfzcaiatkiardteuyckgmaxzcbyiovlrhlgynhygtckuofhiokpbbnb\",\"ur:provenance/lfadhdcxfwstgysaaddpwfjyryeynnlusgktwyltpttkghdkpyhshhwswmbkktcybafhtsbdhypejyfs\",\"ur:provenance/lfadhdcxvagmlkpmntmundgyvdnlecaoiekbkgkiuthtbzgensguvlhyfmfslohpqzaxpkfegmdahebg\",\"ur:provenance/lfadhdcxhyksutdeluesbzytzohdplcycltydkknloqznettjegrrybwtldkcnsnwzsblnzeimttfxlb\",\"ur:provenance/lfadhdcxlbstprkorobeveztiywzdmuykbsatdpfrdcxytzclfsnzofpdkhemoreztjltybgbgvaltdn\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"ur:provenance/lfadhdcxbseevyrpgyemdwoerogwtdqdoxmosrdlkooncnkgrnbzpauevtsrmyrhbekidpttindecsgw\",\"ur:provenance/lfadhdcxpyswpkiedehsolcychfzcaiatkiardteuyckgmaxzcbyiovlrhlgynhygtckuofhiokpbbnb\",\"ur:provenance/lfadhdcxfwstgysaaddpwfjyryeynnlusgktwyltpttkghdkpyhshhwswmbkktcybafhtsbdhypejyfs\",\"ur:provenance/lfadhdcxvagmlkpmntmundgyvdnlecaoiekbkgkiuthtbzgensguvlhyfmfslohpqzaxpkfegmdahebg\",\"ur:provenance/lfadhdcxhyksutdeluesbzytzohdplcycltydkknloqznettjegrrybwtldkcnsnwzsblnzeimttfxlb\",\"ur:provenance/lfadhdcxlbstprkorobeveztiywzdmuykbsatdpfrdcxytzclfsnzofpdkhemoreztjltybgbgvaltdn\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxbseevyrpgyemdwoerogwtdqdoxmosrdlkooncnkgrnbzpauevtsrmyrhbekidpttindecsgw\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxpyswpkiedehsolcychfzcaiatkiardteuyckgmaxzcbyiovlrhlgynhygtckuofhiokpbbnb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxfwstgysaaddpwfjyryeynnlusgktwyltpttkghdkpyhshhwswmbkktcybafhtsbdhypejyfs\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxvagmlkpmntmundgyvdnlecaoiekbkgkiuthtbzgensguvlhyfmfslohpqzaxpkfegmdahebg\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxhyksutdeluesbzytzohdplcycltydkknloqznettjegrrybwtldkcnsnwzsblnzeimttfxlb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxlbstprkorobeveztiywzdmuykbsatdpfrdcxytzclfsnzofpdkhemoreztjltybgbgvaltdn\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 3 090bf2f8b55b",
@@ -3175,7 +3175,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 3 090bf2f8b55b",
@@ -3190,7 +3190,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 188d6bd9 (genesis mark)\n  1: a5e79a0c\n  3: 161820ef (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 188d6bd9 (genesis mark)\n  1: a5e79a0c\n  3: 161820ef (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate medium 3 558dbfc6536b",
@@ -3205,7 +3205,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: a5e79a0c\n  2: f0580498\n  3: 161820ef\n===\n{\"marks\":[\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"issues\":[]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: a5e79a0c\n  2: f0580498\n  3: 161820ef\n===\n{\"marks\":[\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\"issues\":[]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate medium 3 090bf2f8b55b",
@@ -3220,7 +3220,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 3 75bb47d085cf",
@@ -3235,7 +3235,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 2+2 090bf2f8b55b",
@@ -3253,7 +3253,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 0 ",
@@ -3264,7 +3264,7 @@
      []
     ]
    },
-   "expect": "\n===\n{\"marks\":[],\"chains\":[]}"
+   "expect": "\n===\n{\"marks\":[],\"chains\":[]}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 1 090bf2f8b55b",
@@ -3277,7 +3277,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 10 090bf2f8b55b",
@@ -3299,7 +3299,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"ur:provenance/lfaohdftvagmlkpmntmundgyhyksutdeluesbzytzejztbdsprwnmnvtwkesdtktoxvaftinlpdpsngrfrpdkngmmhsrfwchspmocpfwjpzeolutmnrptiaomowlfrchfzax\",\"ur:provenance/lfaohdftlbstprkorobeveztbbosdrskfrhhtareiemnsrgrvtnbuewplbmopmiovdiernahhnkkenzeutgteypafxvweeeegtlaztmdaxwllohgfmwsttresehskijyosfn\",\"ur:provenance/lfaohdftfyhlrssedsgwtbuemdresglkambndkrdwkfymwcxfxbkjsaofwprlrjskbdmmkrebsieolpklfnnspcsgmkgwpksgsfpbdnskgkkahfngukkeeesfnpetbcfsase\",\"ur:provenance/lfaohdftcapmyapkimdndlolhgztknaodattlobabyytmtcejssrtkolwfbtsbhdeemoctfhhtmsgajemncksehpbtkkenlrielgvscfuttlhecxlrylwtcpnnaaidchvddy\",\"ur:provenance/lfaohdfthkfgrezceyvwloskmumoemgdfllgjytyaekkididfevadnuoternttjpbykicksahebyosbahffxfegykpmdsteejpjnuojoaaoswksevtaxsgaahpeswtswgmps\",\"ur:provenance/lfaohdftfgnsrysgbgmydplptpaxvscwfmbaftkifnrnlkhdcypdnlgmfxzsrpkiemttfeengyfmbgprplctswbyzezceshfyaeyvlpabwldrlsfwmuycsaylbbasabsktgs\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"ur:provenance/lfaohdftvagmlkpmntmundgyhyksutdeluesbzytzejztbdsprwnmnvtwkesdtktoxvaftinlpdpsngrfrpdkngmmhsrfwchspmocpfwjpzeolutmnrptiaomowlfrchfzax\",\"ur:provenance/lfaohdftlbstprkorobeveztbbosdrskfrhhtareiemnsrgrvtnbuewplbmopmiovdiernahhnkkenzeutgteypafxvweeeegtlaztmdaxwllohgfmwsttresehskijyosfn\",\"ur:provenance/lfaohdftfyhlrssedsgwtbuemdresglkambndkrdwkfymwcxfxbkjsaofwprlrjskbdmmkrebsieolpklfnnspcsgmkgwpksgsfpbdnskgkkahfngukkeeesfnpetbcfsase\",\"ur:provenance/lfaohdftcapmyapkimdndlolhgztknaodattlobabyytmtcejssrtkolwfbtsbhdeemoctfhhtmsgajemncksehpbtkkenlrielgvscfuttlhecxlrylwtcpnnaaidchvddy\",\"ur:provenance/lfaohdfthkfgrezceyvwloskmumoemgdfllgjytyaekkididfevadnuoternttjpbykicksahebyosbahffxfegykpmdsteejpjnuojoaaoswksevtaxsgaahpeswtswgmps\",\"ur:provenance/lfaohdftfgnsrysgbgmydplptpaxvscwfmbaftkifnrnlkhdcypdnlgmfxzsrpkiemttfeengyfmbgprplctswbyzezceshfyaeyvlpabwldrlsfwmuycsaylbbasabsktgs\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftvagmlkpmntmundgyhyksutdeluesbzytzejztbdsprwnmnvtwkesdtktoxvaftinlpdpsngrfrpdkngmmhsrfwchspmocpfwjpzeolutmnrptiaomowlfrchfzax\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftlbstprkorobeveztbbosdrskfrhhtareiemnsrgrvtnbuewplbmopmiovdiernahhnkkenzeutgteypafxvweeeegtlaztmdaxwllohgfmwsttresehskijyosfn\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftfyhlrssedsgwtbuemdresglkambndkrdwkfymwcxfxbkjsaofwprlrjskbdmmkrebsieolpklfnnspcsgmkgwpksgsfpbdnskgkkahfngukkeeesfnpetbcfsase\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftcapmyapkimdndlolhgztknaodattlobabyytmtcejssrtkolwfbtsbhdeemoctfhhtmsgajemncksehpbtkkenlrielgvscfuttlhecxlrylwtcpnnaaidchvddy\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdfthkfgrezceyvwloskmumoemgdfllgjytyaekkididfevadnuoternttjpbykicksahebyosbahffxfegykpmdsteejpjnuojoaaoswksevtaxsgaahpeswtswgmps\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftfgnsrysgbgmydplptpaxvscwfmbaftkifnrnlkhdcypdnlgmfxzsrpkiemttfeengyfmbgprplctswbyzezceshfyaeyvlpabwldrlsfwmuycsaylbbasabsktgs\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"ur:provenance/lfaohdftvagmlkpmntmundgyhyksutdeluesbzytzejztbdsprwnmnvtwkesdtktoxvaftinlpdpsngrfrpdkngmmhsrfwchspmocpfwjpzeolutmnrptiaomowlfrchfzax\",\"ur:provenance/lfaohdftlbstprkorobeveztbbosdrskfrhhtareiemnsrgrvtnbuewplbmopmiovdiernahhnkkenzeutgteypafxvweeeegtlaztmdaxwllohgfmwsttresehskijyosfn\",\"ur:provenance/lfaohdftfyhlrssedsgwtbuemdresglkambndkrdwkfymwcxfxbkjsaofwprlrjskbdmmkrebsieolpklfnnspcsgmkgwpksgsfpbdnskgkkahfngukkeeesfnpetbcfsase\",\"ur:provenance/lfaohdftcapmyapkimdndlolhgztknaodattlobabyytmtcejssrtkolwfbtsbhdeemoctfhhtmsgajemncksehpbtkkenlrielgvscfuttlhecxlrylwtcpnnaaidchvddy\",\"ur:provenance/lfaohdfthkfgrezceyvwloskmumoemgdfllgjytyaekkididfevadnuoternttjpbykicksahebyosbahffxfegykpmdsteejpjnuojoaaoswksevtaxsgaahpeswtswgmps\",\"ur:provenance/lfaohdftfgnsrysgbgmydplptpaxvscwfmbaftkifnrnlkhdcypdnlgmfxzsrpkiemttfeengyfmbgprplctswbyzezceshfyaeyvlpabwldrlsfwmuycsaylbbasabsktgs\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"ur:provenance/lfaohdftvagmlkpmntmundgyhyksutdeluesbzytzejztbdsprwnmnvtwkesdtktoxvaftinlpdpsngrfrpdkngmmhsrfwchspmocpfwjpzeolutmnrptiaomowlfrchfzax\",\"ur:provenance/lfaohdftlbstprkorobeveztbbosdrskfrhhtareiemnsrgrvtnbuewplbmopmiovdiernahhnkkenzeutgteypafxvweeeegtlaztmdaxwllohgfmwsttresehskijyosfn\",\"ur:provenance/lfaohdftfyhlrssedsgwtbuemdresglkambndkrdwkfymwcxfxbkjsaofwprlrjskbdmmkrebsieolpklfnnspcsgmkgwpksgsfpbdnskgkkahfngukkeeesfnpetbcfsase\",\"ur:provenance/lfaohdftcapmyapkimdndlolhgztknaodattlobabyytmtcejssrtkolwfbtsbhdeemoctfhhtmsgajemncksehpbtkkenlrielgvscfuttlhecxlrylwtcpnnaaidchvddy\",\"ur:provenance/lfaohdfthkfgrezceyvwloskmumoemgdfllgjytyaekkididfevadnuoternttjpbykicksahebyosbahffxfegykpmdsteejpjnuojoaaoswksevtaxsgaahpeswtswgmps\",\"ur:provenance/lfaohdftfgnsrysgbgmydplptpaxvscwfmbaftkifnrnlkhdcypdnlgmfxzsrpkiemttfeengyfmbgprplctswbyzezceshfyaeyvlpabwldrlsfwmuycsaylbbasabsktgs\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftvagmlkpmntmundgyhyksutdeluesbzytzejztbdsprwnmnvtwkesdtktoxvaftinlpdpsngrfrpdkngmmhsrfwchspmocpfwjpzeolutmnrptiaomowlfrchfzax\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftlbstprkorobeveztbbosdrskfrhhtareiemnsrgrvtnbuewplbmopmiovdiernahhnkkenzeutgteypafxvweeeegtlaztmdaxwllohgfmwsttresehskijyosfn\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftfyhlrssedsgwtbuemdresglkambndkrdwkfymwcxfxbkjsaofwprlrjskbdmmkrebsieolpklfnnspcsgmkgwpksgsfpbdnskgkkahfngukkeeesfnpetbcfsase\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftcapmyapkimdndlolhgztknaodattlobabyytmtcejssrtkolwfbtsbhdeemoctfhhtmsgajemncksehpbtkkenlrielgvscfuttlhecxlrylwtcpnnaaidchvddy\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdfthkfgrezceyvwloskmumoemgdfllgjytyaekkididfevadnuoternttjpbykicksahebyosbahffxfegykpmdsteejpjnuojoaaoswksevtaxsgaahpeswtswgmps\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftfgnsrysgbgmydplptpaxvscwfmbaftkifnrnlkhdcypdnlgmfxzsrpkiemttfeengyfmbgprplctswbyzezceshfyaeyvlpabwldrlsfwmuycsaylbbasabsktgs\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 3 090bf2f8b55b",
@@ -3314,7 +3314,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 3 090bf2f8b55b",
@@ -3329,7 +3329,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 4a0738a3 (genesis mark)\n  1: d95dc357\n  3: 706fada0 (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 4a0738a3 (genesis mark)\n  1: d95dc357\n  3: 706fada0 (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate quartile 3 558dbfc6536b",
@@ -3344,7 +3344,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: d95dc357\n  2: a427f3d2\n  3: 706fada0\n===\n{\"marks\":[\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"issues\":[]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: d95dc357\n  2: a427f3d2\n  3: 706fada0\n===\n{\"marks\":[\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\"issues\":[]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate quartile 3 090bf2f8b55b",
@@ -3359,7 +3359,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 3 ca274110de5c",
@@ -3374,7 +3374,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 2+2 090bf2f8b55b",
@@ -3392,7 +3392,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 0 ",
@@ -3403,7 +3403,7 @@
      []
     ]
    },
-   "expect": "\n===\n{\"marks\":[],\"chains\":[]}"
+   "expect": "\n===\n{\"marks\":[],\"chains\":[]}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 1 090bf2f8b55b",
@@ -3416,7 +3416,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 10 090bf2f8b55b",
@@ -3438,7 +3438,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"ur:provenance/lfaxhdimcapmyapkimdndlolhgztknaodattlobahkfgrezceyvwloskmumoemgdfllgjytyzsgoyngewnfyhglkswotcxdadyvytodlpezmkskszomkckptkbrpotlygenlsgptcngowktbhhmuvoeomwhnvaskdrpmgonlsnytltinoydsjpaeiabdzsdwoxcwhdzsmotosbjytdtpvewnldmyoxbkntwy\",\"ur:provenance/lfaxhdimfgnsrysgbgmydplptpaxvscwfmbaftkiiewnhkbyvylpfwbewshlcwcphsgecxamgrvtlabdtigwktfwfgglwslbwswtplrdsbtpaydlmhvajprezcntbsjkdelnsscnwkgdtljkdkihsbcybbfwvoglbgjzoxhpmkaxprkshtrtinwlswgmldosbagsyktofnhswldrsrdikidkbywlisswbkgm\",\"ur:provenance/lfaxhdimfgredtgroekskbtajnsebskkotuedelohlemoluoaslyuooefzvdwneyglmwonmkdpvegesntogrurstmoimahbgehjkknmkrkgdnszoonfxdesgvlkepdfwcfdkttgtjottyauronbezmkpnnfhvoisttqdpruejlmncsuejneylabygljzhsseghrdwdcacwgudmhpldyktimyregtmsgyrhsa\",\"ur:provenance/lfaxhdimdmgolbwdfrsehytyuelrmysomonyrhpfhkzskidyoyfxjecttaolrffstyrtleamnleebscazmytmuindrgojontmoeyctkndavszmbtwtjziojyfdrpttfyknchproypdlkmocxnngdoykiiybegdrpkbhgueihamntbdvsswhgfxkkstpygroyaxfybgdngotimdgmjsmnhynbzthyjyaydyrf\",\"ur:provenance/lfaxhdimguonyliaclbwnnytwnjyprkgayleiysslaehdevtnnqzsrtakeonctbnenntsgiavwmtghwlhdkihphdnyaasntldwpysgdpmsrdrkghhhvspttssfesrpemsfjymyzedeutjlvwftjnghbywmjyataosftehkntntolenprchihguwtlywpbgpkosahktkthpseldzeoywsiaftwypkbklydshk\",\"ur:provenance/lfaxhdimfmasgykogmecgduyhyoxfgpeiygwwdrojnrdecuyzccmluksvwldnlndasosaowmgsbtcwlnaxndvyadpakkesmujtskosaerylyecdkckgwoejolpbzbwdiylaehdcypmbzjnwdflpthluykptlselfynssnepyjzctzcfdfgskpfdmrohgamttvebdrtisoettdmwecwjzdkqdpkbyadtnmute\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"ur:provenance/lfaxhdimcapmyapkimdndlolhgztknaodattlobahkfgrezceyvwloskmumoemgdfllgjytyzsgoyngewnfyhglkswotcxdadyvytodlpezmkskszomkckptkbrpotlygenlsgptcngowktbhhmuvoeomwhnvaskdrpmgonlsnytltinoydsjpaeiabdzsdwoxcwhdzsmotosbjytdtpvewnldmyoxbkntwy\",\"ur:provenance/lfaxhdimfgnsrysgbgmydplptpaxvscwfmbaftkiiewnhkbyvylpfwbewshlcwcphsgecxamgrvtlabdtigwktfwfgglwslbwswtplrdsbtpaydlmhvajprezcntbsjkdelnsscnwkgdtljkdkihsbcybbfwvoglbgjzoxhpmkaxprkshtrtinwlswgmldosbagsyktofnhswldrsrdikidkbywlisswbkgm\",\"ur:provenance/lfaxhdimfgredtgroekskbtajnsebskkotuedelohlemoluoaslyuooefzvdwneyglmwonmkdpvegesntogrurstmoimahbgehjkknmkrkgdnszoonfxdesgvlkepdfwcfdkttgtjottyauronbezmkpnnfhvoisttqdpruejlmncsuejneylabygljzhsseghrdwdcacwgudmhpldyktimyregtmsgyrhsa\",\"ur:provenance/lfaxhdimdmgolbwdfrsehytyuelrmysomonyrhpfhkzskidyoyfxjecttaolrffstyrtleamnleebscazmytmuindrgojontmoeyctkndavszmbtwtjziojyfdrpttfyknchproypdlkmocxnngdoykiiybegdrpkbhgueihamntbdvsswhgfxkkstpygroyaxfybgdngotimdgmjsmnhynbzthyjyaydyrf\",\"ur:provenance/lfaxhdimguonyliaclbwnnytwnjyprkgayleiysslaehdevtnnqzsrtakeonctbnenntsgiavwmtghwlhdkihphdnyaasntldwpysgdpmsrdrkghhhvspttssfesrpemsfjymyzedeutjlvwftjnghbywmjyataosftehkntntolenprchihguwtlywpbgpkosahktkthpseldzeoywsiaftwypkbklydshk\",\"ur:provenance/lfaxhdimfmasgykogmecgduyhyoxfgpeiygwwdrojnrdecuyzccmluksvwldnlndasosaowmgsbtcwlnaxndvyadpakkesmujtskosaerylyecdkckgwoejolpbzbwdiylaehdcypmbzjnwdflpthluykptlselfynssnepyjzctzcfdfgskpfdmrohgamttvebdrtisoettdmwecwjzdkqdpkbyadtnmute\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimcapmyapkimdndlolhgztknaodattlobahkfgrezceyvwloskmumoemgdfllgjytyzsgoyngewnfyhglkswotcxdadyvytodlpezmkskszomkckptkbrpotlygenlsgptcngowktbhhmuvoeomwhnvaskdrpmgonlsnytltinoydsjpaeiabdzsdwoxcwhdzsmotosbjytdtpvewnldmyoxbkntwy\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimfgnsrysgbgmydplptpaxvscwfmbaftkiiewnhkbyvylpfwbewshlcwcphsgecxamgrvtlabdtigwktfwfgglwslbwswtplrdsbtpaydlmhvajprezcntbsjkdelnsscnwkgdtljkdkihsbcybbfwvoglbgjzoxhpmkaxprkshtrtinwlswgmldosbagsyktofnhswldrsrdikidkbywlisswbkgm\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimfgredtgroekskbtajnsebskkotuedelohlemoluoaslyuooefzvdwneyglmwonmkdpvegesntogrurstmoimahbgehjkknmkrkgdnszoonfxdesgvlkepdfwcfdkttgtjottyauronbezmkpnnfhvoisttqdpruejlmncsuejneylabygljzhsseghrdwdcacwgudmhpldyktimyregtmsgyrhsa\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimdmgolbwdfrsehytyuelrmysomonyrhpfhkzskidyoyfxjecttaolrffstyrtleamnleebscazmytmuindrgojontmoeyctkndavszmbtwtjziojyfdrpttfyknchproypdlkmocxnngdoykiiybegdrpkbhgueihamntbdvsswhgfxkkstpygroyaxfybgdngotimdgmjsmnhynbzthyjyaydyrf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimguonyliaclbwnnytwnjyprkgayleiysslaehdevtnnqzsrtakeonctbnenntsgiavwmtghwlhdkihphdnyaasntldwpysgdpmsrdrkghhhvspttssfesrpemsfjymyzedeutjlvwftjnghbywmjyataosftehkntntolenprchihguwtlywpbgpkosahktkthpseldzeoywsiaftwypkbklydshk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimfmasgykogmecgduyhyoxfgpeiygwwdrojnrdecuyzccmluksvwldnlndasosaowmgsbtcwlnaxndvyadpakkesmujtskosaerylyecdkckgwoejolpbzbwdiylaehdcypmbzjnwdflpthluykptlselfynssnepyjzctzcfdfgskpfdmrohgamttvebdrtisoettdmwecwjzdkqdpkbyadtnmute\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"ur:provenance/lfaxhdimcapmyapkimdndlolhgztknaodattlobahkfgrezceyvwloskmumoemgdfllgjytyzsgoyngewnfyhglkswotcxdadyvytodlpezmkskszomkckptkbrpotlygenlsgptcngowktbhhmuvoeomwhnvaskdrpmgonlsnytltinoydsjpaeiabdzsdwoxcwhdzsmotosbjytdtpvewnldmyoxbkntwy\",\"ur:provenance/lfaxhdimfgnsrysgbgmydplptpaxvscwfmbaftkiiewnhkbyvylpfwbewshlcwcphsgecxamgrvtlabdtigwktfwfgglwslbwswtplrdsbtpaydlmhvajprezcntbsjkdelnsscnwkgdtljkdkihsbcybbfwvoglbgjzoxhpmkaxprkshtrtinwlswgmldosbagsyktofnhswldrsrdikidkbywlisswbkgm\",\"ur:provenance/lfaxhdimfgredtgroekskbtajnsebskkotuedelohlemoluoaslyuooefzvdwneyglmwonmkdpvegesntogrurstmoimahbgehjkknmkrkgdnszoonfxdesgvlkepdfwcfdkttgtjottyauronbezmkpnnfhvoisttqdpruejlmncsuejneylabygljzhsseghrdwdcacwgudmhpldyktimyregtmsgyrhsa\",\"ur:provenance/lfaxhdimdmgolbwdfrsehytyuelrmysomonyrhpfhkzskidyoyfxjecttaolrffstyrtleamnleebscazmytmuindrgojontmoeyctkndavszmbtwtjziojyfdrpttfyknchproypdlkmocxnngdoykiiybegdrpkbhgueihamntbdvsswhgfxkkstpygroyaxfybgdngotimdgmjsmnhynbzthyjyaydyrf\",\"ur:provenance/lfaxhdimguonyliaclbwnnytwnjyprkgayleiysslaehdevtnnqzsrtakeonctbnenntsgiavwmtghwlhdkihphdnyaasntldwpysgdpmsrdrkghhhvspttssfesrpemsfjymyzedeutjlvwftjnghbywmjyataosftehkntntolenprchihguwtlywpbgpkosahktkthpseldzeoywsiaftwypkbklydshk\",\"ur:provenance/lfaxhdimfmasgykogmecgduyhyoxfgpeiygwwdrojnrdecuyzccmluksvwldnlndasosaowmgsbtcwlnaxndvyadpakkesmujtskosaerylyecdkckgwoejolpbzbwdiylaehdcypmbzjnwdflpthluykptlselfynssnepyjzctzcfdfgskpfdmrohgamttvebdrtisoettdmwecwjzdkqdpkbyadtnmute\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"ur:provenance/lfaxhdimcapmyapkimdndlolhgztknaodattlobahkfgrezceyvwloskmumoemgdfllgjytyzsgoyngewnfyhglkswotcxdadyvytodlpezmkskszomkckptkbrpotlygenlsgptcngowktbhhmuvoeomwhnvaskdrpmgonlsnytltinoydsjpaeiabdzsdwoxcwhdzsmotosbjytdtpvewnldmyoxbkntwy\",\"ur:provenance/lfaxhdimfgnsrysgbgmydplptpaxvscwfmbaftkiiewnhkbyvylpfwbewshlcwcphsgecxamgrvtlabdtigwktfwfgglwslbwswtplrdsbtpaydlmhvajprezcntbsjkdelnsscnwkgdtljkdkihsbcybbfwvoglbgjzoxhpmkaxprkshtrtinwlswgmldosbagsyktofnhswldrsrdikidkbywlisswbkgm\",\"ur:provenance/lfaxhdimfgredtgroekskbtajnsebskkotuedelohlemoluoaslyuooefzvdwneyglmwonmkdpvegesntogrurstmoimahbgehjkknmkrkgdnszoonfxdesgvlkepdfwcfdkttgtjottyauronbezmkpnnfhvoisttqdpruejlmncsuejneylabygljzhsseghrdwdcacwgudmhpldyktimyregtmsgyrhsa\",\"ur:provenance/lfaxhdimdmgolbwdfrsehytyuelrmysomonyrhpfhkzskidyoyfxjecttaolrffstyrtleamnleebscazmytmuindrgojontmoeyctkndavszmbtwtjziojyfdrpttfyknchproypdlkmocxnngdoykiiybegdrpkbhgueihamntbdvsswhgfxkkstpygroyaxfybgdngotimdgmjsmnhynbzthyjyaydyrf\",\"ur:provenance/lfaxhdimguonyliaclbwnnytwnjyprkgayleiysslaehdevtnnqzsrtakeonctbnenntsgiavwmtghwlhdkihphdnyaasntldwpysgdpmsrdrkghhhvspttssfesrpemsfjymyzedeutjlvwftjnghbywmjyataosftehkntntolenprchihguwtlywpbgpkosahktkthpseldzeoywsiaftwypkbklydshk\",\"ur:provenance/lfaxhdimfmasgykogmecgduyhyoxfgpeiygwwdrojnrdecuyzccmluksvwldnlndasosaowmgsbtcwlnaxndvyadpakkesmujtskosaerylyecdkckgwoejolpbzbwdiylaehdcypmbzjnwdflpthluykptlselfynssnepyjzctzcfdfgskpfdmrohgamttvebdrtisoettdmwecwjzdkqdpkbyadtnmute\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":9,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimcapmyapkimdndlolhgztknaodattlobahkfgrezceyvwloskmumoemgdfllgjytyzsgoyngewnfyhglkswotcxdadyvytodlpezmkskszomkckptkbrpotlygenlsgptcngowktbhhmuvoeomwhnvaskdrpmgonlsnytltinoydsjpaeiabdzsdwoxcwhdzsmotosbjytdtpvewnldmyoxbkntwy\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimfgnsrysgbgmydplptpaxvscwfmbaftkiiewnhkbyvylpfwbewshlcwcphsgecxamgrvtlabdtigwktfwfgglwslbwswtplrdsbtpaydlmhvajprezcntbsjkdelnsscnwkgdtljkdkihsbcybbfwvoglbgjzoxhpmkaxprkshtrtinwlswgmldosbagsyktofnhswldrsrdikidkbywlisswbkgm\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimfgredtgroekskbtajnsebskkotuedelohlemoluoaslyuooefzvdwneyglmwonmkdpvegesntogrurstmoimahbgehjkknmkrkgdnszoonfxdesgvlkepdfwcfdkttgtjottyauronbezmkpnnfhvoisttqdpruejlmncsuejneylabygljzhsseghrdwdcacwgudmhpldyktimyregtmsgyrhsa\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimdmgolbwdfrsehytyuelrmysomonyrhpfhkzskidyoyfxjecttaolrffstyrtleamnleebscazmytmuindrgojontmoeyctkndavszmbtwtjziojyfdrpttfyknchproypdlkmocxnngdoykiiybegdrpkbhgueihamntbdvsswhgfxkkstpygroyaxfybgdngotimdgmjsmnhynbzthyjyaydyrf\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimguonyliaclbwnnytwnjyprkgayleiysslaehdevtnnqzsrtakeonctbnenntsgiavwmtghwlhdkihphdnyaasntldwpysgdpmsrdrkghhhvspttssfesrpemsfjymyzedeutjlvwftjnghbywmjyataosftehkntntolenprchihguwtlywpbgpkosahktkthpseldzeoywsiaftwypkbklydshk\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimfmasgykogmecgduyhyoxfgpeiygwwdrojnrdecuyzccmluksvwldnlndasosaowmgsbtcwlnaxndvyadpakkesmujtskosaerylyecdkckgwoejolpbzbwdiylaehdcypmbzjnwdflpthluykptlselfynssnepyjzctzcfdfgskpfdmrohgamttvebdrtisoettdmwecwjzdkqdpkbyadtnmute\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 3 090bf2f8b55b",
@@ -3453,7 +3453,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 3 090bf2f8b55b",
@@ -3468,7 +3468,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 8cd8e51f (genesis mark)\n  1: c5c043de\n  3: fb67f81a (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 8cd8e51f (genesis mark)\n  1: c5c043de\n  3: fb67f81a (gap: 2 missing)\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]}]},{\"start_seq\":3,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"issues\":[{\"type\":\"SequenceGap\",\"data\":{\"expected\":2,\"actual\":3}}]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate high 3 558dbfc6536b",
@@ -3483,7 +3483,7 @@
      ]
     ]
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: c5c043de\n  2: 211f5570\n  3: fb67f81a\n===\n{\"marks\":[\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"issues\":[]}]}]}]}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  Warning: No genesis mark found\n  1: c5c043de\n  2: 211f5570\n  3: fb67f81a\n===\n{\"marks\":[\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":false,\"marks\":[\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"],\"sequences\":[{\"start_seq\":1,\"end_seq\":3,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\"issues\":[]}]}]}]}\n===\nhasIssues=true"
   },
   {
    "name": "validate high 3 090bf2f8b55b",
@@ -3498,7 +3498,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 3 abc6aa642861",
@@ -3513,7 +3513,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":2,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 2+2 090bf2f8b55b",
@@ -3531,7 +3531,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":1,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]},{\"mark\":\"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 0 ",
@@ -3542,7 +3542,7 @@
      []
     ]
    },
-   "expect": "\n===\n{\"marks\":[],\"chains\":[]}"
+   "expect": "\n===\n{\"marks\":[],\"chains\":[]}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 1 090bf2f8b55b",
@@ -3555,7 +3555,7 @@
      ]
     ]
    },
-   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]}]}]}]}"
+   "expect": "\n===\n{\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\"],\"chains\":[{\"chain_id\":\"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\"has_genesis\":true,\"marks\":[\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\"],\"sequences\":[{\"start_seq\":0,\"end_seq\":0,\"marks\":[{\"mark\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"issues\":[]}]}]}]}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 3 090bf2f8b96d pretty",
@@ -3571,7 +3571,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n    \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n    \"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n        \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n        \"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n    \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n    \"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n        \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n        \"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaegdgujedtisgtzmstltotryvanndkverdsbfzwsbzjk\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=false"
   },
   {
    "name": "validate low 3 090bf2f8b96d pretty",
@@ -3587,7 +3587,7 @@
     ],
     "pretty": true
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 5bdcec81 (genesis mark)\n  1: 477e3ce6\n  3: 41c525a1 (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n    \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n    \"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n        \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n        \"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 5bdcec81 (genesis mark)\n  1: 477e3ce6\n  3: 41c525a1 (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n    \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n    \"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n        \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n        \"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaegdgolgrsswfwykynlgkgssluiedwatkbhhzevlrypd\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaegdkprkfltijsfhfrfhhpdlhertcwntuezmbkfsehfr\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=true"
   },
   {
    "name": "validate low 0  pretty",
@@ -3599,7 +3599,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}"
+   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 3 090bf2f8b55b pretty",
@@ -3615,7 +3615,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n    \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n    \"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n        \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n        \"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n    \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n    \"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n        \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n        \"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfadhdcxkprkfltilptkjyjtfghggsvdsaeclsclenlanbvwtltabsfmdpctfprfstgwaarebktkadjt\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=false"
   },
   {
    "name": "validate medium 3 090bf2f8b55b pretty",
@@ -3631,7 +3631,7 @@
     ],
     "pretty": true
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 188d6bd9 (genesis mark)\n  1: a5e79a0c\n  3: 161820ef (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n    \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n    \"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n        \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n        \"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 188d6bd9 (genesis mark)\n  1: a5e79a0c\n  3: 161820ef (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n    \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n    \"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n        \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n        \"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfadhdcxasbdwzyarehpvehpsrmyltuobzpauehkotmojoayvdlfmenbstbkbkvljnpydsonurlefxhf\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfadhdcxgolgrsswgujedtiswprtbyyajlaxdpdkkelaatrdykidmoutwpgseowedtlptbvlsfrkmeze\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfadhdcxsgdifpbeuehhryveynkodwyltnserprhskgmaxvlsfvolpaaleneksihhfsotatdwfrehgnt\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=true"
   },
   {
    "name": "validate medium 0  pretty",
@@ -3643,7 +3643,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}"
+   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 3 090bf2f8b55b pretty",
@@ -3659,7 +3659,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n    \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n    \"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n        \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n        \"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n    \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n    \"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n        \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n        \"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaohdftsgdifpbeuehhryvebseevyrpgyemdwoeroldlnimytlntiolcfcxsgqzndpertvdweatoltbaanblpgmbzbynywetifxckkeweosrywkvwmofgrdtbrnjynebbol\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=false"
   },
   {
    "name": "validate quartile 3 090bf2f8b55b pretty",
@@ -3675,7 +3675,7 @@
     ],
     "pretty": true
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 4a0738a3 (genesis mark)\n  1: d95dc357\n  3: 706fada0 (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n    \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n    \"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n        \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n        \"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 4a0738a3 (genesis mark)\n  1: d95dc357\n  3: 706fada0 (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n    \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n    \"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n        \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n        \"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaohdftasbdwzyarehpvehpfghsprgrkbnseebniyjpmdwmwmpeoyryvyhlyksgfgiomewkemvofyinqzeeahcpbegyzstksahfmkjtmupkfnfzimctrhmdnlotcywzfrzo\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaohdftgolgrsswgujedtiskprkfltilptkjyjtfrpaluftlbdsesesotrnlaessphsftptsnmykgvasrykpttpdpfdtstnssdrtdwzhsguloswemsrbwjtwkmotafgsgio\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaohdftpyswpkiedehsolcyfwstgysaaddpwfjyfntbheksdnpskoaetncwoljsbbhntitnjydwdibsemlevlimsgsksaclrsftfxvtrkrdtlrpdtcpbzesgrfweypdlfcs\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=true"
   },
   {
    "name": "validate quartile 0  pretty",
@@ -3687,7 +3687,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}"
+   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 3 090bf2f8b55b pretty",
@@ -3703,7 +3703,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n    \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n    \"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n        \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n        \"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n    \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n    \"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n        \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n        \"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 2,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaxhdimpyswpkiedehsolcyfwstgysaaddpwfjyvagmlkpmntmundgyhyksutdeluesbzytrslrnspapyyalpeocpfleobedksftagwjyeczteyrpaohfqzpykiecgovtflwkmtayzmplcfkbdkesdalejtwsbkldkgwdrechrpcnttiomscmssnttkpfadvydloybssskkdsqdpawyottngstebzneecbb\",\n              \"issues\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=false"
   },
   {
    "name": "validate high 3 090bf2f8b55b pretty",
@@ -3719,7 +3719,7 @@
     ],
     "pretty": true
    },
-   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 8cd8e51f (genesis mark)\n  1: c5c043de\n  3: fb67f81a (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n    \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n    \"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n        \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n        \"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+   "expect": "Total marks: 3\nChains: 1\n\nChain 1: 090bf2f8\n  0: 8cd8e51f (genesis mark)\n  1: c5c043de\n  3: fb67f81a (gap: 2 missing)\n===\n{\n  \"marks\": [\n    \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n    \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n    \"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"\n  ],\n  \"chains\": [\n    {\n      \"chain_id\": \"090bf2f8b55be45b4661b24b7e9c340cf9464c5fe95c84f580954aaabe085e7c\",\n      \"has_genesis\": true,\n      \"marks\": [\n        \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n        \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n        \"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\"\n      ],\n      \"sequences\": [\n        {\n          \"start_seq\": 0,\n          \"end_seq\": 1,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\n              \"issues\": []\n            },\n            {\n              \"mark\": \"ur:provenance/lfaxhdimgolgrsswgujedtiskprkfltilptkjyjtsgdifpbeuehhryvebseevyrpgyemdwoehsfehsldahgdsansfywzknjpfytybtguvlzewlgrlapalrvolupapehyoerlpttnmurhpfkpaxfltsfwtapscalyietdhpchmdhpadnbrlrpnnperpladiiydwlshyselagdketktimwhgntcktowlfwbgve\",\n              \"issues\": []\n            }\n          ]\n        },\n        {\n          \"start_seq\": 3,\n          \"end_seq\": 3,\n          \"marks\": [\n            {\n              \"mark\": \"ur:provenance/lfaxhdimlbstprkorobeveztbbosdrskfrhhtarefyhlrssedsgwtbuemdresglkambndkrdbewsnnwkfpkphydsesemascsptreisssnlqzsbtdmnbkztvdiydmregywnrftimyrosrnbceploskokpttroropazotpnefwhsisldiodemwgucksemszsjzoyvoteytwmiawmsfsbjzqdkihprektbgrkos\",\n              \"issues\": [\n                {\n                  \"type\": \"SequenceGap\",\n                  \"data\": {\n                    \"expected\": 2,\n                    \"actual\": 3\n                  }\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n===\nhasIssues=true"
   },
   {
    "name": "validate high 0  pretty",
@@ -3731,7 +3731,7 @@
     ],
     "pretty": true
    },
-   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}"
+   "expect": "\n===\n{\n  \"marks\": [],\n  \"chains\": []\n}\n===\nhasIssues=false"
   },
   {
    "name": "generator low \"Wolf\" ×1 cbor(a1616101)",
@@ -4648,6 +4648,38 @@
    "expect": "throw:Json|JSON error: invalid type: string \"0\", expected u32"
   },
   {
+   "name": "json mark {\"seq\":1e+30,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A=",
+   "recipe": {
+    "k": "json",
+    "target": "mark",
+    "json": {
+     "seq": 1e+30,
+     "date": "2023-06-20",
+     "res": 0,
+     "chain_id": "CQvy+A==",
+     "key": "CQvy+A==",
+     "hash": "W9zsgQ=="
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid type: floating point `1e+30`, expected u32"
+  },
+  {
+   "name": "json mark {\"seq\":4294967296,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQ",
+   "recipe": {
+    "k": "json",
+    "target": "mark",
+    "json": {
+     "seq": 4294967296,
+     "date": "2023-06-20",
+     "res": 0,
+     "chain_id": "CQvy+A==",
+     "key": "CQvy+A==",
+     "hash": "W9zsgQ=="
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid value: integer `4294967296`, expected u32"
+  },
+  {
    "name": "json mark {\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"",
    "recipe": {
     "k": "json",
@@ -5046,7 +5078,7 @@
     "res": "low",
     "base": "https://example.com/?provenance=old"
    },
-   "expect": "https://example.com/?provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   "expect": "https://example.com/?provenance=old&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
   },
   {
    "name": "url low https://example.com/?provenance=old&provenance=older",
@@ -5055,7 +5087,362 @@
     "res": "low",
     "base": "https://example.com/?provenance=old&provenance=older"
    },
+   "expect": "https://example.com/?provenance=old&provenance=older&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a&provenance=old&r=1",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a&provenance=old&r=1"
+   },
+   "expect": "https://example.com/?q=a&provenance=old&r=1&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?"
+   },
    "expect": "https://example.com/?provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/??",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/??"
+   },
+   "expect": "https://example.com/??&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a+b#f",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a+b#f"
+   },
+   "expect": "https://example.com/?q=a+b&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb#f"
+  },
+  {
+   "name": "url low https://example.com/?q=a#b=c",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a#b=c"
+   },
+   "expect": "https://example.com/?q=a&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb#b=c"
+  },
+  {
+   "name": "url low HTTPS://EXAMPLE.com/path/../x?q=1",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "HTTPS://EXAMPLE.com/path/../x?q=1"
+   },
+   "expect": "https://example.com/x?q=1&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://user:pw@example.com:8080/p?q=1",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://user:pw@example.com:8080/p?q=1"
+   },
+   "expect": "https://user:pw@example.com:8080/p?q=1&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low file:///tmp/x",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "file:///tmp/x"
+   },
+   "expect": "file:///tmp/x?provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low mailto:a@b.c",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "mailto:a@b.c"
+   },
+   "expect": "mailto:a@b.c?provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=ä",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=ä"
+   },
+   "expect": "https://example.com/?q=%C3%A4&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?a=1&a=2",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?a=1&a=2"
+   },
+   "expect": "https://example.com/?a=1&a=2&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a\"b",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a\"b"
+   },
+   "expect": "https://example.com/?q=a%22b&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a%2Bb",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a%2Bb"
+   },
+   "expect": "https://example.com/?q=a%2Bb&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a%20b",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a%20b"
+   },
+   "expect": "https://example.com/?q=a%20b&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a b",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a b"
+   },
+   "expect": "https://example.com/?q=a%20b&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?a",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?a"
+   },
+   "expect": "https://example.com/?a&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?a=b&c",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?a=b&c"
+   },
+   "expect": "https://example.com/?a=b&c&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?x=%2f",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?x=%2f"
+   },
+   "expect": "https://example.com/?x=%2f&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a%ZZ",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a%ZZ"
+   },
+   "expect": "https://example.com/?q=a%ZZ&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=%41",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=%41"
+   },
+   "expect": "https://example.com/?q=%41&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a&",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a&"
+   },
+   "expect": "https://example.com/?q=a&&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?&q=a",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?&q=a"
+   },
+   "expect": "https://example.com/?&q=a&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a;b",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a;b"
+   },
+   "expect": "https://example.com/?q=a;b&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q=a'b(c)~",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=a'b(c)~"
+   },
+   "expect": "https://example.com/?q=a%27b(c)~&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low https://example.com/?q==",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "https://example.com/?q=="
+   },
+   "expect": "https://example.com/?q==&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+  },
+  {
+   "name": "url low not a url",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "not a url"
+   },
+   "expect": "throw:Url|URL parsing error: Invalid URL"
+  },
+  {
+   "name": "url low /relative/path",
+   "recipe": {
+    "k": "url",
+    "res": "low",
+    "base": "/relative/path"
+   },
+   "expect": "throw:Url|URL parsing error: Invalid URL"
+  },
+  {
+   "name": "fromurl https://example.com/?q=a%20b&provenance=tngdgmgw",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q=a%20b&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?a&provenance=tngdgmgwhflfae",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?a&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?a=b&c&provenance=tngdgmgwhf",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?a=b&c&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?x=%2f&provenance=tngdgmgwhf",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?x=%2f&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?q=a%ZZ&provenance=tngdgmgwh",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q=a%ZZ&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?q=%41&provenance=tngdgmgwhf",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q=%41&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?q=a&&provenance=tngdgmgwhfl",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q=a&&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?&q=a&provenance=tngdgmgwhfl",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?&q=a&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?q=a;b&provenance=tngdgmgwhf",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q=a;b&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?q=a%27b(c)~&provenance=tngd",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q=a%27b(c)~&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?q==&provenance=tngdgmgwhflf",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q==&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/??&provenance=tngdgmgwhflfae",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/??&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "fromurl https://example.com/?provenance=old&provenance=t",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?provenance=old&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "throw:Bytewords[Bytewords]|bytewords error: Bytewords error (invalid length)"
+  },
+  {
+   "name": "fromurl https://example.com/?q=a&provenance=old&r=1&prov",
+   "recipe": {
+    "k": "fromurl",
+    "url": "https://example.com/?q=a&provenance=old&r=1&provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   },
+   "expect": "throw:Bytewords[Bytewords]|bytewords error: Bytewords error (invalid length)"
   },
   {
    "name": "fromurl https://example.com/?provenance=tngdgmgwhflfaegd",
@@ -5212,6 +5599,60 @@
    "expect": "throw:Cbor[WrongType]|the decoded CBOR value was not the expected type"
   },
   {
+   "name": "cbor tagged da50524f568219012c50090b…",
+   "recipe": {
+    "k": "cbor",
+    "hex": "da50524f568219012c50090bf2f8b96d116cf9e9983ade1d3705",
+    "via": "tagged"
+   },
+   "expect": "throw:Cbor[OutOfRange]|the CBOR numeric value could not be represented in the specified numeric type"
+  },
+  {
+   "name": "cbor untagged da50524f568219012c50090b…",
+   "recipe": {
+    "k": "cbor",
+    "hex": "da50524f568219012c50090bf2f8b96d116cf9e9983ade1d3705",
+    "via": "untagged"
+   },
+   "expect": "throw:Cbor[WrongType]|the decoded CBOR value was not the expected type"
+  },
+  {
+   "name": "cbor tagged da50524f56821b0000010000…",
+   "recipe": {
+    "k": "cbor",
+    "hex": "da50524f56821b000001000000000050090bf2f8b96d116cf9e9983ade1d3705",
+    "via": "tagged"
+   },
+   "expect": "throw:Cbor[OutOfRange]|the CBOR numeric value could not be represented in the specified numeric type"
+  },
+  {
+   "name": "cbor untagged da50524f56821b0000010000…",
+   "recipe": {
+    "k": "cbor",
+    "hex": "da50524f56821b000001000000000050090bf2f8b96d116cf9e9983ade1d3705",
+    "via": "untagged"
+   },
+   "expect": "throw:Cbor[WrongType]|the decoded CBOR value was not the expected type"
+  },
+  {
+   "name": "cbor tagged da50524f56822050090bf2f8…",
+   "recipe": {
+    "k": "cbor",
+    "hex": "da50524f56822050090bf2f8b96d116cf9e9983ade1d3705",
+    "via": "tagged"
+   },
+   "expect": "throw:Cbor[WrongType]|the decoded CBOR value was not the expected type"
+  },
+  {
+   "name": "cbor untagged da50524f56822050090bf2f8…",
+   "recipe": {
+    "k": "cbor",
+    "hex": "da50524f56822050090bf2f8b96d116cf9e9983ade1d3705",
+    "via": "untagged"
+   },
+   "expect": "throw:Cbor[WrongType]|the decoded CBOR value was not the expected type"
+  },
+  {
    "name": "cbor tagged da50524f5683000040",
    "recipe": {
     "k": "cbor",
@@ -5357,7 +5798,7 @@
     "words": 3,
     "style": "bytewords"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 3"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 3"
   },
   {
    "name": "identifier high bytewords 33",
@@ -5367,7 +5808,7 @@
     "words": 33,
     "style": "bytewords"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 33"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 33"
   },
   {
    "name": "identifier high bytewords 0",
@@ -5377,7 +5818,7 @@
     "words": 0,
     "style": "bytewords"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 0"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 0"
   },
   {
    "name": "identifier high minimal 4",
@@ -5417,7 +5858,7 @@
     "words": 3,
     "style": "minimal"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 3"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 3"
   },
   {
    "name": "identifier high minimal 33",
@@ -5427,7 +5868,7 @@
     "words": 33,
     "style": "minimal"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 33"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 33"
   },
   {
    "name": "identifier high minimal 0",
@@ -5437,7 +5878,7 @@
     "words": 0,
     "style": "minimal"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 0"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 0"
   },
   {
    "name": "identifier high bytemoji 4",
@@ -5477,7 +5918,7 @@
     "words": 3,
     "style": "bytemoji"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 3"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 3"
   },
   {
    "name": "identifier high bytemoji 33",
@@ -5487,7 +5928,7 @@
     "words": 33,
     "style": "bytemoji"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 33"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 33"
   },
   {
    "name": "identifier high bytemoji 0",
@@ -5497,7 +5938,7 @@
     "words": 0,
     "style": "bytemoji"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 0"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 0"
   },
   {
    "name": "parse \"2023-06-20T12:00:00Z\"",
@@ -5610,6 +6051,22 @@
     "date": "2023-6-8"
    },
    "expect": "2023-06-08"
+  },
+  {
+   "name": "parse \"2023-01-01T00:00:00.123456789Z\"",
+   "recipe": {
+    "k": "parse",
+    "date": "2023-01-01T00:00:00.123456789Z"
+   },
+   "expect": "2023-01-01"
+  },
+  {
+   "name": "parse \"2023-06-20T00:00:00.500Z\"",
+   "recipe": {
+    "k": "parse",
+    "date": "2023-06-20T00:00:00.500Z"
+   },
+   "expect": "2023-06-20"
   },
   {
    "name": "bytes seed abababababababab… (32)",
@@ -5761,6 +6218,42 @@
    "expect": "throw:DateOutOfRange|date out of range: seconds value too large for u32"
   },
   {
+   "name": "date medium 2000-12-31T23:59:59.500Z",
+   "recipe": {
+    "k": "date",
+    "res": "medium",
+    "date": "2000-12-31T23:59:59.500Z"
+   },
+   "expect": "00000000"
+  },
+  {
+   "name": "date medium 2000-12-31T23:59:59.999Z",
+   "recipe": {
+    "k": "date",
+    "res": "medium",
+    "date": "2000-12-31T23:59:59.999Z"
+   },
+   "expect": "00000000"
+  },
+  {
+   "name": "date medium 2001-01-01T00:00:00.999Z",
+   "recipe": {
+    "k": "date",
+    "res": "medium",
+    "date": "2001-01-01T00:00:00.999Z"
+   },
+   "expect": "00000000"
+  },
+  {
+   "name": "date quartile 2000-12-31T23:59:59.999Z",
+   "recipe": {
+    "k": "date",
+    "res": "quartile",
+    "date": "2000-12-31T23:59:59.999Z"
+   },
+   "expect": "throw:DateOutOfRange|date out of range: milliseconds value too large for u64"
+  },
+  {
    "name": "date medium 2001-01-01T00:00:00Z",
    "recipe": {
     "k": "date",
@@ -5869,6 +6362,642 @@
    "expect": "00a51105dde7"
   },
   {
+   "name": "date low 2023-12-25T10:30:60Z",
+   "recipe": {
+    "k": "date",
+    "res": "low",
+    "date": "2023-12-25T10:30:60Z"
+   },
+   "expect": "0199"
+  },
+  {
+   "name": "date medium 2023-12-25T10:30:60Z",
+   "recipe": {
+    "k": "date",
+    "res": "medium",
+    "date": "2023-12-25T10:30:60Z"
+   },
+   "expect": "2b399164"
+  },
+  {
+   "name": "date high 2023-12-25T10:30:60Z",
+   "recipe": {
+    "k": "date",
+    "res": "high",
+    "date": "2023-12-25T10:30:60Z"
+   },
+   "expect": "00a8d8dfeea0"
+  },
+  {
+   "name": "date medium 2023-12-31T23:59:60Z",
+   "recipe": {
+    "k": "date",
+    "res": "medium",
+    "date": "2023-12-31T23:59:60Z"
+   },
+   "expect": "2b423800"
+  },
+  {
+   "name": "date high 2023-12-31T23:59:60Z",
+   "recipe": {
+    "k": "date",
+    "res": "high",
+    "date": "2023-12-31T23:59:60Z"
+   },
+   "expect": "00a8faaac000"
+  },
+  {
+   "name": "seed \"AAAAAAAAAAAAAAAA…AAAAA=\" (44)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+   },
+   "expect": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+   "name": "seed \"znwVmbBQb1+QkeD8…h0zhA=\" (44)",
+   "recipe": {
+    "k": "seed",
+    "s": "znwVmbBQb1+QkeD8p5ak890F+UMrzoC5Ke2E1lh0zhA="
+   },
+   "expect": "ce7c1599b0506f5f9091e0fca796a4f3dd05f9432bce80b929ed84d65874ce10"
+  },
+  {
+   "name": "seed \"!!!!\" (4)",
+   "recipe": {
+    "k": "seed",
+    "s": "!!!!"
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 33, offset 0."
+  },
+  {
+   "name": "seed \"AAAA\" (4)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAA"
+   },
+   "expect": "throw:Json|JSON error: seed length is 3, expected 32"
+  },
+  {
+   "name": "seed \"AAAAAAAAAAAAAAAA…AAAAAA\" (43)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+   },
+   "expect": "throw:Json|JSON error: Invalid padding"
+  },
+  {
+   "name": "seed \"AAAAAAAAAAAAAAAA…AAAAAA\" (45)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+   },
+   "expect": "throw:Json|JSON error: Invalid input length: 45"
+  },
+  {
+   "name": "seed \"\" (0)",
+   "recipe": {
+    "k": "seed",
+    "s": ""
+   },
+   "expect": "throw:Json|JSON error: seed length is 0, expected 32"
+  },
+  {
+   "name": "seed \" AAAAAAAAAAAAAAA…AAAAA=\" (45)",
+   "recipe": {
+    "k": "seed",
+    "s": " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 32, offset 0."
+  },
+  {
+   "name": "seed \"AAAAAAAAAAAAAAAA…AAAA=\\n\" (45)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=\n"
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 10, offset 44."
+  },
+  {
+   "name": "seed \"AAAAAAAAAAAAAAAA…AAAAB=\" (44)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB="
+   },
+   "expect": "throw:Json|JSON error: Invalid last symbol 66, offset 42."
+  },
+  {
+   "name": "seed \"A=AA\" (4)",
+   "recipe": {
+    "k": "seed",
+    "s": "A=AA"
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 1."
+  },
+  {
+   "name": "seed \"AAAAAA=\" (7)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAA="
+   },
+   "expect": "throw:Json|JSON error: Invalid padding"
+  },
+  {
+   "name": "seed \"AAA=A\" (5)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAA=A"
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 3."
+  },
+  {
+   "name": "seed \"AA===\" (5)",
+   "recipe": {
+    "k": "seed",
+    "s": "AA==="
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 2."
+  },
+  {
+   "name": "seed \"AAAAAAAAAAAAAAAA…AAAA==\" (45)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 43."
+  },
+  {
+   "name": "seed \"AAAAAAAAAAAAAAAA…AAAA=x\" (45)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=x"
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 43."
+  },
+  {
+   "name": "seed \"AAAA====\" (8)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAA===="
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 4."
+  },
+  {
+   "name": "seed \"AAAA=\" (5)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAA="
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 4."
+  },
+  {
+   "name": "seed \"AB==\" (4)",
+   "recipe": {
+    "k": "seed",
+    "s": "AB=="
+   },
+   "expect": "throw:Json|JSON error: Invalid last symbol 66, offset 1."
+  },
+  {
+   "name": "seed \"AAAA-AAA\" (8)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAA-AAA"
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 45, offset 4."
+  },
+  {
+   "name": "seed \"AA A=\" (5)",
+   "recipe": {
+    "k": "seed",
+    "s": "AA A="
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 32, offset 2."
+  },
+  {
+   "name": "seed \"AAAA==\" (6)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAA=="
+   },
+   "expect": "throw:Json|JSON error: Invalid symbol 61, offset 4."
+  },
+  {
+   "name": "seed \"AAAAAAA=\" (8)",
+   "recipe": {
+    "k": "seed",
+    "s": "AAAAAAA="
+   },
+   "expect": "throw:Json|JSON error: seed length is 5, expected 32"
+  },
+  {
+   "name": "info low",
+   "recipe": {
+    "k": "info",
+    "res": "low"
+   },
+   "expect": "---\n\n2023-06-20\n\n#### ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\n\n#### `🅟 HELP UNDO WASP LAZY`\n\n🅟 🌮 🐰 🦄 💔\n\n===\n{\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"bytewords\":\"🅟 HELP UNDO WASP LAZY\",\"bytemoji\":\"🅟 🌮 🐰 🦄 💔\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"key\":\"CQvy+A==\",\"hash\":\"W9zsgQ==\"}}"
+  },
+  {
+   "name": "info low \"A comment.\"",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "comment": "A comment."
+   },
+   "expect": "---\n\n2023-06-20\n\n#### ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\n\n#### `🅟 HELP UNDO WASP LAZY`\n\n🅟 🌮 🐰 🦄 💔\n\nA comment.\n\n===\n{\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"bytewords\":\"🅟 HELP UNDO WASP LAZY\",\"bytemoji\":\"🅟 🌮 🐰 🦄 💔\",\"comment\":\"A comment.\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"key\":\"CQvy+A==\",\"hash\":\"W9zsgQ==\"}}"
+  },
+  {
+   "name": "info low \"multi\\nline\"",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "comment": "multi\nline"
+   },
+   "expect": "---\n\n2023-06-20\n\n#### ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\n\n#### `🅟 HELP UNDO WASP LAZY`\n\n🅟 🌮 🐰 🦄 💔\n\nmulti\nline\n\n===\n{\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"bytewords\":\"🅟 HELP UNDO WASP LAZY\",\"bytemoji\":\"🅟 🌮 🐰 🦄 💔\",\"comment\":\"multi\\nline\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"key\":\"CQvy+A==\",\"hash\":\"W9zsgQ==\"}}"
+  },
+  {
+   "name": "info high",
+   "recipe": {
+    "k": "info",
+    "res": "high"
+   },
+   "expect": "---\n\n2023-06-20T12:00:00Z\n\n#### ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\n\n#### `🅟 LUCK TRIP VIEW COST`\n\n🅟 🟩 🐱 🐸 🤯\n\n===\n{\"ur\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"bytewords\":\"🅟 LUCK TRIP VIEW COST\",\"bytemoji\":\"🅟 🟩 🐱 🐸 🤯\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20T12:00:00Z\",\"res\":3,\"chain_id\":\"CQvy+LVb5FtGYbJLfpw0DPlGTF/pXIT1gJVKqr4IXnw=\",\"key\":\"CQvy+LVb5FtGYbJLfpw0DPlGTF/pXIT1gJVKqr4IXnw=\",\"hash\":\"jNjlHyiFrsosZEKAtT7nWqErWhX02EBoyMkY+MDYWHg=\"}}"
+  },
+  {
+   "name": "info high \"A comment.\"",
+   "recipe": {
+    "k": "info",
+    "res": "high",
+    "comment": "A comment."
+   },
+   "expect": "---\n\n2023-06-20T12:00:00Z\n\n#### ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\n\n#### `🅟 LUCK TRIP VIEW COST`\n\n🅟 🟩 🐱 🐸 🤯\n\nA comment.\n\n===\n{\"ur\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"bytewords\":\"🅟 LUCK TRIP VIEW COST\",\"bytemoji\":\"🅟 🟩 🐱 🐸 🤯\",\"comment\":\"A comment.\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20T12:00:00Z\",\"res\":3,\"chain_id\":\"CQvy+LVb5FtGYbJLfpw0DPlGTF/pXIT1gJVKqr4IXnw=\",\"key\":\"CQvy+LVb5FtGYbJLfpw0DPlGTF/pXIT1gJVKqr4IXnw=\",\"hash\":\"jNjlHyiFrsosZEKAtT7nWqErWhX02EBoyMkY+MDYWHg=\"}}"
+  },
+  {
+   "name": "info high \"multi\\nline\"",
+   "recipe": {
+    "k": "info",
+    "res": "high",
+    "comment": "multi\nline"
+   },
+   "expect": "---\n\n2023-06-20T12:00:00Z\n\n#### ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\n\n#### `🅟 LUCK TRIP VIEW COST`\n\n🅟 🟩 🐱 🐸 🤯\n\nmulti\nline\n\n===\n{\"ur\":\"ur:provenance/lfaxhdimasbdwzyarehpvehpfghsprgrkbnseebnytfggshewlhhlryklamdgepkrnayhykeonfzdkdalabwgoclgwesbyrpectyhhimjnnysogaayvwadrlrnonksbydesbfrihkkwywyttimcetlwzwektgdtnlpcnlneycfktasrfwketnlyktkvylygroeoejkoyhgbdmudwclnnjtgelsvdlgcxdlso\",\"bytewords\":\"🅟 LUCK TRIP VIEW COST\",\"bytemoji\":\"🅟 🟩 🐱 🐸 🤯\",\"comment\":\"multi\\nline\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20T12:00:00Z\",\"res\":3,\"chain_id\":\"CQvy+LVb5FtGYbJLfpw0DPlGTF/pXIT1gJVKqr4IXnw=\",\"key\":\"CQvy+LVb5FtGYbJLfpw0DPlGTF/pXIT1gJVKqr4IXnw=\",\"hash\":\"jNjlHyiFrsosZEKAtT7nWqErWhX02EBoyMkY+MDYWHg=\"}}"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y"
+    }
+   },
+   "expect": "---\n\n2023-06-20\n\n#### ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\n\n#### `x`\n\ny\n\n===\n{\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"bytewords\":\"x\",\"bytemoji\":\"y\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"key\":\"CQvy+A==\",\"hash\":\"W9zsgQ==\"}}"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y",
+     "comment": "c"
+    }
+   },
+   "expect": "---\n\n2023-06-20\n\n#### ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\n\n#### `x`\n\ny\n\nc\n\n===\n{\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"bytewords\":\"x\",\"bytemoji\":\"y\",\"comment\":\"c\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"key\":\"CQvy+A==\",\"hash\":\"W9zsgQ==\"}}"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y",
+     "comment": ""
+    }
+   },
+   "expect": "---\n\n2023-06-20\n\n#### ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\n\n#### `x`\n\ny\n\n===\n{\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"bytewords\":\"x\",\"bytemoji\":\"y\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"key\":\"CQvy+A==\",\"hash\":\"W9zsgQ==\"}}"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y",
+     "comment": 5
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid type: integer `5`, expected a string"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y",
+     "comment": null
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid type: null, expected a string"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y",
+     "comment": [
+      "a"
+     ]
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid type: sequence, expected a string"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y",
+     "comment": {
+      "a": 1
+     }
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid type: map, expected a string"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": "x",
+     "bytemoji": "y",
+     "mark": "ignored"
+    }
+   },
+   "expect": "---\n\n2023-06-20\n\n#### ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\n\n#### `x`\n\ny\n\n===\n{\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl\",\"bytewords\":\"x\",\"bytemoji\":\"y\",\"mark\":{\"seq\":0,\"date\":\"2023-06-20\",\"res\":0,\"chain_id\":\"CQvy+A==\",\"key\":\"CQvy+A==\",\"hash\":\"W9zsgQ==\"}}"
+  },
+  {
+   "name": "info low json {\"bytewords\":\"x\",\"bytemoji\":\"y\"}",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "bytewords": "x",
+     "bytemoji": "y"
+    }
+   },
+   "expect": "throw:Json|JSON error: missing field `ur`"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:envelope/abc\",\"bytewords\":\"x\",\"bytemoj",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:envelope/abc",
+     "bytewords": "x",
+     "bytemoji": "y"
+    }
+   },
+   "expect": "throw:Json|JSON error: UR decoder error (invalid length)"
+  },
+  {
+   "name": "info low json {\"ur\":\"not a ur\",\"bytewords\":\"x\",\"bytemoji\":\"y\"}",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "not a ur",
+     "bytewords": "x",
+     "bytemoji": "y"
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid UR scheme"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/nope\",\"bytewords\":\"x\",\"byte",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/nope",
+     "bytewords": "x",
+     "bytemoji": "y"
+    }
+   },
+   "expect": "throw:Json|JSON error: UR decoder error (invalid word)"
+  },
+  {
+   "name": "info low json {\"ur\":\"ur:provenance/lfaegdasbdwzyarhjnbyjzytwlm",
+   "recipe": {
+    "k": "info",
+    "res": "low",
+    "json": {
+     "ur": "ur:provenance/lfaegdasbdwzyarhjnbyjzytwlmkftuecaemahwmfgaxcl",
+     "bytewords": 1,
+     "bytemoji": "y"
+    }
+   },
+   "expect": "throw:Json|JSON error: invalid type: integer `1`, expected a string"
+  },
+  {
+   "name": "disambiguate low bytewords [0,1,2,3]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "low",
+    "indices": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "style": "bytewords"
+   },
+   "expect": "🅟 HELP UNDO WASP LAZY\n🅟 FUEL KNOB FERN VISA\n🅟 FILM HILL PART LION\n🅟 FLAP SILK DATA OBEY"
+  },
+  {
+   "name": "disambiguate low bytewords [0,1,0]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "low",
+    "indices": [
+     0,
+     1,
+     0
+    ],
+    "style": "bytewords"
+   },
+   "expect": "🅟 HELP UNDO WASP LAZY FIZZ HOLY LAZY NEWS IRON HANG EACH TRIP HOLY OBOE VERY VERY YURT EASY FLUX OBEY FREE TUNA LAMB CATS JUNK NUMB DUTY JUMP BACK VOID CODE TIME\n🅟 FUEL KNOB FERN VISA\n🅟 HELP UNDO WASP LAZY FIZZ HOLY LAZY NEWS IRON HANG EACH TRIP HOLY OBOE VERY VERY YURT EASY FLUX OBEY FREE TUNA LAMB CATS JUNK NUMB DUTY JUMP BACK VOID CODE TIME"
+  },
+  {
+   "name": "disambiguate high bytewords [0,0]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "high",
+    "indices": [
+     0,
+     0
+    ],
+    "style": "bytewords"
+   },
+   "expect": "🅟 LUCK TRIP VIEW COST DICE LIMP POOL SONG DRAW IDLE FLEW LAVA RACE FILM VOID HEAT OBEY DOWN HEAT BUZZ WORK TRIP FIZZ IRIS SOAP SOLO CATS YOGA RUST TRIP HARD KEYS\n🅟 LUCK TRIP VIEW COST DICE LIMP POOL SONG DRAW IDLE FLEW LAVA RACE FILM VOID HEAT OBEY DOWN HEAT BUZZ WORK TRIP FIZZ IRIS SOAP SOLO CATS YOGA RUST TRIP HARD KEYS"
+  },
+  {
+   "name": "disambiguate medium bytewords [3]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "medium",
+    "indices": [
+     3
+    ],
+    "style": "bytewords"
+   },
+   "expect": "🅟 CALM CATS CRUX WEBS"
+  },
+  {
+   "name": "disambiguate low bytewords []",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "low",
+    "indices": [],
+    "style": "bytewords"
+   },
+   "expect": ""
+  },
+  {
+   "name": "disambiguate low bytemoji [0,1,2,3]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "low",
+    "indices": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "style": "bytemoji"
+   },
+   "expect": "🅟 🌮 🐰 🦄 💔\n🅟 🍍 🪐 🦶 🐵\n🅟 🍊 🍱 🧮 🚩\n🅟 🍉 🔥 👽 🪑"
+  },
+  {
+   "name": "disambiguate low bytemoji [0,1,0]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "low",
+    "indices": [
+     0,
+     1,
+     0
+    ],
+    "style": "bytemoji"
+   },
+   "expect": "🅟 🌮 🐰 🦄 💔 🍌 🍜 💔 🎠 🍁 🌭 👎 🐱 🍜 🎈 🐯 🐯 🦞 👈 🍓 🪑 🍒 🐶 🌐 🤠 💦 🚪 👍 💧 🫠 🐔 😬 👟\n🅟 🍍 🪐 🦶 🐵\n🅟 🌮 🐰 🦄 💔 🍌 🍜 💔 🎠 🍁 🌭 👎 🐱 🍜 🎈 🐯 🐯 🦞 👈 🍓 🪑 🍒 🐶 🌐 🤠 💦 🚪 👍 💧 🫠 🐔 😬 👟"
+  },
+  {
+   "name": "disambiguate high bytemoji [0,0]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "high",
+    "indices": [
+     0,
+     0
+    ],
+    "style": "bytemoji"
+   },
+   "expect": "🅟 🟩 🐱 🐸 🤯 😻 🏁 ⏳ 🩳 🫶 🎂 🍇 💛 🎀 🍊 🐔 🍕 🪑 😿 🍕 😡 🐍 🐱 🍌 💐 👚 👖 🤠 🪼 🏀 🐱 🍔 🌛\n🅟 🟩 🐱 🐸 🤯 😻 🏁 ⏳ 🩳 🫶 🎂 🍇 💛 🎀 🍊 🐔 🍕 🪑 😿 🍕 😡 🐍 🐱 🍌 💐 👚 👖 🤠 🪼 🏀 🐱 🍔 🌛"
+  },
+  {
+   "name": "disambiguate medium bytemoji [3]",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "medium",
+    "indices": [
+     3
+    ],
+    "style": "bytemoji"
+   },
+   "expect": "🅟 🤢 🤠 😈 🦋"
+  },
+  {
+   "name": "disambiguate low bytemoji []",
+   "recipe": {
+    "k": "disambiguate",
+    "res": "low",
+    "indices": [],
+    "style": "bytemoji"
+   },
+   "expect": ""
+  },
+  {
+   "name": "summary da50524f56820050090bf2f8…",
+   "recipe": {
+    "k": "summary",
+    "hex": "da50524f56820050090bf2f8b96d116cf9e9983ade1d3705"
+   },
+   "expect": "ProvenanceMark(5bdcec81405e819c695731d85ea2e1e1f93243a145d97f1873a030720ae71cd3)"
+  },
+  {
+   "name": "summary da50524f56820950090bf2f8…",
+   "recipe": {
+    "k": "summary",
+    "hex": "da50524f56820950090bf2f8b96d116cf9e9983ade1d3705"
+   },
+   "expect": "<error: resolution serialization error: invalid provenance mark resolution value: 9>"
+  },
+  {
+   "name": "summary da50524f56820043090bf2",
+   "recipe": {
+    "k": "summary",
+    "hex": "da50524f56820043090bf2"
+   },
+   "expect": "<error: invalid message length: expected at least 16, got 3>"
+  },
+  {
+   "name": "summary da50524f5683000040",
+   "recipe": {
+    "k": "summary",
+    "hex": "da50524f5683000040"
+   },
+   "expect": "<error: Invalid provenance mark length>"
+  },
+  {
+   "name": "summary da50524f5682636c6f775009…",
+   "recipe": {
+    "k": "summary",
+    "hex": "da50524f5682636c6f7750090bf2f8b96d116cf9e9983ade1d3705"
+   },
+   "expect": "<error: the decoded CBOR value was not the expected type>"
+  },
+  {
+   "name": "summary da50524f5619012c",
+   "recipe": {
+    "k": "summary",
+    "hex": "da50524f5619012c"
+   },
+   "expect": "<error: the decoded CBOR value was not the expected type>"
+  },
+  {
    "name": "domain encodeDate.invalid.low (J3)",
    "recipe": {
     "k": "domain",
@@ -5968,22 +7097,13 @@
    "expect": "throw:TypeError|marks[0] must be a ProvenanceMark"
   },
   {
-   "name": "domain identifier.words.fraction (J1)",
+   "name": "domain identifier.wordCount.fraction (J1)",
    "recipe": {
     "k": "domain",
-    "case": "identifier.words.fraction",
+    "case": "identifier.wordCount.fraction",
     "cls": "J1"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 4.5"
-  },
-  {
-   "name": "domain identifier.style.bogus (J3)",
-   "recipe": {
-    "k": "domain",
-    "case": "identifier.style.bogus",
-    "cls": "J3"
-   },
-   "expect": "throw:RangeError|style must be one of \"bytewords\", \"minimal\", \"bytemoji\", got \"nope\""
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 4.5"
   },
   {
    "name": "domain formatReport.xml (J3)",
@@ -6047,6 +7167,87 @@
     "cls": "J4"
    },
    "expect": "resolutions=true\ncodes=true\nmark=true\nseed=true\nreport=true\ndetails=n/a"
+  },
+  {
+   "name": "domain from.key.string (J3)",
+   "recipe": {
+    "k": "domain",
+    "case": "from.key.string",
+    "cls": "J3"
+   },
+   "expect": "throw:TypeError|key must be a Uint8Array"
+  },
+  {
+   "name": "domain from.key.array (J3)",
+   "recipe": {
+    "k": "domain",
+    "case": "from.key.array",
+    "cls": "J3"
+   },
+   "expect": "throw:TypeError|key must be a Uint8Array"
+  },
+  {
+   "name": "domain from.key.number (J3)",
+   "recipe": {
+    "k": "domain",
+    "case": "from.key.number",
+    "cls": "J3"
+   },
+   "expect": "throw:TypeError|key must be a Uint8Array"
+  },
+  {
+   "name": "domain from.date.cborDate (J4)",
+   "recipe": {
+    "k": "domain",
+    "case": "from.date.cborDate",
+    "cls": "J4"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 73594f89, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "domain next.date.cborDate (J4)",
+   "recipe": {
+    "k": "domain",
+    "case": "next.date.cborDate",
+    "cls": "J4"
+   },
+   "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
+  },
+  {
+   "name": "domain parseDate.leapSecond (J4)",
+   "recipe": {
+    "k": "domain",
+    "case": "parseDate.leapSecond",
+    "cls": "J4"
+   },
+   "expect": "2023-12-25T10:31:00Z"
+  },
+  {
+   "name": "domain generator.equals (J4)",
+   "recipe": {
+    "k": "domain",
+    "case": "generator.equals",
+    "cls": "J4"
+   },
+   "expect": "same=true advanced=false"
+  },
+  {
+   "name": "domain json.seq.negativeZero (J3)",
+   "recipe": {
+    "k": "domain",
+    "case": "json.seq.negativeZero",
+    "cls": "J3"
+   },
+   "expect": "0"
+  },
+  {
+   "name": "domain json.seq.float1 (J3)",
+   "recipe": {
+    "k": "domain",
+    "case": "json.seq.float1",
+    "cls": "J3"
+   },
+   "expect": "1"
   },
   {
    "name": "generator medium 3613cf933b2c68cb5d4e3b176e7de07efb74f428dd45813a5c04a31cc18d7f73 ×1",

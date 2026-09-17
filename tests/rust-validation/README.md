@@ -17,14 +17,14 @@ DUMP=/tmp/rust.json cargo run --release --offline -- ../vectors/vectors.json   #
 Result line on 2026-09-16:
 
 ```
-512 vectors - 470 match, 19 panic-mapped, 20 js-only (J1 1, J3 13, J4 6), 3 port-right, 0 unparsable, 0 MISMATCH
+638 vectors - 587 match, 21 panic-mapped, 28 js-only (J1 1, J3 17, J4 10), 2 port-right, 0 pending, 0 unparsable, 0 MISMATCH
 ```
 
 ## What is compared
 
 Every recipe (`tests/vectors/recipes.ts`) yields one outcome string on
 each side and the two are compared textually. The TypeScript outcome is
-the vector's `expect`, materialised by `scripts/generate-vectors.mjs` with
+the vector's `expect`, materialised by `scripts/generate-vectors.ts` with
 the working tree (`tests/vectors/working-tree-adapter.ts`); the
 reference's is computed by `src/main.rs`.
 
@@ -37,7 +37,7 @@ reference's is computed by `src/main.rs`.
   `dcbor::Error::Custom`, the decoder), a URL encoding or bytewords, at a
   resolution, into the debug string.
 - `validate`: chains of messages into a report, as text and as JSON
-  (compact or pretty).
+  (compact or pretty), then `hasIssues`.
 - `date`: the date codecs at a resolution, encoding a date string or
   decoding hex bytes.
 - `json`: persisted JSON given to the mark's or the generator's
@@ -45,9 +45,18 @@ reference's is computed by `src/main.rs`.
   assertions; `url` / `fromurl`: `toUrl` over a base and `fromUrl` over a
   string; `cbor`: bytes given to the tagged decoder (`fromCbor`, the
   codec), the untagged one (`fromUntaggedCbor`) or `fromCborData`;
-  `identifier`: a word count and style; `parse`: `parseDate`; `bytes`: a
+  `identifier`: a word count and style (`idBytewords`, `idBytemoji`,
+  `idBytewordsMinimal`); `parse`: `parseDate`; `bytes`: a
   CBOR byte string given to `ProvenanceSeed.fromCbor` or
-  `RngState.fromCbor`.
+  `RngState.fromCbor`; `seed`: a string given to `parseSeed` (the
+  reference's `Result<_, String>` renders as the port's `Json`); `url`
+  bases cover every way a query can be written, since the parameter is
+  appended to the query text as it stands; `info`:
+  `ProvenanceMarkInfo` from the reference chain's genesis mark with a
+  comment, or read from JSON — the Markdown summary and the JSON;
+  `disambiguate`: `disambiguated_id_bytewords`/`_bytemoji` over marks of
+  the reference chain by index; `summary`: the envelope format of a leaf
+  holding tagged CBOR (the summariser's text, good or malformed).
 - A rejection is `throw:<code>[<inner code>]|<message>`: the reference's
   error variant, the variant it wraps for `Bytewords`, `Cbor` and
   `Envelope`, and its `Display`. A decoder entry point (`fromCbor`,
@@ -70,31 +79,37 @@ reference's is computed by `src/main.rs`.
   (`YearOutOfRange`, `DateOutOfRange`, `InvalidMonthOrDay`).
 - Where the port is right and the reference is not, `PORT_RIGHT` in
   `src/main.rs` names the row and the reason and the row is `port-right`,
-  not compared: `toUrl` replaces an existing `provenance` parameter where
-  the reference appends a second one its `from_url` then ignores; the
-  generator's JSON deserialiser checks the chain id's length where the
-  reference's serde derive skips the check its constructor makes.
+  not compared: the generator's JSON deserialiser checks the chain id's
+  length where the reference's serde derive skips the check its
+  constructor makes; a negative resolution number is `WrongType` where
+  dcbor's `u8::try_from` wraps it to 255. Why each row is right, and
+  whether it has been reported, is recorded in
+  [`RUST_DIVERGENCES.md`](../../RUST_DIVERGENCES.md). `toUrl` on a base
+  that is not a URL is `panic-mapped` (`Url`).
+- A row whose difference is a known, not yet fixed finding is `pending`
+  when `PENDING` in `src/main.rs` names it; the list is empty at a release.
 - `domain` rows are the JavaScript input domain (`js-only`), in three
   classes here: J1 a non-integer number (a fractional word count), J3 a
   value the reference's types cannot express (an invalid `Date`, a `null`
   or an empty object where JSON goes, a string where a resolution or a
-  seed goes, an unknown identifier style or report format) and J4 a
+  seed goes, an unknown report format, `-0` and `1.0` in JSON) and J4 a
   reference surface the port reaches differently (`fromUrl` over a
   string, `next` with a text or number info, the copied-out `date`, the
-  RNG state's own length code, frozen values).
+  RNG state's own length code, frozen values, `CborDate` inputs, a leap
+  second read as the next minute, generator equality).
 - A recipe field this program cannot read is `unparsable`. An unhandled
   panic, or any other difference, is a MISMATCH. Both make the process
   exit 1.
 
 ## Rows that guard the sibling packages
 
-| Sibling behaviour | Rows |
-|---|---|
-| uniform-resources: bytewords decoding (invalid word, length, checksum; case-sensitive), UR grammar and type errors | `decode bytewords …`, `decode url …`, `decode ur …`, `fromurl …`, the `casing` rows |
-| dcbor: tag and type errors named as the reference names them; date strings parsed as `Date::from_string` parses them; diagnostic notation | the `cbor` rows, the `json … date` and `parse` rows, `generator … info` rows |
-| envelope: assertion counting, typed envelopes, leaf extraction | the `genEnvelope` rows, every `envelope=` line |
-| rand: xoshiro256** key draws | every `generator` row |
-| crypto: SHA-256, HKDF, ChaCha20 | every `generator` and `decode message` row |
+| Sibling behaviour                                                                                                                         | Rows                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| uniform-resources: bytewords decoding (invalid word, length, checksum; case-sensitive), UR grammar and type errors                        | `decode bytewords …`, `decode url …`, `decode ur …`, `fromurl …`, the `casing` rows |
+| dcbor: tag and type errors named as the reference names them; date strings parsed as `Date::from_string` parses them; diagnostic notation | the `cbor` rows, the `json … date` and `parse` rows, `generator … info` rows        |
+| envelope: assertion counting, typed envelopes, leaf extraction                                                                            | the `genEnvelope` rows, every `envelope=` line                                      |
+| rand: xoshiro256** key draws                                                                                                              | every `generator` row                                                               |
+| crypto: SHA-256, HKDF, ChaCha20                                                                                                           | every `generator` and `decode message` row                                          |
 
 ## Self-checks
 

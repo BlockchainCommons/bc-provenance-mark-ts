@@ -63,7 +63,7 @@ describe("ProvenanceMark Envelope Support", () => {
       const generator = ProvenanceMarkGenerator.fromPassphrase("medium", "Wolf");
 
       const date = new Date(Date.UTC(2023, 5, 20, 12, 0, 0, 0));
-      const mark = generator.next(date, { info: cbor("Test info payload") });
+      const mark = generator.next(date, cbor("Test info payload"));
 
       const envelope = mark.toEnvelope();
       const restored = ProvenanceMark.fromEnvelope(envelope);
@@ -215,7 +215,7 @@ describe("ProvenanceMark Envelope Support", () => {
       const date = parseDate("2025-10-26");
 
       const generator = ProvenanceMarkGenerator.from({ res: "high", seed: seed });
-      const mark = generator.next(date, { info: cbor("Info field content") });
+      const mark = generator.next(date, cbor("Info field content"));
 
       // Mark `idHex()` matches Rust's `Display` payload exactly.
       expect(mark.idHex).toBe("59def089a4d373a2d3f6a449c6758f62ba55cda64c7faf01c1c74a1130d3c1ee");
@@ -223,7 +223,7 @@ describe("ProvenanceMark Envelope Support", () => {
         "ProvenanceMark(59def089a4d373a2d3f6a449c6758f62ba55cda64c7faf01c1c74a1130d3c1ee)",
       );
 
-      // Debug string mirrors Rust `tests/mark.rs:1019` byte-for-byte.
+      // Debug string mirrors the Rust test's assertion byte-for-byte.
       // The High-resolution wire format stores 6 date bytes (millisecond
       // precision); a midnight-UTC date round-trips without time, so
       // `dateToDisplay` emits just `2025-10-26`.

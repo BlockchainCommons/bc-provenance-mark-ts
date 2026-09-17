@@ -92,6 +92,7 @@ export function baselineAdapterFor(m: any, deps: SiblingDeps): VectorApi {
       return {
         text: m.formatReport(report, "text"),
         json: m.formatReport(report, pretty ? "json-pretty" : "json-compact"),
+        hasIssues: m.hasIssues(report),
       };
     },
     encodeDate: (r, date) => hex(m.serializeDate(res(r), m.parseDate(date))),
@@ -120,6 +121,25 @@ export function baselineAdapterFor(m: any, deps: SiblingDeps): VectorApi {
       return kind === "seed"
         ? m.ProvenanceSeed.fromCbor(value).hex()
         : m.RngState.fromCbor(value).hex();
+    },
+    seed: (text) => m.parseSeed(text).hex(),
+    info: () => {
+      throw new Error("baseline: the info type has another shape");
+    },
+    disambiguate: (r, indices, style) => {
+      const g = m.ProvenanceMarkGenerator.newWithPassphrase(res(r), "Wolf");
+      const chainMarks: any[] = [];
+      for (let i = 0; i < 4; i++)
+        chainMarks.push(g.next(new Date(Date.UTC(2023, 5, 20 + i, 12)), undefined));
+      const marks = indices.map((i) => chainMarks[i]);
+      return (
+        style === "bytewords"
+          ? m.ProvenanceMark.disambiguatedIdBytewords(marks, true)
+          : m.ProvenanceMark.disambiguatedIdBytemoji(marks, true)
+      ).join("\n");
+    },
+    summary: () => {
+      throw new Error("baseline: cannot decode raw CBOR bytes");
     },
     domain: () => {
       throw new Error("baseline: no JavaScript-domain guards to compare");

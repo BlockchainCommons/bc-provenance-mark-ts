@@ -32,29 +32,40 @@ import {
 
 const generator = ProvenanceMarkGenerator.fromPassphrase("medium", "Wolf");
 const genesis = generator.next(new Date("2023-06-20"));
-const second = generator.next(new Date("2023-06-21"), { info: "second work" });
+const second = generator.next(new Date("2023-06-21"), "second work");
+// Every date input also takes dcbor's CborDate (from an envelope's `'date'`, say).
 
-genesis.identifier({ prefix: true }); // "🅟 …" four upper-case bytewords
+genesis.idBytewords({ prefix: true }); // "🅟 …" four upper-case bytewords
 second.toUR().toString(); // "ur:provenance/…"
 ProvenanceMark.fromUR(second.toUR()).equals(second); // true
 genesis.precedes(second); // true
-formatReport(validate([genesis, second]), { format: "jsonCompact" });
+formatReport(validate([genesis, second]), "jsonCompact");
 ```
 
-Runnable examples live in the [`examples/`](https://github.com/BlockchainCommons/provenance-mark-ts/tree/master/examples) directory.
+Every failure is a `ProvenanceMarkError` whose `code` is the reference's
+error name and whose `details` are typed by it (`error.is("Bytewords")`
+narrows them); a sibling package's error is wrapped as its `cause`.
+Resolutions are `"low" | "medium" | "quartile" | "high"`; marks and
+generators round-trip through CBOR, UR, URL, bytewords, JSON and Gordian
+Envelope, and read those forms exactly as the reference does.
+
+
+Runnable examples live in the [`examples/`](https://github.com/BlockchainCommons/bc-provenance-mark-ts/tree/master/examples) directory.
 
 ## Status - Beta
 
-`provenance-mark-ts` is currently under active development and in beta testing. It should not be used for production tasks until it has had further testing and auditing. See [Blockchain Commons' Development Phases](https://github.com/BlockchainCommons/Community/blob/master/release-path.md).
+`bc-provenance-mark-ts` is currently under active development and in beta testing. It should not be used for production tasks until it has had further testing and auditing. See [Blockchain Commons' Development Phases](https://github.com/BlockchainCommons/Community/blob/master/release-path.md).
 
 ### Version History
 
-- **1.0.0-beta.1 (September 16, 2026)** - Initial beta implementation: the first release under this name, replacing `@bcts/provenance-mark`.
+- **1.0.0-beta.3 (September 16, 2026)** - Second pass against the Rust reference: `Date | CborDate` inputs, validation issues carrying bytes and dates, generator equality, `parseSeed` through the serde path, key-byte guards, `u8` resolution numbers; the reference's names for the identifier methods and the date and sequence codecs, positional optionals, `toUrl` appending as the reference does, the 4-byte codec truncating toward zero. See [CHANGELOG.md](./CHANGELOG.md).
+- **1.0.0-beta.2 (September 16, 2026)** - Dependency alignment: `@blockchaincommons/envelope` ^1.0.0-beta.3.
+- **1.0.0-beta.1 (September 16, 2026)** - Initial beta implementation: the first release under this name, replacing `@bcts/provenance-mark`. See [MIGRATION.md](./MIGRATION.md).
 
 ### Roadmap
 
 - Continued testing and auditing on the path from beta to a stable **1.0.0** release.
-- Continued parity with the Rust reference implementation as it evolves (see [`tests/rust-validation/README.md`](./tests/rust-validation/README.md) for the cross-validation harness and its result line).
+- Continued parity with the Rust reference implementation as it evolves (see [`RUST_DIVERGENCES.md`](./RUST_DIVERGENCES.md) for the record of every divergence and [`tests/rust-validation/README.md`](./tests/rust-validation/README.md) for the cross-validation harness and its result line).
 
 ### Dependencies
 
@@ -68,16 +79,16 @@ To build and work on this library, you'll need the following tools:
 
 ### Derived from ...
 
-This `provenance-mark-ts` project is either derived from or was inspired by:
+This `bc-provenance-mark-ts` project is either derived from or was inspired by:
 
 - [BlockchainCommons/provenance-mark-rust](https://github.com/BlockchainCommons/provenance-mark-rust) - The reference Rust implementation, by [Wolf McNally](https://github.com/wolfmcnally).
 - [paritytech/bcts](https://github.com/paritytech/bcts) - A TypeScript port of many Blockchain Commons' specs, by [Parity Technologies](https://github.com/paritytech).
 
 ## Financial Support
 
-`provenance-mark-ts` is a project of [Blockchain Commons](https://www.blockchaincommons.com/). We are proudly a "not-for-profit" social benefit corporation committed to open source & open development. Our work is funded entirely by donations and collaborative partnerships with people like you. Every contribution will be spent on building open tools, technologies, and techniques that sustain and advance blockchain and internet security infrastructure and promote an open web.
+`bc-provenance-mark-ts` is a project of [Blockchain Commons](https://www.blockchaincommons.com/). We are proudly a "not-for-profit" social benefit corporation committed to open source & open development. Our work is funded entirely by donations and collaborative partnerships with people like you. Every contribution will be spent on building open tools, technologies, and techniques that sustain and advance blockchain and internet security infrastructure and promote an open web.
 
-To financially support further development of `provenance-mark-ts` and other projects, please consider becoming a Patron of Blockchain Commons through ongoing monthly patronage as a [GitHub Sponsor](https://github.com/sponsors/BlockchainCommons). You can also support Blockchain Commons with bitcoins at our [BTCPay Server](https://btcpay.blockchaincommons.com/).
+To financially support further development of `bc-provenance-mark-ts` and other projects, please consider becoming a Patron of Blockchain Commons through ongoing monthly patronage as a [GitHub Sponsor](https://github.com/sponsors/BlockchainCommons). You can also support Blockchain Commons with bitcoins at our [BTCPay Server](https://btcpay.blockchaincommons.com/).
 
 ## Contributing
 
@@ -96,7 +107,7 @@ The best place to talk about Blockchain Commons and its projects is in our GitHu
 
 ### Other Questions & Problems
 
-As an open-source, open-development community, Blockchain Commons does not have the resources to provide direct support of our projects. Please consider the discussions area as a locale where you might get answers to questions. Alternatively, please use this repository's [issues](https://github.com/BlockchainCommons/provenance-mark-ts/issues) feature. Unfortunately, we can not make any promises on response time.
+As an open-source, open-development community, Blockchain Commons does not have the resources to provide direct support of our projects. Please consider the discussions area as a locale where you might get answers to questions. Alternatively, please use this repository's [issues](https://github.com/BlockchainCommons/bc-provenance-mark-ts/issues) feature. Unfortunately, we can not make any promises on response time.
 
 If your company requires support to use our projects, please feel free to contact us directly about options. We may be able to offer you a contract for support from one of our contributors, or we might be able to point you to another entity who can offer the contractual support that you need.
 

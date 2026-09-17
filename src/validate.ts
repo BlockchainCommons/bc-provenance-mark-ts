@@ -10,17 +10,12 @@ import { bytesToHex, hexToBytes } from "@blockchaincommons/dcbor";
 import { ProvenanceMark } from "./mark.js";
 import { ProvenanceMarkError } from "./error.js";
 import { type ValidationIssue } from "./validation-issue.js";
+import { dateToDisplay } from "./date.js";
 
 export { type ValidationIssue, formatValidationIssue } from "./validation-issue.js";
 
 /** How `formatReport` renders: prose, one-line JSON, or indented JSON. */
 export type ValidationReportFormat = "text" | "jsonCompact" | "jsonPretty";
-
-/** What `formatReport` takes besides the report. */
-export interface FormatReportOptions {
-  /** `text` unless given. */
-  format?: ValidationReportFormat | undefined;
-}
 
 /** A mark with the issues found where it joins its predecessor. */
 export interface FlaggedMark {
@@ -101,7 +96,7 @@ function issueAnnotation(issue: ValidationIssue): string {
     case "SequenceGap":
       return `gap: ${issue.expected} missing`;
     case "DateOrdering":
-      return `date ${issue.previous} < ${issue.next}`;
+      return `date ${dateToDisplay(issue.previous)} < ${dateToDisplay(issue.next)}`;
     case "HashMismatch":
       return "hash mismatch";
     case "KeyMismatch":
@@ -151,11 +146,17 @@ function formatText(report: ValidationReport): string {
 function issueToJSON(issue: ValidationIssue): unknown {
   switch (issue.type) {
     case "HashMismatch":
-      return { type: "HashMismatch", data: { expected: issue.expected, actual: issue.actual } };
+      return {
+        type: "HashMismatch",
+        data: { expected: bytesToHex(issue.expected), actual: bytesToHex(issue.actual) },
+      };
     case "SequenceGap":
       return { type: "SequenceGap", data: { expected: issue.expected, actual: issue.actual } };
     case "DateOrdering":
-      return { type: "DateOrdering", data: { previous: issue.previous, next: issue.next } };
+      return {
+        type: "DateOrdering",
+        data: { previous: dateToDisplay(issue.previous), next: dateToDisplay(issue.next) },
+      };
     case "KeyMismatch":
     case "NonGenesisAtZero":
     case "InvalidGenesisKey":
@@ -183,12 +184,13 @@ function reportToJSON(report: ValidationReport): unknown {
 }
 
 /**
- * The report as text (empty when there is nothing to report) or JSON. A
- * format that is not one of the three is a `RangeError`.
+ * The report as text (empty when there is nothing to report) unless
+ * `jsonCompact` or `jsonPretty` is asked for. A format that is not one of
+ * the three is a `RangeError`.
  */
 export function formatReport(
   report: ValidationReport,
-  { format = "text" }: FormatReportOptions = {},
+  format: ValidationReportFormat = "text",
 ): string {
   switch (format) {
     case "text":

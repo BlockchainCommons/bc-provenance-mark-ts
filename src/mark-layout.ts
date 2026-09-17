@@ -13,8 +13,8 @@ import {
   type ProvenanceMarkResolution,
   chainIdRange,
   dateBytesRange,
-  decodeSeq,
-  encodeSeq,
+  deserializeSeq,
+  serializeSeq,
   fixedLength,
   hashRange,
   infoRangeStart,
@@ -22,7 +22,7 @@ import {
   linkLength,
   seqBytesRange,
 } from "./resolution.js";
-import { decodeDate, encodeDate } from "./date.js";
+import { type DateInput, deserializeDate, serializeDate } from "./date.js";
 import { obfuscate, sha256Prefix } from "./crypto-utils.js";
 
 /** The decoded fields of a mark. */
@@ -78,9 +78,12 @@ export function buildFields(
   nextKey: Uint8Array,
   chainId: Uint8Array,
   seq: number,
-  date: Date,
+  date: DateInput,
   info: CborInput | undefined,
 ): MarkFields {
+  if (!(key instanceof Uint8Array)) throw new TypeError("key must be a Uint8Array");
+  if (!(nextKey instanceof Uint8Array)) throw new TypeError("nextKey must be a Uint8Array");
+  if (!(chainId instanceof Uint8Array)) throw new TypeError("chainId must be a Uint8Array");
   const linkLen = linkLength(res);
   if (key.length !== linkLen) throw ProvenanceMarkError.invalidKeyLength(linkLen, key.length);
   if (nextKey.length !== linkLen) {
@@ -89,10 +92,10 @@ export function buildFields(
   if (chainId.length !== linkLen) {
     throw ProvenanceMarkError.invalidChainIdLength(linkLen, chainId.length);
   }
-  const dateBytes = encodeDate(date, { resolution: res });
-  const seqBytes = encodeSeq(seq, { resolution: res });
+  const dateBytes = serializeDate(res, date);
+  const seqBytes = serializeSeq(res, seq);
   // The stored date is the encoded one (day, second or millisecond granularity).
-  const normalizedDate = decodeDate(dateBytes, { resolution: res });
+  const normalizedDate = deserializeDate(res, dateBytes);
   const infoBytes = infoBytesOf(info);
   const hash = makeHash(res, key, nextKey, chainId, seqBytes, dateBytes, infoBytes);
   return {
@@ -131,10 +134,10 @@ export function parseMessage(res: ProvenanceMarkResolution, message: Uint8Array)
   const hash = payload.slice(hashRng.start, hashRng.end);
   const seqRng = seqBytesRange(res);
   const seqBytes = payload.slice(seqRng.start, seqRng.end);
-  const seq = decodeSeq(seqBytes, { resolution: res });
+  const seq = deserializeSeq(res, seqBytes);
   const dateRng = dateBytesRange(res);
   const dateBytes = payload.slice(dateRng.start, dateRng.end);
-  const date = decodeDate(dateBytes, { resolution: res });
+  const date = deserializeDate(res, dateBytes);
   const infoBytes = payload.slice(infoRangeStart(res));
   if (infoBytes.length > 0) {
     try {

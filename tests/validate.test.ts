@@ -36,18 +36,18 @@ describe("Validation (Rust parity)", () => {
     it("should produce correct JSON for empty input", () => {
       const report = validate([]);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       expect(JSON.parse(json)).toEqual({
         marks: [],
         chains: [],
       });
 
       // Compact JSON format
-      const jsonCompact = formatReport(report, { format: "jsonCompact" });
+      const jsonCompact = formatReport(report, "jsonCompact");
       expect(jsonCompact).toBe('{"marks":[],"chains":[]}');
 
       // Text format should return empty string for empty report
-      expect(formatReport(report, { format: "text" })).toBe("");
+      expect(formatReport(report, "text")).toBe("");
     });
   });
 
@@ -56,7 +56,7 @@ describe("Validation (Rust parity)", () => {
       const marks = createTestMarks(1, "low", "test");
       const report = validate(marks);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(1);
@@ -69,7 +69,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[0].sequences[0].marks[0].issues).toEqual([]);
 
       // Text format should be empty for single perfect chain
-      expect(formatReport(report, { format: "text" })).toBe("");
+      expect(formatReport(report, "text")).toBe("");
     });
   });
 
@@ -78,7 +78,7 @@ describe("Validation (Rust parity)", () => {
       const marks = createTestMarks(5, "low", "test");
       const report = validate(marks);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(5);
@@ -95,7 +95,7 @@ describe("Validation (Rust parity)", () => {
       }
 
       // Text format should be empty for single perfect chain
-      expect(formatReport(report, { format: "text" })).toBe("");
+      expect(formatReport(report, "text")).toBe("");
     });
   });
 
@@ -108,7 +108,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate(marksWithDups);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       // Should have only 3 unique marks
@@ -119,7 +119,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[0].sequences[0].end_seq).toBe(2);
 
       // Text format should be empty after deduplication
-      expect(formatReport(report, { format: "text" })).toBe("");
+      expect(formatReport(report, "text")).toBe("");
     });
   });
 
@@ -131,7 +131,7 @@ describe("Validation (Rust parity)", () => {
       const allMarks = [...marks1, ...marks2];
       const report = validate(allMarks);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(6);
@@ -142,7 +142,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[1].has_genesis).toBe(true);
 
       // Text format should show both chains
-      const text = formatReport(report, { format: "text" });
+      const text = formatReport(report, "text");
       expect(text).toContain("Total marks: 6");
       expect(text).toContain("Chains: 2");
       expect(text).toContain("Chain 1:");
@@ -159,7 +159,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate(marksNoGenesis);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(4);
@@ -170,7 +170,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[0].sequences[0].end_seq).toBe(4);
 
       // Text format should show warning
-      const text = formatReport(report, { format: "text" });
+      const text = formatReport(report, "text");
       expect(text).toContain("Warning: No genesis mark found");
     });
   });
@@ -189,7 +189,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate(marksWithGap);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(4);
@@ -209,7 +209,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[0].sequences[1].marks[0].issues[0].data.actual).toBe(3);
 
       // Text format should show gap
-      const text = formatReport(report, { format: "text" });
+      const text = formatReport(report, "text");
       expect(text).toContain("gap: 2 missing");
     });
   });
@@ -229,7 +229,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate(marksOutOfOrder);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       // Validation sorts by seq number, so should be valid
@@ -240,7 +240,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[0].sequences[0].end_seq).toBe(4);
 
       // Text format should be empty - sorted correctly
-      expect(formatReport(report, { format: "text" })).toBe("");
+      expect(formatReport(report, "text")).toBe("");
     });
   });
 
@@ -267,7 +267,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate([mark0, mark1, badMark]);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(3);
@@ -280,7 +280,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[0].sequences[1].marks[0].issues[0].type).toBe("HashMismatch");
 
       // Text format should show hash mismatch
-      const text = formatReport(report, { format: "text" });
+      const text = formatReport(report, "text");
       expect(text).toContain("hash mismatch");
     });
   });
@@ -290,7 +290,7 @@ describe("Validation (Rust parity)", () => {
       const marks = createTestMarks(3, "low", "test");
       const report = validate(marks);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(3);
@@ -315,7 +315,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate(marksWithGaps);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(5);
@@ -331,7 +331,7 @@ describe("Validation (Rust parity)", () => {
       expect(parsed.chains[0].sequences[2].end_seq).toBe(6);
 
       // Text format should show gaps
-      const text = formatReport(report, { format: "text" });
+      const text = formatReport(report, "text");
       expect(text).toContain("gap: 2 missing");
       expect(text).toContain("gap: 5 missing");
     });
@@ -379,12 +379,12 @@ describe("Validation (Rust parity)", () => {
       const marks: ProvenanceMark[] = [];
       for (let i = 0; i < 3; i++) {
         const date = new Date(Date.UTC(2023, 5, 20 + i, 12, 0, 0, 0));
-        marks.push(generator.next(date, { info: cbor("Test info") }));
+        marks.push(generator.next(date, cbor("Test info")));
       }
 
       const report = validate(marks);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(3);
@@ -408,7 +408,7 @@ describe("Validation (Rust parity)", () => {
       const allMarks = [...marks1, ...marks2, ...marks3];
       const report = validate(allMarks);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.chains.length).toBe(3);
@@ -426,13 +426,13 @@ describe("Validation (Rust parity)", () => {
 
       // With genesis
       const reportWithGenesis = validate(marks);
-      const parsedWith = JSON.parse(formatReport(reportWithGenesis, { format: "jsonPretty" }));
+      const parsedWith = JSON.parse(formatReport(reportWithGenesis, "jsonPretty"));
       expect(parsedWith.chains[0].has_genesis).toBe(true);
 
       // Without genesis
       const marksNoGenesis = marks.slice(1);
       const reportNoGenesis = validate(marksNoGenesis);
-      const parsedWithout = JSON.parse(formatReport(reportNoGenesis, { format: "jsonPretty" }));
+      const parsedWithout = JSON.parse(formatReport(reportNoGenesis, "jsonPretty"));
       expect(parsedWithout.chains[0].has_genesis).toBe(false);
     });
   });
@@ -452,7 +452,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate([mark0, markBadDate]);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(2);
@@ -486,7 +486,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate([mark0, badMark]);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(2);
@@ -521,7 +521,7 @@ describe("Validation (Rust parity)", () => {
 
       const report = validate([mark0, badMark]);
 
-      const json = formatReport(report, { format: "jsonPretty" });
+      const json = formatReport(report, "jsonPretty");
       const parsed = JSON.parse(json);
 
       expect(parsed.marks.length).toBe(2);

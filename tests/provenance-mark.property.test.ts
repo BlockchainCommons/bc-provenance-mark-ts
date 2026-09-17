@@ -10,8 +10,8 @@ import {
   ProvenanceMarkGenerator,
   type ProvenanceMarkResolution,
   ProvenanceSeed,
-  encodeDate,
-  decodeDate,
+  serializeDate,
+  deserializeDate,
 } from "../src";
 
 const RES: ProvenanceMarkResolution[] = ["low", "medium", "quartile", "high"];
@@ -75,13 +75,43 @@ describe("properties", () => {
         fc.integer({ min: 1_700_000_000, max: 4_000_000_000 }),
         (res, secs) => {
           const d = new Date(secs * 1000);
-          const bytes = encodeDate(d, { resolution: res });
-          const back = decodeDate(bytes, { resolution: res });
-          expect(encodeDate(back, { resolution: res })).toEqual(bytes);
+          const bytes = serializeDate(res, d);
+          const back = deserializeDate(res, bytes);
+          expect(serializeDate(res, back)).toEqual(bytes);
           expect(back.getTime()).toBeLessThanOrEqual(d.getTime());
         },
       ),
       { numRuns: 100 },
+    );
+  });
+});
+
+describe("key guards", () => {
+  it("rejects every non-Uint8Array key, next key and chain id with a TypeError", () => {
+    const notBytes = fc.oneof(
+      fc.string(),
+      fc.integer(),
+      fc.array(fc.integer({ min: 0, max: 255 }), { maxLength: 8 }),
+      fc.constant(null),
+      fc.constant(undefined),
+      fc.record({ length: fc.integer({ min: 0, max: 8 }) }),
+    );
+    fc.assert(
+      fc.property(notBytes, fc.integer({ min: 0, max: 2 }), (bad, slot) => {
+        const good = new Uint8Array(4);
+        const fields = [good, good, good] as unknown[];
+        fields[slot] = bad;
+        expect(() =>
+          ProvenanceMark.from({
+            res: "low",
+            key: fields[0] as Uint8Array,
+            nextKey: fields[1] as Uint8Array,
+            chainId: fields[2] as Uint8Array,
+            seq: 0,
+            date: new Date("2023-06-20T12:00:00Z"),
+          }),
+        ).toThrow(TypeError);
+      }),
     );
   });
 });

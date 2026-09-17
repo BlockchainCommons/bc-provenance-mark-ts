@@ -76,22 +76,22 @@ describe("ProvenanceMark.idBytewords()", () => {
   it("returns `wordCount` space-separated words for 4..=32", () => {
     const [mark] = makeTestMarks(1);
     for (let n = 4; n <= 32; n++) {
-      const words = mark.identifier({ words: n, prefix: false }).split(" ");
+      const words = mark.idBytewords({ wordCount: n, prefix: false }).split(" ");
       expect(words.length).toBe(n);
     }
   });
 
   it("the 8-word form extends the 4-word form", () => {
     const [mark] = makeTestMarks(1);
-    const short = mark.identifier({ words: 4, prefix: false });
-    const long = mark.identifier({ words: 8, prefix: false });
+    const short = mark.idBytewords({ wordCount: 4, prefix: false });
+    const long = mark.idBytewords({ wordCount: 8, prefix: false });
     expect(long.startsWith(short)).toBe(true);
   });
 
   it("respects the `prefix` flag", () => {
     const [mark] = makeTestMarks(1);
-    const without = mark.identifier({ words: 4, prefix: false });
-    const withPrefix = mark.identifier({ words: 4, prefix: true });
+    const without = mark.idBytewords({ wordCount: 4, prefix: false });
+    const withPrefix = mark.idBytewords({ wordCount: 4, prefix: true });
     expect(withPrefix.startsWith("\u{1F15F} ")).toBe(true);
     // Strip the prefix by its exact JS code-point length.
     const prefixLen = "\u{1F15F} ".length;
@@ -102,12 +102,12 @@ describe("ProvenanceMark.idBytewords()", () => {
 describe("ProvenanceMark.idBytewords() argument validation", () => {
   it("throws for wordCount below 4", () => {
     const [mark] = makeTestMarks(1);
-    expect(() => mark.identifier({ words: 3, prefix: false })).toThrow(RangeError);
+    expect(() => mark.idBytewords({ wordCount: 3, prefix: false })).toThrow(RangeError);
   });
 
   it("throws for wordCount above 32", () => {
     const [mark] = makeTestMarks(1);
-    expect(() => mark.identifier({ words: 33, prefix: false })).toThrow(RangeError);
+    expect(() => mark.idBytewords({ wordCount: 33, prefix: false })).toThrow(RangeError);
   });
 });
 
@@ -119,16 +119,14 @@ describe("ProvenanceMark.idBytemoji()", () => {
   it("returns `wordCount` space-separated emojis for 4..=32", () => {
     const [mark] = makeTestMarks(1);
     for (let n = 4; n <= 32; n++) {
-      const emojis = mark.identifier({ style: "bytemoji", words: n, prefix: false }).split(" ");
+      const emojis = mark.idBytemoji({ wordCount: n, prefix: false }).split(" ");
       expect(emojis.length).toBe(n);
     }
   });
 
   it("throws for wordCount above 32", () => {
     const [mark] = makeTestMarks(1);
-    expect(() => mark.identifier({ style: "bytemoji", words: 33, prefix: false })).toThrow(
-      RangeError,
-    );
+    expect(() => mark.idBytemoji({ wordCount: 33, prefix: false })).toThrow(RangeError);
   });
 });
 
@@ -140,28 +138,26 @@ describe("ProvenanceMark.idBytewordsMinimal()", () => {
   it("is exactly `wordCount * 2` characters for 4..=32", () => {
     const [mark] = makeTestMarks(1);
     for (let n = 4; n <= 32; n++) {
-      expect(mark.identifier({ style: "minimal", words: n, prefix: false }).length).toBe(n * 2);
+      expect(mark.idBytewordsMinimal({ wordCount: n, prefix: false }).length).toBe(n * 2);
     }
   });
 
   it("is always upper-case", () => {
     const [mark] = makeTestMarks(1);
-    const minimal = mark.identifier({ style: "minimal", words: 4, prefix: false });
+    const minimal = mark.idBytewordsMinimal({ wordCount: 4, prefix: false });
     expect(minimal).toBe(minimal.toUpperCase());
   });
 
   it("the 8-byte form extends the 4-byte form", () => {
     const [mark] = makeTestMarks(1);
-    const short = mark.identifier({ style: "minimal", words: 4, prefix: false });
-    const long = mark.identifier({ style: "minimal", words: 8, prefix: false });
+    const short = mark.idBytewordsMinimal({ wordCount: 4, prefix: false });
+    const long = mark.idBytewordsMinimal({ wordCount: 8, prefix: false });
     expect(long.startsWith(short)).toBe(true);
   });
 
   it("throws for wordCount below 4", () => {
     const [mark] = makeTestMarks(1);
-    expect(() => mark.identifier({ style: "minimal", words: 3, prefix: false })).toThrow(
-      RangeError,
-    );
+    expect(() => mark.idBytewordsMinimal({ wordCount: 3, prefix: false })).toThrow(RangeError);
   });
 });
 
@@ -169,10 +165,10 @@ describe("ProvenanceMark.idBytewordsMinimal()", () => {
 // disambiguation — no collisions
 // =============================================================================
 
-describe("ProvenanceMark.disambiguatedIdentifiers() without collisions", () => {
+describe("ProvenanceMark.disambiguatedIdBytewords() without collisions", () => {
   it("returns a 4-word identifier per distinct mark", () => {
     const marks = makeTestMarks(5);
-    const ids = ProvenanceMark.disambiguatedIdentifiers(marks, { prefix: false });
+    const ids = ProvenanceMark.disambiguatedIdBytewords(marks, { prefix: false });
     expect(ids.length).toBe(5);
     for (const id of ids) {
       expect(id.split(" ").length).toBe(4);
@@ -180,13 +176,13 @@ describe("ProvenanceMark.disambiguatedIdentifiers() without collisions", () => {
   });
 
   it("is empty for an empty input", () => {
-    const ids = ProvenanceMark.disambiguatedIdentifiers([], { prefix: false });
+    const ids = ProvenanceMark.disambiguatedIdBytewords([], { prefix: false });
     expect(ids).toEqual([]);
   });
 
   it("handles a single mark", () => {
     const marks = makeTestMarks(1);
-    const ids = ProvenanceMark.disambiguatedIdentifiers(marks, { prefix: false });
+    const ids = ProvenanceMark.disambiguatedIdBytewords(marks, { prefix: false });
     expect(ids.length).toBe(1);
     expect(ids[0].split(" ").length).toBe(4);
   });
@@ -196,19 +192,19 @@ describe("ProvenanceMark.disambiguatedIdentifiers() without collisions", () => {
 // disambiguation — with collisions
 // =============================================================================
 
-describe("ProvenanceMark.disambiguatedIdentifiers() selective extension", () => {
+describe("ProvenanceMark.disambiguatedIdBytewords() selective extension", () => {
   it("only extends colliding entries; identical marks max out at 32 words", () => {
     const marks = makeTestMarks(5);
 
     // Baseline: non-colliding marks all get 4 words.
-    const baseline = ProvenanceMark.disambiguatedIdentifiers(marks, { prefix: false });
+    const baseline = ProvenanceMark.disambiguatedIdBytewords(marks, { prefix: false });
     for (const id of baseline) {
       expect(id.split(" ").length).toBe(4);
     }
 
     // Force a collision by including a duplicate mark.
     const dupped = [marks[0], marks[1], marks[2], marks[0]];
-    const ids = ProvenanceMark.disambiguatedIdentifiers(dupped, { prefix: false });
+    const ids = ProvenanceMark.disambiguatedIdBytewords(dupped, { prefix: false });
     expect(ids.length).toBe(4);
 
     // marks[1] and marks[2] should still have 4 words (no collision)
@@ -224,7 +220,7 @@ describe("ProvenanceMark.disambiguatedIdentifiers() selective extension", () => 
 
   it("produces unique identifiers when inputs are all distinct", () => {
     const marks = makeTestMarks(10);
-    const ids = ProvenanceMark.disambiguatedIdentifiers(marks, { prefix: false });
+    const ids = ProvenanceMark.disambiguatedIdBytewords(marks, { prefix: false });
     expect(new Set(ids).size).toBe(ids.length);
   });
 });
@@ -238,11 +234,8 @@ describe("ProvenanceMark.disambiguatedIdBytemoji()", () => {
     const marks = makeTestMarks(3);
     const refs = [marks[0], marks[1], marks[0]];
 
-    const wordIds = ProvenanceMark.disambiguatedIdentifiers(refs, { prefix: false });
-    const emojiIds = ProvenanceMark.disambiguatedIdentifiers(refs, {
-      style: "bytemoji",
-      prefix: false,
-    });
+    const wordIds = ProvenanceMark.disambiguatedIdBytewords(refs, { prefix: false });
+    const emojiIds = ProvenanceMark.disambiguatedIdBytemoji(refs, { prefix: false });
 
     expect(wordIds.length).toBe(emojiIds.length);
     for (let i = 0; i < wordIds.length; i++) {
@@ -257,11 +250,11 @@ describe("ProvenanceMark.disambiguatedIdBytemoji()", () => {
 // prefix flag
 // =============================================================================
 
-describe("ProvenanceMark.disambiguatedIdentifiers() prefix flag", () => {
+describe("ProvenanceMark.disambiguatedIdBytewords() prefix flag", () => {
   it("prepends the prefix character to every identifier", () => {
     const marks = makeTestMarks(3);
-    const noPrefix = ProvenanceMark.disambiguatedIdentifiers(marks, { prefix: false });
-    const withPrefix = ProvenanceMark.disambiguatedIdentifiers(marks, { prefix: true });
+    const noPrefix = ProvenanceMark.disambiguatedIdBytewords(marks, { prefix: false });
+    const withPrefix = ProvenanceMark.disambiguatedIdBytewords(marks, { prefix: true });
     const prefixLen = "\u{1F15F} ".length;
     for (let i = 0; i < noPrefix.length; i++) {
       expect(withPrefix[i].startsWith("\u{1F15F} ")).toBe(true);

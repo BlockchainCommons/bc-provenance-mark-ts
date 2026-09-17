@@ -17,13 +17,13 @@ const api = (m) => {
       current
         ? m.ProvenanceMarkGenerator.from({ res, seed: m.ProvenanceSeed.from(SEED) })
         : m.ProvenanceMarkGenerator.newWithSeed(res, m.ProvenanceSeed.fromBytes(SEED)),
-    next: (g, i) => g.next(new Date(Date.UTC(2024, 0, 1 + (i % 28))), current ? {} : undefined),
+    next: (g, i) => g.next(new Date(Date.UTC(2024, 0, 1 + (i % 28)))),
     message: (mark) => (current ? mark.message : mark.message()),
     fromMessage: (bytes) => m.ProvenanceMark.fromMessage(res, bytes),
     validate: (marks) => m.validate(marks),
     ur: (mark) => (current ? mark.toUR().toString() : mark.urString()),
     identifier: (mark) =>
-      current ? mark.identifier({ style: "bytewords", prefix: true }) : mark.bytewordsIdentifier(true),
+      current ? mark.idBytewords({ prefix: true }) : mark.bytewordsIdentifier(true),
   };
 };
 const time = (fn, n) => {

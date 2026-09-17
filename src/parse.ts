@@ -4,21 +4,19 @@
  * The two user-input parsers the reference's `util` module offers.
  */
 
-import { ProvenanceMarkError } from "./error.js";
 import { ProvenanceSeed } from "./seed.js";
-import { Base64DecodeError, fromBase64 } from "./utils.js";
+import { block32, decodeBase64Json } from "./json.js";
 import { dateFromIso8601 } from "./date.js";
 
-/** A base64 32-byte seed; bad base64 is `Base64`, the wrong length `InvalidSeedLength`. */
+/**
+ * A base64 32-byte seed, read as the reference's `parse_seed` reads it:
+ * through the seed's serde form, so bad base64 or the wrong length is
+ * `Json` with serde's text (`Invalid symbol 33, offset 0.`, `seed length is
+ * 3, expected 32`).
+ */
 export function parseSeed(s: string): ProvenanceSeed {
-  let bytes: Uint8Array;
-  try {
-    bytes = fromBase64(s);
-  } catch (error) {
-    if (error instanceof Base64DecodeError) throw ProvenanceMarkError.base64(error.message, error);
-    throw error;
-  }
-  return ProvenanceSeed.from(bytes);
+  if (typeof s !== "string") throw new TypeError("seed must be a string");
+  return ProvenanceSeed.from(block32(decodeBase64Json(s)));
 }
 
 /**

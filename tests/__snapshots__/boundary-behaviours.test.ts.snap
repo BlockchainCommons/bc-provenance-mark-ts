@@ -1,0 +1,64 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`boundary behaviours > JSON numbers beyond the safe range 1`] = `
+[
+  "1e+30: throw:Json|JSON error: invalid type: floating point \`1e+30\`, expected u32",
+  "0: 0",
+  "1: 1",
+  "1.5: throw:Json|JSON error: invalid type: floating point \`1.5\`, expected u32",
+]
+`;
+
+exports[`boundary behaviours > a string, a number and an array where key bytes go 1`] = `
+[
+  "throw:TypeError|key must be a Uint8Array",
+  "throw:TypeError|key must be a Uint8Array",
+  "throw:TypeError|key must be a Uint8Array",
+]
+`;
+
+exports[`boundary behaviours > generator equality 1`] = `"function"`;
+
+exports[`boundary behaviours > parseDate keeps what a JS Date keeps 1`] = `
+[
+  "2023-01-01T00:00:00.1234567Z: 2023-01-01T00:00:00.123Z",
+  "2023-12-25T10:30:60Z: 2023-12-25T10:31:00.000Z",
+  "2023-01-01: 2023-01-01T00:00:00.000Z",
+]
+`;
+
+exports[`boundary behaviours > parseSeed 1`] = `
+[
+  "!!!!: throw:Json|JSON error: Invalid symbol 33, offset 0.",
+  "AAAA: throw:Json|JSON error: seed length is 3, expected 32",
+  "AAAAAAAA: throw:Json|JSON error: Invalid padding",
+  "AAAAAAAA: throw:Json|JSON error: seed length is 33, expected 32",
+]
+`;
+
+exports[`boundary behaviours > resolution numbers the wire cannot hold 1`] = `
+[
+  "19012c: throw:Cbor[OutOfRange]|the CBOR numeric value could not be represented in the specified numeric type",
+  "1b0000010000000000: throw:Cbor[OutOfRange]|the CBOR numeric value could not be represented in the specified numeric type",
+  "04: throw:Cbor[Custom]|resolution serialization error: invalid provenance mark resolution value: 4",
+  "f93e00: throw:Cbor[WrongType]|the decoded CBOR value was not the expected type",
+  "20: throw:Cbor[WrongType]|the decoded CBOR value was not the expected type",
+]
+`;
+
+exports[`boundary behaviours > the envelope summariser on a malformed mark 1`] = `
+[
+  "<error: resolution serialization error: invalid provenance mark resolution value: 9>",
+  "<error: invalid message length: expected at least 16, got 3>",
+  "ProvenanceMark(5bdcec81405e819c695731d85ea2e1e1f93243a145d97f1873a030720ae71cd3)",
+]
+`;
+
+exports[`boundary behaviours > the info type's comment 1`] = `
+[
+  "5: throw:Json|JSON error: invalid type: integer \`5\`, expected a string",
+  "null: throw:Json|JSON error: invalid type: null, expected a string",
+  "text: text",
+  "undefined: ",
+]
+`;

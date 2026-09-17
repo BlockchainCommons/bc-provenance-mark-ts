@@ -40,14 +40,14 @@ export {
   seqBytesLength,
   dateBytesLength,
   fixedLength,
-  type ResolutionOptions,
-  encodeSeq,
-  decodeSeq,
+  serializeSeq,
+  deserializeSeq,
 } from "./resolution.js";
 
 export {
-  encodeDate,
-  decodeDate,
+  type DateInput,
+  serializeDate,
+  deserializeDate,
   expectDate,
   rangeOfDaysInMonth,
   type DayRange,
@@ -69,22 +69,19 @@ export {
   type ProvenanceMarkInput,
   type IdentifierOptions,
   type DisambiguatedIdentifierOptions,
-  type BytewordsOptions,
   type ProvenanceMarkCodec,
 } from "./mark.js";
-export { type IdentifierStyle, IDENTIFIER_STYLES, MARK_ID_PREFIX } from "./mark-identifier.js";
+export { MARK_ID_PREFIX } from "./mark-identifier.js";
 
 export {
   ProvenanceMarkGenerator,
   type ProvenanceMarkGeneratorInput,
   type ProvenanceMarkGeneratorState,
-  type NextMarkOptions,
 } from "./generator.js";
 
 export {
   type ValidationIssue,
   type ValidationReportFormat,
-  type FormatReportOptions,
   type FlaggedMark,
   type SequenceReport,
   type ChainReport,
@@ -96,6 +93,6 @@ export {
   validate,
 } from "./validate.js";
 
-export { ProvenanceMarkInfo, type MarkInfoOptions } from "./mark-info.js";
+export { ProvenanceMarkInfo } from "./mark-info.js";
 
 export { registerTags, registerTagsIn } from "./envelope.js";

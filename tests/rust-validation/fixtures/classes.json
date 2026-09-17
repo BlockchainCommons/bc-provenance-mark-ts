@@ -19,16 +19,16 @@
     "words": 3,
     "style": "bytewords"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 3"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 3"
   },
   {
-   "name": "domain identifier.words.fraction (J1) (js-only J1)",
+   "name": "domain identifier.wordCount.fraction (J1) (js-only J1)",
    "recipe": {
     "k": "domain",
-    "case": "identifier.words.fraction",
+    "case": "identifier.wordCount.fraction",
     "cls": "J1"
    },
-   "expect": "throw:RangeError|words must be an integer from 4 to 32, got 4.5"
+   "expect": "throw:RangeError|wordCount must be an integer from 4 to 32, got 4.5"
   },
   {
    "name": "domain encodeDate.invalid.low (J3) (js-only J3)",
@@ -49,13 +49,19 @@
    "expect": "ProvenanceMark(key: 090bf2f8, hash: 5bdcec81, chainID: 090bf2f8, seq: 0, date: 2023-06-20)"
   },
   {
-   "name": "url low https://example.com/?provenance=old (port-right: toUrl replaces an existing provenance parameter)",
+   "name": "json generator {\"res\":0,\"seed\":\"znwVmbBQb1+QkeD8p5ak890F+UMrzoC5Ke2E1lh0zhA (port-right: the generator's JSON checks the chain-id length)",
    "recipe": {
-    "k": "url",
-    "res": "low",
-    "base": "https://example.com/?provenance=old"
+    "k": "json",
+    "target": "generator",
+    "json": {
+     "res": 0,
+     "seed": "znwVmbBQb1+QkeD8p5ak890F+UMrzoC5Ke2E1lh0zhA=",
+     "chainID": "AAAA",
+     "nextSeq": 1,
+     "rngState": "NP1R6mPh5Gsz5KjGVReUxRnM4u3NohBbR1jomiWZCCw="
+    }
    },
-   "expect": "https://example.com/?provenance=tngdgmgwhflfaegdasbdwzyarhjnbyjzytwlmkftuecaemahdpbswmkb"
+   "expect": "throw:Json|JSON error: invalid chain ID length: expected 4, got 3"
   }
  ]
 }

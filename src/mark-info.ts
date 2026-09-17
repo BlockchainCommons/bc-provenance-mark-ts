@@ -9,13 +9,7 @@ import { UR, URError } from "@blockchaincommons/uniform-resources";
 import { ProvenanceMark } from "./mark.js";
 import { ProvenanceMarkError } from "./error.js";
 import { dateToDisplay } from "./date.js";
-import { expectObject, stringField } from "./json.js";
-
-/** What `ProvenanceMarkInfo.from` takes besides the mark. */
-export interface MarkInfoOptions {
-  /** Free text to show with the mark; empty by default. */
-  comment?: string | undefined;
-}
+import { expectObject, optionalStringField, stringField } from "./json.js";
 
 /** A mark with its UR and identifiers rendered once, plus a comment, for display. Frozen. */
 export class ProvenanceMarkInfo {
@@ -40,15 +34,18 @@ export class ProvenanceMarkInfo {
     Object.freeze(this);
   }
 
-  /** The mark's UR and its 🅟-prefixed four-word identifiers. */
-  static from(mark: ProvenanceMark, { comment = "" }: MarkInfoOptions = {}): ProvenanceMarkInfo {
+  /**
+   * The mark's UR and its 🅟-prefixed four-word identifiers, with free
+   * text to show alongside (empty unless given).
+   */
+  static from(mark: ProvenanceMark, comment = ""): ProvenanceMarkInfo {
     if (!(mark instanceof ProvenanceMark)) throw new TypeError("mark must be a ProvenanceMark");
     if (typeof comment !== "string") throw new TypeError("comment must be a string");
     return new ProvenanceMarkInfo(
       mark,
       mark.toUR(),
-      mark.identifier({ style: "bytewords", prefix: true }),
-      mark.identifier({ style: "bytemoji", prefix: true }),
+      mark.idBytewords({ prefix: true }),
+      mark.idBytemoji({ prefix: true }),
       comment,
     );
   }
@@ -110,10 +107,7 @@ export class ProvenanceMarkInfo {
     const urText = stringField(obj, "ur");
     const bytewords = stringField(obj, "bytewords");
     const bytemoji = stringField(obj, "bytemoji");
-    const commentValue = obj["comment"];
-    if (commentValue !== undefined && typeof commentValue !== "string") {
-      throw ProvenanceMarkError.json(`invalid type: ${typeof commentValue}, expected a string`);
-    }
+    const commentValue = optionalStringField(obj, "comment");
     let mark: ProvenanceMark;
     try {
       mark = ProvenanceMark.fromUR(UR.parse(urText));

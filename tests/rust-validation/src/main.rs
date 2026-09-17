@@ -203,7 +203,7 @@ fn run(r: &J) -> R<String> {
             let report = ValidationReport::validate(marks);
             let pretty = r.get("pretty").and_then(|b| b.as_bool()).unwrap_or(false);
             let json = report.format(if pretty { ValidationReportFormat::JsonPretty } else { ValidationReportFormat::JsonCompact });
-            Ok(format!("{}\n===\n{}", report.format(ValidationReportFormat::Text), json))
+            Ok(format!("{}\n===\n{}\n===\nhasIssues={}", report.format(ValidationReportFormat::Text), json, report.has_issues()))
         }
         "date" => {
             let rs = res(r)?;
@@ -278,6 +278,37 @@ fn run(r: &J) -> R<String> {
                 other => return Err(format!("unparsable:kind {other}")),
             })
         }
+        // The reference's `parse_seed` fails with serde's bare text; the port throws `Json` with it.
+        "seed" => match provenance_mark::util::parse_seed(&need!(s(r, "s"), "s")) {
+            Ok(seed) => Ok(seed.hex()),
+            Err(e) => Err(format!("throw:Json|JSON error: {e}")),
+        },
+        "info" => {
+            let info: ProvenanceMarkInfo = if let Some(json) = r.get("json") {
+                from_json(json)?
+            } else {
+                ProvenanceMarkInfo::new(wolf_genesis(res(r)?), s(r, "comment").unwrap_or_default())
+            };
+            Ok(format!("{}\n===\n{}", info.markdown_summary(), serde_json::to_string(&info).unwrap()))
+        }
+        "disambiguate" => {
+            let rs = res(r)?;
+            let mut g = ProvenanceMarkGenerator::new_with_passphrase(rs, "Wolf");
+            let chain: Vec<ProvenanceMark> = (0..4)
+                .map(|i| g.next(Date::from_string(&format!("2023-06-{}T12:00:00Z", 20 + i)).unwrap(), None::<String>))
+                .collect();
+            let marks: Vec<&ProvenanceMark> = arr(r, "indices").iter().map(|i| &chain[i.as_u64().unwrap_or(0) as usize]).collect();
+            let ids = match need!(s(r, "style"), "style").as_str() {
+                "bytewords" => ProvenanceMark::disambiguated_id_bytewords(&marks, true),
+                "bytemoji" => ProvenanceMark::disambiguated_id_bytemoji(&marks, true),
+                other => return Err(format!("unparsable:style {other}")),
+            };
+            Ok(ids.join("\n"))
+        }
+        "summary" => {
+            let cbor = tri!(CBOR::try_from_data(unhex(&need!(s(r, "hex"), "hex"))?));
+            Ok(Envelope::new(cbor).format())
+        }
         "domain" => Ok(format!("js-only:{}", need!(s(r, "cls"), "cls"))),
         other => Err(format!("unparsable:kind {other}")),
     }
@@ -295,20 +326,28 @@ const PANIC_MAPPED: &[(&str, &str, &str)] = &[
     ("generator", "YearOutOfRange", "YearOutOfRange"),
     ("generator", "DateOutOfRange", "DateOutOfRange"),
     ("generator", "InvalidMonthOrDay", "InvalidMonthOrDay"),
+    // `to_url` unwraps `Url::parse` on the base; the port throws `Url`.
+    ("url", "RelativeUrlWithoutBase", "Url"),
 ];
 fn panic_mapped(kind: &str, text: &str) -> Option<&'static str> {
     PANIC_MAPPED.iter().find(|(k, needle, _)| *k == kind && text.contains(needle)).map(|(_, _, code)| *code)
 }
 /// (recipe kind, needle in the recipe's JSON, reason): rows whose difference is the port's deliberate correction.
 const PORT_RIGHT: &[(&str, &str, &str)] = &[
-    // `to_url` appends a second `provenance` parameter and `from_url` then reads the first; the port replaces it.
-    ("url", "provenance=old", "toUrl replaces an existing provenance parameter"),
     // The reference's serde path skips the chain-id length check its constructor enforces; the port checks it.
     ("json", "\"chainID\":\"AAAA\"", "generator JSON checks the chain-id length"),
+    // dcbor's `u8::try_from` wraps a negative integer to 255 and the reference then reports it as an unknown resolution; the port reports the wrong type.
+    ("cbor", "822050090bf2", "a negative resolution number is WrongType, not a wrapped byte"),
 ];
 fn port_right(kind: &str, recipe: &J) -> Option<&'static str> {
     let text = recipe.to_string();
     PORT_RIGHT.iter().find(|(k, needle, _)| *k == kind && text.contains(needle)).map(|(_, _, why)| *why)
+}
+/// (recipe kind, needle in the recipe's JSON, finding): rows whose difference is a known finding not yet fixed in the port.
+const PENDING: &[(&str, &str, &str)] = &[];
+fn pending(kind: &str, recipe: &J) -> Option<&'static str> {
+    let text = recipe.to_string();
+    PENDING.iter().find(|(k, needle, _)| *k == kind && text.contains(needle)).map(|(_, _, what)| *what)
 }
 /// The port's code in a `throw:<code>[<inner>]|<message>` outcome.
 fn ts_code(want: &str) -> Option<&str> {
@@ -346,7 +385,7 @@ fn main() {
     assert_eq!(file.count, file.vectors.len(), "the file's count must equal its vectors");
     std::panic::set_hook(Box::new(|_| {}));
 
-    let (mut ok, mut mapped, mut js_only, mut right, mut mismatch, mut unparsable) = (0usize, 0usize, 0usize, 0usize, 0usize, 0usize);
+    let (mut ok, mut mapped, mut js_only, mut right, mut mismatch, mut unparsable, mut pend) = (0usize, 0usize, 0usize, 0usize, 0usize, 0usize, 0usize);
     let mut js_by: BTreeMap<String, usize> = Default::default();
     let mut dump: BTreeMap<String, String> = Default::default();
     let cut = |x: &str| if verbose { x.to_string() } else { x.chars().take(200).collect::<String>() };
@@ -362,6 +401,7 @@ fn main() {
                 if let Some(class) = got.strip_prefix("js-only:") { js_only += 1; *js_by.entry(class.to_string()).or_default() += 1; continue; }
                 if let Some(what) = got.strip_prefix("unparsable:") { unparsable += 1; eprintln!("UNPARSABLE {} ({what})", v.name); continue; }
                 if let Some(why) = port_right(&kind, &v.recipe) { right += 1; if verbose { eprintln!("PORT-RIGHT {} ({why})", v.name); } continue; }
+                if let Some(what) = pending(&kind, &v.recipe) { pend += 1; eprintln!("PENDING {} ({what})\n  rust: {}\n  ts:   {}", v.name, cut(&got), cut(want)); continue; }
                 let (g, w): (Vec<&str>, Vec<&str>) = (got.lines().collect(), want.lines().collect());
                 let line = (0..g.len().max(w.len())).find(|&i| g.get(i) != w.get(i)).unwrap_or(0);
                 mismatch += 1;
@@ -378,7 +418,7 @@ fn main() {
     if let Ok(path) = std::env::var("DUMP") { std::fs::write(path, serde_json::to_string_pretty(&dump).unwrap()).unwrap(); }
     let js_detail: Vec<String> = js_by.iter().map(|(k, n)| format!("{k} {n}")).collect();
     println!(
-        "{} vectors - {ok} match, {mapped} panic-mapped, {js_only} js-only ({}), {right} port-right, {unparsable} unparsable, {mismatch} MISMATCH",
+        "{} vectors - {ok} match, {mapped} panic-mapped, {js_only} js-only ({}), {right} port-right, {pend} pending, {unparsable} unparsable, {mismatch} MISMATCH",
         file.vectors.len(), js_detail.join(", ")
     );
     std::process::exit(if mismatch == 0 && unparsable == 0 { 0 } else { 1 });

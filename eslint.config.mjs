@@ -22,6 +22,8 @@ export default [
       },
       globals: {
         TextEncoder: "readonly",
+        URL: "readonly",
+        URLSearchParams: "readonly",
         TextDecoder: "readonly",
         btoa: "readonly",
         atob: "readonly",
@@ -34,7 +36,7 @@ export default [
       ...tsPlugin.configs["recommended-type-checked"].rules,
       ...tsPlugin.configs["stylistic-type-checked"].rules,
 
-      // Conflicts with tsconfig `isolatedDeclarations` (P1.3), which REQUIRES
+      // Conflicts with tsconfig `isolatedDeclarations`, which REQUIRES
       // explicit annotations on exported consts the rule deems inferrable.
       "@typescript-eslint/no-inferrable-types": "off",
 
@@ -164,6 +166,8 @@ export default [
         __dirname: "readonly",
         __filename: "readonly",
         TextEncoder: "readonly",
+        URL: "readonly",
+        URLSearchParams: "readonly",
         TextDecoder: "readonly",
       },
     },
@@ -202,6 +206,8 @@ export default [
         console: "readonly",
         Buffer: "readonly",
         TextEncoder: "readonly",
+        URL: "readonly",
+        URLSearchParams: "readonly",
         TextDecoder: "readonly",
       },
     },

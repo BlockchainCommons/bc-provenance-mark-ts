@@ -32,7 +32,7 @@ const BASELINE_SHA256 = readFileSync(join(here, "baseline/README.md"), "utf8").m
  */
 export const normalizeCode = (s: string): string =>
   s.replace(
-    /throw:([A-Za-z_]+)(?:\[[A-Za-z]+\])?(?:\|[^\n]*)?/g,
+    /throw:([A-Za-z0-9_]+)(?:\[[A-Za-z]+\])?(?:\|[^\n]*)?/g,
     (_m, code: string) =>
       `throw:${code.replace(/^(Bytewords|Cbor|Url|Base64|Json|Envelope|Validation|IntegerConversion)Error$/, "$1")}`,
   );
@@ -52,11 +52,13 @@ const differingLines = (a: string, b: string, pred: (x: string, y: string) => bo
 const throws = /^throw:[A-Za-z_]+$/;
 /** The frozen bundle's sibling error class names and engine errors. */
 const foreign =
-  /^throw:(?:[A-Za-z]+Error|Error|TypeError|RangeError|Decoder|Bytewords|Custom|UnexpectedType)$/;
+  /^throw:(?:[A-Za-z]+Error|Error|TypeError|RangeError|Decoder|Bytewords|Custom|UnexpectedType|ERR_INVALID_URL)$/;
 
 /** Tombstones: the only allowed differences. */
 const TOMBSTONES: {
   id: string;
+  /** `false` until the change lands: the rows must still agree with the baseline. */
+  landed?: boolean;
   matches: (r: Recipe, baselineOutcome: string, currentOutcome: string) => boolean;
 }[] = [
   {
@@ -154,6 +156,75 @@ const TOMBSTONES: {
     matches: (r, a, b) =>
       r.k === "fromurl" && a === "throw:MissingUrlParameter" && b === "throw:Bytewords",
   },
+  {
+    // An out-of-range resolution number in CBOR is `Cbor[OutOfRange]`, as
+    // the reference's `u8::try_from` reports it; the frozen bundle threw its
+    // own resolution error.
+    id: "T11 resolution numbers out of the u8 range",
+    matches: (r, a, b) =>
+      r.k === "decode" && r.form === "cbor" && /^throw:/.test(a) && b === "throw:Cbor",
+  },
+  {
+    // `parseSeed` reads through the serde path with strict base64 (canonical
+    // padding, no whitespace, zero trailing bits), so a bad string is `Json`
+    // with serde's text; the frozen bundle accepted unpadded,
+    // whitespace-wrapped and non-canonical strings or threw its own base64
+    // or seed-length error.
+    id: "T12 parseSeed through the serde path",
+    matches: (r, a, b) => r.k === "seed" && a !== b && b === "throw:Json",
+  },
+  {
+    // Message texts only: the info type's `comment` fault, the summariser's
+    // reason and JSON floats are worded as the reference words them.
+    id: "T13 message wording",
+    matches: (r, a, b) => r.k === "json" && /^throw:Json$/.test(a) && a === b,
+  },
+  {
+    // A string, number or array given as key bytes is a `TypeError`; the
+    // frozen bundle built a corrupt mark.
+    id: "T14 key bytes guarded",
+    matches: (r, _a, b) =>
+      r.k === "domain" && /^from\.key\./.test(r.case) && b === "throw:TypeError",
+  },
+  {
+    // The 4-byte codec truncates toward zero, as the reference's
+    // `num_seconds()` does, so an instant inside the second before the
+    // 2001 epoch encodes as the epoch; the frozen bundle floored it and
+    // rejected it.
+    id: "T15 the second before the epoch",
+    matches: (r, a, b) =>
+      r.k === "date" &&
+      r.res === "medium" &&
+      r.date !== undefined &&
+      r.date.startsWith("2000-12-31T23:59:59.") &&
+      /^throw:/.test(a) &&
+      b === "00000000",
+  },
+  {
+    // `toUrl` appends the parameter to the base's query text as it stands,
+    // as the reference's `append_pair` does; the frozen bundle re-serialised
+    // the query through `URLSearchParams` and replaced an existing
+    // `provenance` parameter. The mark's own parameter is the same on both
+    // sides.
+    id: "T16 toUrl appends to the query as it stands",
+    matches: (r, a, b) => {
+      if (r.k !== "url" || a === b || /^throw:/.test(a) || /^throw:/.test(b)) return false;
+      const mark = b.slice(b.lastIndexOf("provenance=")).split(/[&#]/)[0];
+      return a.includes(mark);
+    },
+  },
+  {
+    // A leap second (`:60`) is read as the next minute, as the reference's
+    // `Date::from_string` reads it; the frozen bundle's `new Date` could not
+    // parse it at all.
+    id: "T17 leap seconds",
+    matches: (r, a, b) =>
+      r.k === "date" &&
+      r.date !== undefined &&
+      r.date.includes(":60") &&
+      a === "throw:InvalidDate" &&
+      !/^throw:/.test(b),
+  },
 ];
 
 const baseline = baselineAdapterFor(baselineMod, await baselineDeps());
@@ -171,10 +242,10 @@ describe("differential: baseline vs working tree", () => {
     const skipped = Object.entries(categories)
       .filter(([, gen]) => ![...gen(materialized)].some(isBaselineSupported))
       .map(([name]) => name);
-    expect(skipped).toEqual(["cbor", "domain"]);
+    expect(skipped).toEqual(["cbor", "infoType", "summary", "domain"]);
   });
   for (const [name, gen] of Object.entries(categories)) {
-    if (name === "cbor" || name === "domain") continue;
+    if (["cbor", "infoType", "summary", "domain"].includes(name)) continue;
     it(`category ${name}`, { timeout: 900_000 }, () => {
       let n = 0;
       const diffs: string[] = [];
@@ -184,7 +255,7 @@ describe("differential: baseline vs working tree", () => {
         const a = normalizeCode(materialize(baseline, recipe));
         const b = normalizeCode(materialize(current, recipe));
         const tomb = TOMBSTONES.find((t) => t.matches(recipe, a, b));
-        if (a !== b && tomb === undefined)
+        if (a !== b && (tomb === undefined || tomb.landed === false))
           diffs.push(`${recipeName(recipe)}: ${a.slice(0, 100)} !== ${b.slice(0, 100)}`);
       }
       expect(n).toBeGreaterThan(0);
