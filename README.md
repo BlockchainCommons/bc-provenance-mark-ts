@@ -58,6 +58,7 @@ Runnable examples live in the [`examples/`](https://github.com/BlockchainCommons
 
 ### Version History
 
+- **1.0.0-beta.5 (October 19, 2026)** - Installs with npm on a host without Bun, with its `@blockchaincommons/*` dependencies at 1.0.0-beta.5 ([bc-components-ts#11](https://github.com/BlockchainCommons/bc-components-ts/issues/11)). No code changes.
 - **1.0.0-beta.3 (September 16, 2026)** - Second pass against the Rust reference: `Date | CborDate` inputs, validation issues carrying bytes and dates, generator equality, `parseSeed` through the serde path, key-byte guards, `u8` resolution numbers; the reference's names for the identifier methods and the date and sequence codecs, positional optionals, `toUrl` appending as the reference does, the 4-byte codec truncating toward zero. See [CHANGELOG.md](./CHANGELOG.md).
 - **1.0.0-beta.2 (September 16, 2026)** - Dependency alignment: `@blockchaincommons/envelope` ^1.0.0-beta.3.
 - **1.0.0-beta.1 (September 16, 2026)** - Initial beta implementation: the first release under this name, replacing `@bcts/provenance-mark`. See [MIGRATION.md](./MIGRATION.md).
